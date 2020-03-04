@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "renovate.fullname" . }}
+  labels:
+    {{- include "renovate.labels" . | nindent 4 }}
+data:
+  {{- $files := .Files }}
+  {{- range tuple "config.js" }}
+  {{ . }}: |-
+    {{ $files.Get . | nindent 4  }}
+  {{- end }}
