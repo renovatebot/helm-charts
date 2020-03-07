@@ -1,6 +1,9 @@
-name: Test
+name: Release Charts
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   lint:
@@ -9,13 +12,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
       - name: Install Helm
         uses: azure/setup-helm@v1
-
-      - name: Helm lint
-        run: helm lint charts/renovate/
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.0.0-alpha.2
         env:
-          CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          CR_TOKEN: '${{ secrets.CR_TOKEN }}'
