@@ -5,15 +5,13 @@ metadata:
   labels:
     {{- include "renovate.labels" . | nindent 4 }}
 spec:
+  backoffLimit:
+    {{- toYaml .Values.backoffLimit | nindent 4 }}
   template:
     metadata:
       labels:
         {{- include "renovate.selectorLabels" . | nindent 8 }}
     spec:
-    {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:

@@ -13,9 +13,9 @@ jobs:
         uses: azure/setup-helm@v1
 
       - name: Helm lint
-        run: helm lint renovate
+        run: helm lint charts/renovate/
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.0.0-alpha.2
         env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
