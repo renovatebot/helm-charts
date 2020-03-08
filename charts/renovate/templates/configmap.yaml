@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "renovate.fullname" . }}
+  name: {{ template "renovate.fullname" . }}-config
   labels:
-    {{- include "renovate.labels" . | nindent 4 }}
+    app: {{ template "renovate.name" . }}
+    chart: {{ template "renovate.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
 data:
-  {{- $files := .Files }}
-  {{- range tuple "config.js" }}
-  {{ . }}: |-
-    {{ $files.Get . | nindent 4  }}
-  {{- end }}
+  config.js: |-
+    {{ required "A valid .Values.renovate.config entry is required!" .Values.renovate.config | nindent 4 }}

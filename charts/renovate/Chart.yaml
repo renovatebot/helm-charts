@@ -1,7 +1,15 @@
 apiVersion: v1
-name: renovate
+appVersion: "19.160.2"
 description: Universal dependency update tool that fits into your workflows. 
+name: renovate
+version: 0.1.0
 icon: https://docs.renovatebot.com/assets/images/logo.png
 home: https://github.com/renovatebot/renovate
-version: 0.1.0
-appVersion: 19.160.6
+keywords:
+  - automated
+  - dependencies
+  - dependency
+  - management
+  - update
+sources:
+  - https://github.com/renovatebot/renovate

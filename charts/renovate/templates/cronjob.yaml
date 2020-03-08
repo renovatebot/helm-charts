@@ -1,0 +1,77 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ template "renovate.fullname" . }}
+  labels:
+    app: {{ template "renovate.name" . }}
+    chart: {{ template "renovate.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+{{- if .Values.cronjob.labels }}
+{{ toYaml .Values.cronjob.labels | indent 4 }}
+{{- end }}
+{{- if .Values.cronjob.annotations }}
+  annotations:
+{{ toYaml .Values.cronjob.annotations | indent 4 }}
+{{- end }}
+spec:
+  schedule: "{{ .Values.cronjob.schedule }}"
+  {{- with .Values.cronjob.concurrencyPolicy }}
+  concurrencyPolicy: {{ . }}
+  {{- end }}
+  {{- with .Values.cronjob.failedJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ . }}
+  {{- end }}
+  {{- with .Values.cronjob.successfulJobsHistoryLimit }}
+  successfulJobsHistoryLimit: {{ . }}
+  {{- end }}
+  jobTemplate:
+    metadata:
+      labels:
+        app: {{ template "renovate.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      template:
+        metadata:
+          labels:
+            app: {{ template "renovate.name" . }}
+            release: {{ .Release.Name }}
+{{- if .Values.pod.labels }}
+{{ toYaml .Values.pod.labels | indent 12 }}
+{{- end }}
+{{- if .Values.pod.annotations }}
+          annotations:
+{{ toYaml .Values.pod.annotations | indent 12 }}
+{{- end }}
+        spec:
+          volumes:
+            - name: config-volume
+              configMap:
+                name: {{ template "renovate.fullname" . }}-config
+          restartPolicy: {{ .Values.cronjob.jobRestartPolicy }}
+          containers:
+            - name: {{ .Chart.Name }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              volumeMounts:
+              - name: config-volume
+                mountPath: /usr/src/app/config.js
+                subPath: config.js
+              resources:
+  {{ toYaml .Values.resources | indent 14 }}
+    {{- with .Values.nodeSelector }}
+          nodeSelector:
+{{ toYaml . | indent 12 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+          affinity:
+{{ toYaml . | indent 12 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+          tolerations:
+{{ toYaml . | indent 12 }}
+    {{- end }}
+    {{- with .Values.securityContext }}
+          securityContext:
+{{ toYaml . | indent 12 }}
+    {{- end }}

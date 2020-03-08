@@ -5,8 +5,14 @@
     {
       "fileMatch": ["(^|/)Chart.yaml$"],
       "matchStrings": ["appVersion: (?<currentValue>.*?)\n"],
-      "depNameTemplate": "renovate",
-      "datasourceTemplate": "npm"
+      "depNameTemplate": "renovate/renovate",
+      "datasourceTemplate": "docker"
+    },
+    {
+      "fileMatch": ["(^|/)values.yaml$"],
+      "matchStrings": ["  tag: \"(?<currentValue>.*?)\"\n"],
+      "depNameTemplate": "renovate/renovate",
+      "datasourceTemplate": "docker"
     }
   ]
 }
