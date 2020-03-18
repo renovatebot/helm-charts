@@ -4,13 +4,7 @@
   "regexManagers": [
     {
       "fileMatch": ["(^|/)Chart.yaml$"],
-      "matchStrings": ["appVersion: (?<currentValue>.*?)\n"],
-      "depNameTemplate": "renovate/renovate",
-      "datasourceTemplate": "docker"
-    },
-    {
-      "fileMatch": ["(^|/)values.yaml$"],
-      "matchStrings": ["  tag: \"(?<currentValue>.*?)\"\n"],
+      "matchStrings": ["appVersion: \"(?<currentValue>.*?)\"\n"],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
     }
