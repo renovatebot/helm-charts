@@ -1,0 +1,29 @@
+{{ template "chart.header" . }}
+{{ template "chart.description" . }}
+
+{{ template "chart.versionLine" . }}
+
+{{ template "chart.sourceLinkLine" . }}
+
+## Installation
+
+### Add Helm repository
+
+```shell
+helm repo add renovate https://renovatebot.github.io/helm-charts/
+helm repo update
+```
+
+## Install Renovate chart
+
+```bash
+helm install --generate-name --set renovate.config='module.exports={...}' renovate/renovate
+```
+
+**NOTE**: `renovate.config` must be a valid Renovate [self-hosted configuration](https://docs.renovatebot.com/self-hosted-configuration/)
+
+## Configuration
+
+The following table lists the configurable parameters of the chart and the default values.
+
+{{ template "chart.valuesSection" . }}
