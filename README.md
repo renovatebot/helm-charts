@@ -16,3 +16,5 @@ helm repo update
 ```bash
 helm install --generate-name --set renovate.config='module.exports={...}' renovate/renovate
 ```
+
+**NOTE**: `renovate.config` must be a valid Renovate [self-hosted configuration](https://docs.renovatebot.com/self-hosted-configuration/)
