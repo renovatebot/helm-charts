@@ -55,8 +55,8 @@ spec:
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               volumeMounts:
               - name: config-volume
-                mountPath: /usr/src/app/config.js
-                subPath: config.js
+                mountPath: /usr/src/app/config.json
+                subPath: config.json
               resources:
   {{ toYaml .Values.resources | indent 14 }}
     {{- with .Values.nodeSelector }}

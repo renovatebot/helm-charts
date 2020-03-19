@@ -17,8 +17,16 @@ helm repo update
 
 ## Install Renovate chart
 
+Using config from a file:
+
 ```bash
-helm install --generate-name --set renovate.config='module.exports={...}' renovate/renovate
+helm install --generate-name --set-file renovate.config=config.json renovate/renovate
+```
+
+Using config from a string:
+
+```bash
+helm install --generate-name --set renovate.config='\{\"token\":\"...\"\}' renovate/renovate
 ```
 
 **NOTE**: `renovate.config` must be a valid Renovate [self-hosted configuration](https://docs.renovatebot.com/self-hosted-configuration/)

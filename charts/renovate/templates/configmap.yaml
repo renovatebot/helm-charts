@@ -8,5 +8,5 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  config.js: |-
+  config.json: |-
     {{ required "A valid .Values.renovate.config entry is required!" .Values.renovate.config | nindent 4 }}
