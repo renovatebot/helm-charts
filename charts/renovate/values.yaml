@@ -1,11 +1,11 @@
 cronjob:
   # At 01:00 every day
-  schedule: "0 1 * * *"
+  schedule: '0 1 * * *'
   annotations: {}
   labels: {}
-  concurrencyPolicy: ""
-  failedJobsHistoryLimit: ""
-  successfulJobsHistoryLimit: ""
+  concurrencyPolicy: ''
+  failedJobsHistoryLimit: ''
+  successfulJobsHistoryLimit: ''
   jobRestartPolicy: Never
 
 pod:
@@ -14,7 +14,7 @@ pod:
 
 image:
   repository: renovate/renovate
-  tag: "19.160.2"
+  tag: '19.160.2'
   pullPolicy: IfNotPresent
 
 renovate:
