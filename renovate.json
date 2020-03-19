@@ -13,6 +13,20 @@
       "matchStrings": ["version: '(?<currentValue>.*?)'\n"],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
+    },
+    {
+      "fileMatch": ["(^|/)README.md$"],
+      "matchStrings": ["Current chart version is `(?<currentValue>.*?)`\n"],
+      "depNameTemplate": "renovate/renovate",
+      "datasourceTemplate": "docker"
+    },
+    {
+      "fileMatch": ["(^|/)README.md$"],
+      "matchStrings": [
+        "| image.tag | string | `\"(?<currentValue>.*?)\"` |  |\n"
+      ],
+      "depNameTemplate": "renovate/renovate",
+      "datasourceTemplate": "docker"
     }
   ]
 }
