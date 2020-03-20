@@ -12,15 +12,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Run chart-testing (lint)
-        id: lint
         uses: helm/chart-testing-action@master
         with:
           command: lint
           config: .github/ct.yaml
 
+  lint-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Download helm-docs
+        run: |
+          curl -s https://api.github.com/repos/norwoodj/helm-docs/releases/latest \
+            | grep "browser_download_url.*Linux_x86_64.tar.gz" \
+            | cut -d : -f 2,3 \
+            | tr -d \" \
+            | wget -o /dev/null -qi - -O - \
+            | tar xzf - helm-docs
+      - name: Run helm-docs
+        run: ./helm-docs
+      - name: Check if docs are in sync
+        run: git diff --exit-code
+
   kubeval-chart:
     runs-on: ubuntu-latest
-    needs: lint-chart
+    needs:
+      - lint-chart
+      - lint-docs
     strategy:
       matrix:
         k8s:
@@ -43,6 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - lint-chart
+      - lint-docs
       - kubeval-chart
     strategy:
       matrix:
