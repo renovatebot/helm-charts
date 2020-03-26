@@ -1,6 +1,6 @@
 # Renovate
 
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/renovatebot/helm-renovate?style=for-the-badge)](https://github.com/renovatebot/helm-charts/releases/latest)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/renovatebot/helm-charts?style=for-the-badge)](https://github.com/renovatebot/helm-charts/releases/latest)
 [![License](https://img.shields.io/github/license/renovatebot/helm-charts?style=for-the-badge)](https://opensource.org/licenses/AGPL-3.0)
 
 Automated dependency updates. Multi-platform and multi-language.
