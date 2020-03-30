@@ -10,7 +10,7 @@ This repository hosts Renovate's [Helm](https://helm.sh) charts. Chart documenta
 ## Add Helm repository
 
 ```bash
-helm repo add renovate https://renovatebot.github.io/helm-charts/
+helm repo add renovate https://docs.renovatebot.com/helm-charts
 helm repo update
 ```
 
