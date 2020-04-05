@@ -11,7 +11,7 @@ Source code can be found [here](https://github.com/renovatebot/renovate)
 ### Add Helm repository
 
 ```shell
-helm repo add renovate https://renovatebot.github.io/helm-charts/
+helm repo add renovate https://docs.renovatebot.com/helm-charts
 helm repo update
 ```
 
