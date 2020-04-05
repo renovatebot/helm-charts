@@ -23,7 +23,7 @@
     {
       "fileMatch": ["(^|/)README.md$"],
       "matchStrings": [
-        "| image.tag | string | `\"(?<currentValue>.*?)\"` |  |\n"
+        "\\| image.tag \\| string \\| `\"(?<currentValue>.*?)\"` \\|  \\|\n"
       ],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
