@@ -1,2 +1,2 @@
 renovate:
-  config: 'module.exports = {}'
+  config: '{}'
