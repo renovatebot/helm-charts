@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   renovate:
   - apiVersion: v1
-    appVersion: 19.198.1
-    created: "2020-04-07T08:00:57.642429032Z"
+    appVersion: 19.200.0
+    created: "2020-04-07T12:00:50.308387809Z"
     description: Universal dependency update tool that fits into your workflows.
-    digest: 687ffc3d6640f70079091462702a1b8874670f1bb47520e95b6ec5e162199c44
+    digest: 96701244efc8a6d00ab8a967dfb63c172cd272d9d017e0655297677439862381
     home: https://github.com/renovatebot/renovate
     icon: https://docs.renovatebot.com/assets/images/logo.png
     keywords:
@@ -20,69 +20,6 @@ entries:
     sources:
     - https://github.com/renovatebot/renovate
     urls:
-    - https://github.com/renovatebot/helm-charts/releases/download/renovate-19.198.1/renovate-19.198.1.tgz
-    version: 19.198.1
-  - apiVersion: v1
-    appVersion: 19.197.0
-    created: "2020-04-06T19:01:03.66239246Z"
-    description: Universal dependency update tool that fits into your workflows.
-    digest: 80430774a652ce03078e5060b98f4cf8e05e1ee849ac1688c1ff3f8cc4fb77d2
-    home: https://github.com/renovatebot/renovate
-    icon: https://docs.renovatebot.com/assets/images/logo.png
-    keywords:
-    - automated
-    - dependencies
-    - dependency
-    - management
-    - update
-    maintainers:
-    - name: JamieMagee
-    name: renovate
-    sources:
-    - https://github.com/renovatebot/renovate
-    urls:
-    - https://github.com/renovatebot/helm-charts/releases/download/renovate-19.197.0/renovate-19.197.0.tgz
-    version: 19.197.0
-  - apiVersion: v1
-    appVersion: 19.195.1
-    created: "2020-04-05T16:27:57.4569399Z"
-    description: Universal dependency update tool that fits into your workflows.
-    digest: ee97819df0f8ec8d205aded452f0cfe26ecf6aafd1ba3d76946bb7f91b3c3c20
-    home: https://github.com/renovatebot/renovate
-    icon: https://docs.renovatebot.com/assets/images/logo.png
-    keywords:
-    - automated
-    - dependencies
-    - dependency
-    - management
-    - update
-    maintainers:
-    - name: JamieMagee
-    name: renovate
-    sources:
-    - https://github.com/renovatebot/renovate
-    urls:
-    - https://github.com/renovatebot/helm-charts/releases/download/renovate-19.195.1/renovate-19.195.1.tgz
-    version: 19.195.1
-  - apiVersion: v1
-    appVersion: 19.181.0
-    created: "2020-03-26T12:45:25.677527352Z"
-    description: Universal dependency update tool that fits into your workflows.
-    digest: aa21b74f7079f0fed33f9444d8965c669af8ffad532060cb1600f930c09ee699
-    home: https://github.com/renovatebot/renovate
-    icon: https://docs.renovatebot.com/assets/images/logo.png
-    keywords:
-    - automated
-    - dependencies
-    - dependency
-    - management
-    - update
-    maintainers:
-    - name: JamieMagee
-    name: renovate
-    sources:
-    - https://github.com/renovatebot/renovate
-    urls:
-    - https://github.com/renovatebot/helm-charts/releases/download/renovate-19.181.0/renovate-19.181.0.tgz
-    version: 19.181.0
-generated: "2020-03-26T12:45:25.564984112Z"
+    - https://github.com/renovatebot/helm-charts/releases/download/renovate-19.200.0/renovate-19.200.0.tgz
+    version: 19.200.0
+generated: "2020-04-07T12:00:50.186125398Z"
