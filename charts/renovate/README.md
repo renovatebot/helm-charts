@@ -2,7 +2,7 @@ renovate
 ========
 Universal dependency update tool that fits into your workflows.
 
-Current chart version is `19.216.7`
+Current chart version is `19.216.9`
 
 Source code can be found [here](https://github.com/renovatebot/renovate)
 
@@ -48,7 +48,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
-| image.tag | string | `"19.216.7"` |  |
+| image.tag | string | `"19.216.9"` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
 | renovate.config | string | `""` |  |
