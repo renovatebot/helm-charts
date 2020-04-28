@@ -35,7 +35,8 @@
       "description": "Automerge renovate minor and patch updates",
       "packageNames": ["renovate/renovate"],
       "updateTypes": ["minor", "patch"],
-      "automergeType": "branch"
+      "automergeType": "branch",
+      "automerge": true
     }
   ]
 }
