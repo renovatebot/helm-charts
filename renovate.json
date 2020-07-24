@@ -1,7 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base", ":dependencyDashboard", "docker:enableMajor"],
-  "prCreation": "not-pending",
   "regexManagers": [
     {
       "fileMatch": ["(^|/)Chart.yaml$"],
