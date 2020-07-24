@@ -53,12 +53,16 @@ spec:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
+            {{- with .Values.envFrom }}
+              envFrom:
+                {{- toYaml . | nindent 16 }}
+            {{- end }}
               volumeMounts:
               - name: config-volume
                 mountPath: /usr/src/app/config.json
                 subPath: config.json
               resources:
-  {{ toYaml .Values.resources | indent 14 }}
+  {{ toYaml .Values.resources | indent 16 }}
     {{- with .Values.nodeSelector }}
           nodeSelector:
 {{ toYaml . | indent 12 }}
