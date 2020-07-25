@@ -35,6 +35,8 @@ helm install --generate-name --set renovate.config='\{\"token\":\"...\"\}' renov
 
 The following table lists the configurable parameters of the chart and the default values.
 
+**NOTE**: to generate the list of parameters, use [helm-docs](https://github.com/norwoodj/helm-docs).
+
 ## Chart Values
 
 | Key | Type | Default | Description |
@@ -53,3 +55,4 @@ The following table lists the configurable parameters of the chart and the defau
 | pod.labels | object | `{}` |  |
 | renovate.config | string | `""` |  |
 | resources | object | `{}` |  |
+| secrets | object | `{}` |  |
