@@ -2,6 +2,27 @@ apiVersion: v1
 entries:
   renovate:
   - apiVersion: v1
+    appVersion: 22.14.5
+    created: "2020-08-11T13:00:43.696561646Z"
+    description: Universal dependency update tool that fits into your workflows.
+    digest: 26ec4feb2a45101054eda5dbc1801703fcaec6cffd76bc865c02ce9847dec9db
+    home: https://github.com/renovatebot/renovate
+    icon: https://docs.renovatebot.com/assets/images/logo.png
+    keywords:
+    - automated
+    - dependencies
+    - dependency
+    - management
+    - update
+    maintainers:
+    - name: JamieMagee
+    name: renovate
+    sources:
+    - https://github.com/renovatebot/renovate
+    urls:
+    - https://github.com/renovatebot/helm-charts/releases/download/renovate-22.14.5/renovate-22.14.5.tgz
+    version: 22.14.5
+  - apiVersion: v1
     appVersion: 22.14.1
     created: "2020-08-11T01:00:52.784949398Z"
     description: Universal dependency update tool that fits into your workflows.
