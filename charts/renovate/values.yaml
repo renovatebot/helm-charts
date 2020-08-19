@@ -14,7 +14,7 @@ pod:
 
 image:
   repository: renovate/renovate
-  tag: 22.19.6
+  tag: 22.20.0
   pullPolicy: IfNotPresent
 
 renovate:
