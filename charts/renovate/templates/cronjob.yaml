@@ -1,9 +1,11 @@
+{{- $fullName := include "renovate.fullname" . -}}
+{{- $name := include "renovate.name" . -}}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ template "renovate.fullname" . }}
+  name: {{ $fullName }}
   labels:
-    app: {{ template "renovate.name" . }}
+    app: {{ $name }}
     chart: {{ template "renovate.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -28,13 +30,13 @@ spec:
   jobTemplate:
     metadata:
       labels:
-        app: {{ template "renovate.name" . }}
+        app: {{ $name }}
         release: {{ .Release.Name }}
     spec:
       template:
         metadata:
           labels:
-            app: {{ template "renovate.name" . }}
+            app: {{ $name }}
             release: {{ .Release.Name }}
 {{- if .Values.pod.labels }}
 {{ toYaml .Values.pod.labels | indent 12 }}
@@ -47,7 +49,7 @@ spec:
           volumes:
             - name: config-volume
               configMap:
-                name: {{ template "renovate.fullname" . }}-config
+                name: {{ $fullName }}-config
           restartPolicy: {{ .Values.cronjob.jobRestartPolicy }}
           containers:
             - name: {{ .Chart.Name }}
@@ -57,6 +59,11 @@ spec:
               - name: config-volume
                 mountPath: /usr/src/app/config.json
                 subPath: config.json
+              {{- if .Values.secrets }}
+              envFrom:
+                - secretRef:
+                    name: {{ $fullName }}-secret
+              {{- end }}
               resources:
   {{ toYaml .Values.resources | indent 14 }}
     {{- with .Values.nodeSelector }}
