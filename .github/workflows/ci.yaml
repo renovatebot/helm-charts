@@ -21,6 +21,8 @@ jobs:
         with:
           command: lint
           config: .github/ct.yaml
+        env:
+          CT_CHECK_VERSION_INCREMENT: "false"
 
   lint-docs:
     runs-on: ubuntu-latest
