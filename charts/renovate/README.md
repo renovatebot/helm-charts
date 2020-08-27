@@ -2,7 +2,7 @@ renovate
 ========
 Universal dependency update tool that fits into your workflows.
 
-Current chart version is `22.25.6`
+Current chart version is `22.25.6+2`
 
 Source code can be found [here](https://github.com/renovatebot/renovate)
 
