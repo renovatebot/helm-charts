@@ -59,10 +59,15 @@ spec:
               - name: config-volume
                 mountPath: /usr/src/app/config.json
                 subPath: config.json
-              {{- if .Values.secrets }}
+              {{- if or .Values.secrets .Values.envFrom }}
               envFrom:
+                {{- if .Values.secrets }}
                 - secretRef:
                     name: {{ $fullName }}-secret
+                {{- end }}
+                {{- with .Values.envFrom }}
+                  {{- toYaml . | nindent 16 }}
+                {{- end }}
               {{- end }}
               resources:
   {{ toYaml .Values.resources | indent 14 }}
