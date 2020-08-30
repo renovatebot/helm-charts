@@ -55,18 +55,17 @@ spec:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-            {{- with .Values.envFrom }}
-              envFrom:
-                {{- toYaml . | nindent 16 }}
-            {{- end }}
               volumeMounts:
               - name: config-volume
                 mountPath: /usr/src/app/config.json
                 subPath: config.json
-              {{- if .Values.secrets }}
+              {{- if .Values.secrets or .Values.envFrom }}
               envFrom:
                 - secretRef:
                     name: {{ $fullName }}-secret
+                {{- with .Values.envFrom }}
+                  {{- toYaml . | nindent 16 }}
+                {{- end }}
               {{- end }}
               resources:
   {{ toYaml .Values.resources | indent 14 }}
