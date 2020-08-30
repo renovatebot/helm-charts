@@ -61,7 +61,7 @@ spec:
                 subPath: config.json
               {{- if or .Values.secrets .Values.envFrom }}
               envFrom:
-                {{- if or .Values.secrets }}
+                {{- if .Values.secrets }}
                 - secretRef:
                     name: {{ $fullName }}-secret
                 {{- end }}
