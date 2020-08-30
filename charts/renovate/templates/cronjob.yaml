@@ -61,8 +61,10 @@ spec:
                 subPath: config.json
               {{- if or .Values.secrets .Values.envFrom }}
               envFrom:
+                {{- if or .Values.secrets }}
                 - secretRef:
                     name: {{ $fullName }}-secret
+                {{- end }}
                 {{- with .Values.envFrom }}
                   {{- toYaml . | nindent 16 }}
                 {{- end }}
