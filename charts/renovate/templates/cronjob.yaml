@@ -62,7 +62,7 @@ spec:
                 mountPath: /usr/src/app/config.json
                 subPath: config.json
               resources:
-  {{ toYaml .Values.resources | indent 16 }}
+  {{ toYaml .Values.resources | indent 14 }}
     {{- with .Values.nodeSelector }}
           nodeSelector:
 {{ toYaml . | indent 12 }}
