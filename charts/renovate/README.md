@@ -46,6 +46,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.labels | object | `{}` |  |
 | cronjob.schedule | string | `"0 1 * * *"` |  |
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
+| envFrom | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
 | image.tag | string | `"23.10.1"` |  |
