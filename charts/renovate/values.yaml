@@ -19,6 +19,18 @@ image:
 
 renovate:
   config: ''
+  # See https://docs.renovatebot.com/self-hosted-configuration
+  # config: |
+  #   {
+  #     "platform": "gitlab",
+  #     "endpoint": "https://gitlab.example.com/api/v4",
+  #     "token": "your-gitlab-renovate-user-token",
+  #     "autodiscover": "false",
+  #     "dryRun": true,
+  #     "printConfig": true,
+  #     "logLevel": "debug",
+  #     "repositories": ["username/repo", "orgname/repo"]
+  #   }
 
 secrets: {}
 
