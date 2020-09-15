@@ -1,20 +1,15 @@
-{{- $fullName := include "renovate.fullname" . -}}
-{{- $name := include "renovate.name" . -}}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ $fullName }}
+  name: {{ include "renovate.fullname" . }}
   labels:
-    app: {{ $name }}
-    chart: {{ template "renovate.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-{{- if .Values.cronjob.labels }}
-{{ toYaml .Values.cronjob.labels | indent 4 }}
+    {{- include "renovate.labels" . | nindent 4 }}
+  {{- with .Values.cronjob.labels }}
+    {{- toYaml . | nindent 4 }}
 {{- end }}
 {{- if .Values.cronjob.annotations }}
   annotations:
-{{ toYaml .Values.cronjob.annotations | indent 4 }}
+    {{ toYaml .Values.cronjob.annotations | nindent 4 }}
 {{- end }}
 spec:
   schedule: "{{ .Values.cronjob.schedule }}"
@@ -30,20 +25,18 @@ spec:
   jobTemplate:
     metadata:
       labels:
-        app: {{ $name }}
-        release: {{ .Release.Name }}
+        {{- include "renovate.selectorLabels" . | nindent 8 }}
     spec:
       template:
         metadata:
           labels:
-            app: {{ $name }}
-            release: {{ .Release.Name }}
-{{- if .Values.pod.labels }}
-{{ toYaml .Values.pod.labels | indent 12 }}
+            {{- include "renovate.selectorLabels" . | nindent 12 }}
+          {{- with .Values.pod.labels }}
+            {{- toYaml . | nindent 12 }}
 {{- end }}
 {{- if .Values.pod.annotations }}
           annotations:
-{{ toYaml .Values.pod.annotations | indent 12 }}
+            {{ toYaml .Values.pod.annotations | nindent 12 }}
 {{- end }}
         spec:
           volumes:
@@ -63,27 +56,31 @@ spec:
               envFrom:
                 {{- if .Values.secrets }}
                 - secretRef:
-                    name: {{ $fullName }}-secret
+                    name: {{ include "renovate.fullname" . }}-secret
                 {{- end }}
                 {{- with .Values.envFrom }}
                   {{- toYaml . | nindent 16 }}
                 {{- end }}
               {{- end }}
               resources:
-  {{ toYaml .Values.resources | indent 14 }}
+                {{ toYaml .Values.resources | nindent 16 }}
+          volumes:
+            - name: config-volume
+              configMap:
+                name: {{ include "renovate.fullname" . }}-config
     {{- with .Values.nodeSelector }}
           nodeSelector:
-{{ toYaml . | indent 12 }}
+            {{ toYaml . | nindent 12 }}
     {{- end }}
     {{- with .Values.affinity }}
           affinity:
-{{ toYaml . | indent 12 }}
+            {{ toYaml . | nindent 12 }}
     {{- end }}
     {{- with .Values.tolerations }}
           tolerations:
-{{ toYaml . | indent 12 }}
+            {{ toYaml . | nindent 12 }}
     {{- end }}
     {{- with .Values.securityContext }}
           securityContext:
-{{ toYaml . | indent 12 }}
+            {{ toYaml . | nindent 12 }}
     {{- end }}
