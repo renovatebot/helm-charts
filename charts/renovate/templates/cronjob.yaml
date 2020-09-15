@@ -39,10 +39,7 @@ spec:
             {{ toYaml .Values.pod.annotations | nindent 12 }}
 {{- end }}
         spec:
-          volumes:
-            - name: config-volume
-              configMap:
-                name: {{ $fullName }}-config
+          serviceAccountName: {{ include "renovate.serviceAccountName" . }}
           restartPolicy: {{ .Values.cronjob.jobRestartPolicy }}
           containers:
             - name: {{ .Chart.Name }}
