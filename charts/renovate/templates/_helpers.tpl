@@ -61,3 +61,14 @@ Create the name of the service account to use
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Define secret names
+*/}}
+{{- define "renovate.secretName" -}}
+{{- if .Values.existingSecret -}}
+{{- .Values.existingSecret -}}
+{{- else -}}
+{{ include "renovate.fullname" . }}-secret
+{{- end -}}
+{{- end -}}

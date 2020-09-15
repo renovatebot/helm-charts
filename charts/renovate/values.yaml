@@ -32,7 +32,10 @@ renovate:
   #     "repositories": ["username/repo", "orgname/repo"]
   #   }
 
+# Provide secrets inline
 secrets: {}
+# or provide the name of an existing secret to be read instead.
+existingSecret: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
