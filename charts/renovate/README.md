@@ -1,10 +1,10 @@
-renovate
-========
+# renovate
+
 Universal dependency update tool that fits into your workflows.
 
 Current chart version is `23.31.2`
 
-Source code can be found [here](https://github.com/renovatebot/renovate)
+**Homepage:** <https://github.com/renovatebot/renovate>
 
 ## Installation
 
@@ -35,7 +35,7 @@ helm install --generate-name --set renovate.config='\{\"token\":\"...\"\}' renov
 
 The following table lists the configurable parameters of the chart and the default values.
 
-## Chart Values
+## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
@@ -47,6 +47,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.schedule | string | `"0 1 * * *"` |  |
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
 | envFrom | list | `[]` |  |
+| existingSecret | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
 | image.tag | string | `"23.31.2"` |  |
@@ -55,3 +56,6 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.config | string | `""` |  |
 | resources | object | `{}` |  |
 | secrets | object | `{}` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.create | bool | `true` |  |
+| serviceAccount.name | string | `""` |  |

@@ -19,8 +19,32 @@ image:
 
 renovate:
   config: ''
+  # See https://docs.renovatebot.com/self-hosted-configuration
+  # config: |
+  #   {
+  #     "platform": "gitlab",
+  #     "endpoint": "https://gitlab.example.com/api/v4",
+  #     "token": "your-gitlab-renovate-user-token",
+  #     "autodiscover": "false",
+  #     "dryRun": true,
+  #     "printConfig": true,
+  #     "logLevel": "debug",
+  #     "repositories": ["username/repo", "orgname/repo"]
+  #   }
 
+# Provide secrets inline
 secrets: {}
+# or provide the name of an existing secret to be read instead.
+existingSecret: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
