@@ -57,5 +57,5 @@ The following table lists the configurable parameters of the chart and the defau
 | resources | object | `{}` |  |
 | secrets | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` |  |
-| serviceAccount.create | bool | `true` |  |
+| serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `""` |  |
