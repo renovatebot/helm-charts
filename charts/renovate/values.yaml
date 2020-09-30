@@ -17,6 +17,8 @@ image:
   tag: 23.36.4
   pullPolicy: IfNotPresent
 
+imagePullSecrets: {}
+
 renovate:
   config: ''
   # See https://docs.renovatebot.com/self-hosted-configuration
