@@ -2,7 +2,7 @@
 
 Universal dependency update tool that fits into your workflows.
 
-Current chart version is `23.55.2`
+Current chart version is `23.55.3`
 
 **Homepage:** <https://github.com/renovatebot/renovate>
 
@@ -50,7 +50,7 @@ The following table lists the configurable parameters of the chart and the defau
 | existingSecret | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
-| image.tag | string | `"23.55.2"` |  |
+| image.tag | string | `"23.55.3"` |  |
 | imagePullSecrets | object | `{}` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
