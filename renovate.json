@@ -44,6 +44,14 @@
       "updateTypes": ["major", "minor", "patch"],
       "automergeType": "branch",
       "automerge": true
+    },
+    {
+      "packageNames": ["helm/helm"],
+      "extractVersion": "^v(?<version>.*)$"
+    },
+    {
+      "packageNames": ["kubernetes/kubectl"],
+      "extractVersion": "^v(?<version>.*)$"
     }
   ]
 }
