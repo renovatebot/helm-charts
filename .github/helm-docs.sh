@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
+# renovate: datasource=github-releases depName=norwoodj/helm-docs
 HELM_DOCS_VERSION="0.15.0"
 
 # install helm-docs
