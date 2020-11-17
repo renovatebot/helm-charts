@@ -34,15 +34,8 @@ spec:
           {{- with .Values.pod.labels }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          annotations:
-            checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum | indent 12 }}
-        {{- if and .Values.secrets (not .Values.existingSecret) }}
-            checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum | indent 12 }}
-        {{- end }}
-        {{- if and .Values.ssh_config.enabled (not .Values.ssh_config.existingSecret) }}
-            checksum/ssh_secret: {{ include (print $.Template.BasePath "/ssh-secret.yaml") . | sha256sum | indent 12 }}
-        {{- end }}
         {{- if .Values.pod.annotations }}
+          annotations:
             {{ toYaml .Values.pod.annotations | nindent 12 }}
         {{- end }}
         spec:
