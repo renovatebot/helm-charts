@@ -1,8 +1,8 @@
 # renovate
 
-Universal dependency update tool that fits into your workflows.
+![Version: 23.84.0](https://img.shields.io/badge/Version-23.84.0-informational?style=flat-square) ![AppVersion: 23.84.0](https://img.shields.io/badge/AppVersion-23.84.0-informational?style=flat-square)
 
-Current chart version is `23.84.0`
+Universal dependency update tool that fits into your workflows.
 
 **Homepage:** <https://github.com/renovatebot/renovate>
 
