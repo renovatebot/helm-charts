@@ -27,6 +27,12 @@
       ],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
+    },
+    {
+      "fileMatch": ["(^|/)*.sh$"],
+      "matchStrings": [
+        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_VERSION=\"(?<currentValue>.*)\"\\s"
+      ]
     }
   ],
   "packageRules": [
