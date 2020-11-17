@@ -72,3 +72,14 @@ Define secret names
 {{ include "renovate.fullname" . }}-secret
 {{- end -}}
 {{- end -}}
+
+{{/*
+Define ssh config secret
+*/}}
+{{- define "renovate.sshSecretName" -}}
+{{- if .Values.ssh_config.existingSecret -}}
+{{- .Values.ssh_config.existingSecret -}}
+{{- else -}}
+{{ include "renovate.fullname" . }}-ssh-secret
+{{- end -}}
+{{- end -}}

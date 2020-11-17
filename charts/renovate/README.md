@@ -60,3 +60,8 @@ The following table lists the configurable parameters of the chart and the defau
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `""` |  |
+| ssh_config.config | string | `""` |  |
+| ssh_config.enabled | bool | `false` |  |
+| ssh_config.existingSecret | string | `""` |  |
+| ssh_config.id_rsa | string | `""` |  |
+| ssh_config.id_rsa_pub | string | `""` |  |

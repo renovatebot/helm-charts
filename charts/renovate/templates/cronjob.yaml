@@ -34,8 +34,15 @@ spec:
           {{- with .Values.pod.labels }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
-        {{- if .Values.pod.annotations }}
           annotations:
+            checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum | indent 12 }}
+        {{- if and .Values.secrets (not .Values.existingSecret) }}
+            checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum | indent 12 }}
+        {{- end }}
+        {{- if and .Values.ssh_config.enabled (not .Values.ssh_config.existingSecret) }}
+            checksum/ssh_secret: {{ include (print $.Template.BasePath "/ssh-secret.yaml") . | sha256sum | indent 12 }}
+        {{- end }}
+        {{- if .Values.pod.annotations }}
             {{ toYaml .Values.pod.annotations | nindent 12 }}
         {{- end }}
         spec:
@@ -49,6 +56,11 @@ spec:
               - name: config-volume
                 mountPath: /usr/src/app/config.json
                 subPath: config.json
+              {{- if .Values.ssh_config.enabled }}
+              - name: ssh-config-volume
+                mountPath: /home/ubuntu/.ssh
+                readOnly: true
+              {{- end }}
               {{- if or .Values.secrets .Values.existingSecret .Values.envFrom }}
               envFrom:
                 {{- if or .Values.secrets .Values.existingSecret }}
@@ -65,6 +77,11 @@ spec:
             - name: config-volume
               configMap:
                 name: {{ include "renovate.fullname" . }}-config
+            {{- if .Values.ssh_config.enabled }}
+            - name: ssh-config-volume
+              secret:
+                secretName: {{ include "renovate.sshSecretName" .}}
+            {{- end }}
         {{- with .Values.nodeSelector }}
           nodeSelector:
             {{ toYaml . | nindent 12 }}
