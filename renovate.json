@@ -25,10 +25,7 @@
     {
       "fileMatch": ["(^|/)README.md$"],
       "matchStrings": [
-        "Version: (?<currentValue>.*?)",
-        "Version-(?<currentValue>.*?)",
-        "AppVersion-(?<currentValue>.*?)",
-        "AppVersion: (?<currentValue>.*?)"
+        "(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+)"
       ],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
