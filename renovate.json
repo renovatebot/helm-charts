@@ -23,6 +23,14 @@
       "datasourceTemplate": "docker"
     },
     {
+      "fileMatch": ["(^|/)README.md$"],
+      "matchStrings": [
+        "(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      ],
+      "depNameTemplate": "renovate/renovate",
+      "datasourceTemplate": "docker"
+    },
+    {
       "fileMatch": ["(^|/)*.sh$"],
       "matchStrings": [
         "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_VERSION=\"(?<currentValue>.*)\"\\s"
