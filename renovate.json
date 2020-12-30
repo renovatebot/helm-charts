@@ -46,11 +46,7 @@
       "automerge": true
     },
     {
-      "packageNames": ["helm/helm"],
-      "extractVersion": "^v(?<version>.*)$"
-    },
-    {
-      "packageNames": ["kubernetes/kubectl"],
+      "packageNames": ["helm/helm", "kubernetes/kubectl"],
       "extractVersion": "^v(?<version>.*)$"
     }
   ]
