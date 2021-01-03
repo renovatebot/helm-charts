@@ -44,7 +44,7 @@
       "automerge": true
     },
     {
-      "paths": ["charts/README.md"],
+      "paths": ["charts/renovate/README.md"],
       "schedule": null,
       "semanticCommitType": "chore",
       "semanticCommitScope": "deps",
