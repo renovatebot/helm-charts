@@ -1,0 +1,14 @@
+{
+  "name": "renovatebot/helm-charts",
+  "dockerFile": "Dockerfile",
+  "remoteUser": "ubuntu",
+  "runArgs": ["--init"],
+  "mounts": ["source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "ms-azuretools.vscode-docker",
+    "ms-kubernetes-tools.vscode-kubernetes-tools"
+  ]
+}

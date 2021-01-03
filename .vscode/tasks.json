@@ -1,0 +1,60 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "lint",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "ct-lint",
+        "helm-docs",
+        "kubeval",
+        "ct-install"
+      ],
+      "problemMatcher": [],
+    },
+    {
+      "label": "ct-lint",
+      "type": "shell",
+      "command": "ct lint --config .github/ct.yaml",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "showReuseMessage": false,
+      }
+    },
+    {
+      "label": "helm-docs",
+      "type": "shell",
+      "command": "helm-docs",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "showReuseMessage": false,
+      }
+    },
+    {
+      "label": "kubeval",
+      "type": "shell",
+      "command": "helm template --values ${workspaceFolder}/charts/renovate/ci/ci-values.yaml ${workspaceFolder}/charts/renovate | kubeval --strict --kubernetes-version 1.18.1 --schema-location https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "showReuseMessage": false,
+      }
+    },
+    {
+      "label": "ct-install",
+      "type": "shell",
+      "command": "",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "showReuseMessage": false,
+      }
+    },
+  ]
+}
