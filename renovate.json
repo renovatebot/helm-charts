@@ -24,9 +24,7 @@
     },
     {
       "fileMatch": ["(^|/)README.md$"],
-      "matchStrings": [
-        "(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+)"
-      ],
+      "matchStrings": ["(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
     },
@@ -46,8 +44,11 @@
       "automerge": true
     },
     {
-      "packageNames": ["helm/helm", "kubernetes/kubectl"],
-      "extractVersion": "^v(?<version>.*)$"
+      "paths": ["charts/renovate/README.md"],
+      "schedule": null,
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "deps",
+      "additionalBranchPrefix": "docker-"
     }
   ]
 }
