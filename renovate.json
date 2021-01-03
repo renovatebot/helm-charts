@@ -24,9 +24,7 @@
     },
     {
       "fileMatch": ["(^|/)README.md$"],
-      "matchStrings": [
-        "(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+)"
-      ],
+      "matchStrings": ["(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
     },
@@ -44,6 +42,13 @@
       "updateTypes": ["major", "minor", "patch"],
       "automergeType": "branch",
       "automerge": true
+    },
+    {
+      "paths": ["charts/README.md"],
+      "schedule": null,
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "deps",
+      "additionalBranchPrefix": "docker-"
     }
   ]
 }
