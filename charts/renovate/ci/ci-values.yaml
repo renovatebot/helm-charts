@@ -8,6 +8,11 @@ secrets:
     123
   my-secret-2: |
     456
+ssh_config:
+  enabled: true
+  config: |
+    Host *
+      ForwardAgent yes
 renovate:
   config: |
     {
