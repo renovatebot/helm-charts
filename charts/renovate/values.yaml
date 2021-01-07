@@ -34,6 +34,14 @@ renovate:
   #     "repositories": ["username/repo", "orgname/repo"]
   #   }
 
+ssh_config:
+  enabled: false
+  # Provide .ssh config file contents
+  id_rsa: ''
+  id_rsa_pub: ''
+  config: ''
+  # or provide the name of an existing secret to be read instead.
+  existingSecret: ''
 # Provide secrets inline
 secrets: {}
 # or provide the name of an existing secret to be read instead.

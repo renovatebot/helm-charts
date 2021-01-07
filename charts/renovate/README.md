@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 24.11.5](https://img.shields.io/badge/Version-24.11.5-informational?style=flat-square) ![AppVersion: 24.11.5](https://img.shields.io/badge/AppVersion-24.11.5-informational?style=flat-square)
+![Version: 24.11.5+1](https://img.shields.io/badge/Version-24.11.5+1-informational?style=flat-square) ![AppVersion: 24.11.5](https://img.shields.io/badge/AppVersion-24.11.5-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -60,3 +60,8 @@ The following table lists the configurable parameters of the chart and the defau
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `""` |  |
+| ssh_config.config | string | `""` |  |
+| ssh_config.enabled | bool | `false` |  |
+| ssh_config.existingSecret | string | `""` |  |
+| ssh_config.id_rsa | string | `""` |  |
+| ssh_config.id_rsa_pub | string | `""` |  |
