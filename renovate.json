@@ -24,7 +24,7 @@
     },
     {
       "fileMatch": ["(^|/)README.md$"],
-      "matchStrings": ["(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
+      "matchStrings": ["(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+(?:+\d+)?"],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
     },
