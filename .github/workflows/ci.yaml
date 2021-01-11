@@ -3,9 +3,9 @@ name: Lint and Test Charts
 on:
   push:
     branches:
-      - "renovate/**"
+      - 'renovate/**'
     paths:
-      - "charts/**"
+      - 'charts/**'
   pull_request:
 
 jobs:

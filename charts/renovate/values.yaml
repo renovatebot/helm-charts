@@ -45,7 +45,7 @@ ssh_config:
 # Provide secrets inline
 secrets: {}
 # or provide the name of an existing secret to be read instead.
-existingSecret: ""
+existingSecret: ''
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -54,9 +54,10 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: ''
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following

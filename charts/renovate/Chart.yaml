@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: '24.14.0'
 description: Universal dependency update tool that fits into your workflows.
 name: renovate
-version: '24.14.0'
+version: '24.14.0+1'
 icon: https://docs.renovatebot.com/assets/images/logo.png
 home: https://github.com/renovatebot/renovate
 keywords:
@@ -13,5 +13,18 @@ keywords:
   - update
 sources:
   - https://github.com/renovatebot/renovate
+  - https://github.com/renovatebot/helm-charts
 maintainers:
   - name: JamieMagee
+    email: jamie.magee@gmail.com
+  - name: viceice
+    email: michael.kriese@visualon.de
+  - name: rarkins
+    email: rhys@arkins.net
+annotations:
+  artifacthub.io/images: |
+    - name: renovate
+      image: renovate/renovate:24.14.0
+  artifacthub.io/links: |
+    - name: docs
+      url: https://docs.renovatebot.com
