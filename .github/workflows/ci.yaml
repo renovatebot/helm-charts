@@ -17,11 +17,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run chart-testing (lint)
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: 3.4.0 #renovate: datasource=github-releases depName=helm/helm
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install chart-testing
         uses: helm/chart-testing-action@v2.0.1
         with:
-          command: lint
+          version: 3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
           config: .github/ct.yaml
+
+      - name: Run lint
+        run: ct lint --config .github/ct.yaml
 
   lint-docs:
     runs-on: ubuntu-latest
@@ -84,8 +96,12 @@ jobs:
         uses: helm/kind-action@v1.1.0
         with:
           node_image: kindest/node:${{ matrix.k8s }}
-      - name: Run chart-testing (install)
+
+      - name: Install chart-testing
         uses: helm/chart-testing-action@v2.0.1
         with:
-          command: install
+          version: 3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
           config: .github/ct.yaml
+
+      - name: Run chart install
+        run: ct install --config .github/ct.yaml
