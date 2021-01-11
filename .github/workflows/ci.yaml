@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run chart-testing (lint)
-        uses: helm/chart-testing-action@v1.1.0
+        uses: helm/chart-testing-action@v2.0.1
         with:
           command: lint
           config: .github/ct.yaml
@@ -85,7 +85,7 @@ jobs:
         with:
           node_image: kindest/node:${{ matrix.k8s }}
       - name: Run chart-testing (install)
-        uses: helm/chart-testing-action@v1.1.0
+        uses: helm/chart-testing-action@v2.0.1
         with:
           command: install
           config: .github/ct.yaml
