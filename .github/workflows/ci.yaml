@@ -29,7 +29,7 @@ jobs:
       - name: Install chart-testing
         uses: helm/chart-testing-action@v2.0.1
         with:
-          version: 3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
+          version: v3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
 
       - name: Run lint
         run: ct lint --config .github/ct.yaml
@@ -99,7 +99,7 @@ jobs:
       - name: Install chart-testing
         uses: helm/chart-testing-action@v2.0.1
         with:
-          version: 3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
+          version: v3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
 
       - name: Run chart install
         run: ct install --config .github/ct.yaml
