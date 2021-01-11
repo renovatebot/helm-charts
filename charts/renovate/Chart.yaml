@@ -22,6 +22,7 @@ maintainers:
   - name: rarkins
     email: rhys@arkins.net
 annotations:
+  artifacthub.io/license: AGPL-3.0-only
   artifacthub.io/images: |
     - name: renovate
       image: renovate/renovate:24.14.1
