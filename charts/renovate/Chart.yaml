@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: '24.14.0'
+appVersion: '24.14.1'
 description: Universal dependency update tool that fits into your workflows.
 name: renovate
-version: '24.14.0+2'
+version: '24.14.1'
 icon: https://docs.renovatebot.com/assets/images/logo.png
 home: https://github.com/renovatebot/renovate
 keywords:
@@ -24,7 +24,7 @@ maintainers:
 annotations:
   artifacthub.io/images: |
     - name: renovate
-      image: renovate/renovate:24.14.0
+      image: renovate/renovate:24.14.1
   artifacthub.io/links: |
     - name: docs
       url: https://docs.renovatebot.com
