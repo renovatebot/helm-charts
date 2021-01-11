@@ -16,6 +16,11 @@
       "datasourceTemplate": "docker"
     },
     {
+      "fileMatch": ["^charts/renovate/Chart.yaml$"],
+      "matchStrings": ["image: (?<depName>.*?):(?<currentValue>.*?)\n"],
+      "datasourceTemplate": "docker"
+    },
+    {
       "fileMatch": ["^charts/renovate/README.md$"],
       "matchStrings": [
         "\\| image.tag \\| string \\| `\"(?<currentValue>.*?)\"` \\|  \\|\n"

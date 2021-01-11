@@ -18,3 +18,11 @@ maintainers:
   - name: JamieMagee
   - name: viceice
     email: michael.kriese@visualon.de
+annotations:
+  artifacthub.io/containsSecurityUpdates: "false"
+  artifacthub.io/images: |
+    - name: renovate
+      image: renovate/renovate:24.14.0
+  artifacthub.io/links: |
+    - name: docs
+      url: https://docs.renovatebot.com
