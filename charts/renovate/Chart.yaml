@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 appVersion: '24.14.0'
 description: Universal dependency update tool that fits into your workflows.
 name: renovate
