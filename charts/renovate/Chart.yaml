@@ -16,5 +16,5 @@ sources:
   - https://github.com/renovatebot/helm-charts
 maintainers:
   - name: JamieMagee
-  - name: Michael Kriese
+  - name: viceice
     email: michael.kriese@visualon.de
