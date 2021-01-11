@@ -13,5 +13,8 @@ keywords:
   - update
 sources:
   - https://github.com/renovatebot/renovate
+  - https://github.com/renovatebot/helm-charts
 maintainers:
   - name: JamieMagee
+  - name: Michael Kriese
+    email: michael.kriese@visualon.de
