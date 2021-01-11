@@ -28,5 +28,7 @@ jobs:
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0
+        with:
+          version: v1.1.1 #renovate: datasource=github-releases depName=helm/chart-releaser
         env:
           CR_TOKEN: '${{ secrets.CR_TOKEN }}'
