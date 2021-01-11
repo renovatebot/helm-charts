@@ -18,6 +18,8 @@ maintainers:
   - name: JamieMagee
   - name: viceice
     email: michael.kriese@visualon.de
+  - name: rarkins
+    email: rhys@arkins.net
 annotations:
   artifacthub.io/images: |
     - name: renovate
