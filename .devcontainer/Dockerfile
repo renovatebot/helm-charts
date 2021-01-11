@@ -1,9 +1,9 @@
-FROM renovate/buildpack:focal@sha256:43ed014f2f667826499d8f0a90be3e3ba78afdc6237955a4538e376e632b8b89
+FROM renovate/buildpack:2-focal@sha256:43ed014f2f667826499d8f0a90be3e3ba78afdc6237955a4538e376e632b8b89
 
 COPY tools /usr/local/build
 
 # renovate: datasource=github-releases depName=moby/moby
-ARG DOCKER_VERSION=v20.10.2
+ARG DOCKER_VERSION=20.10.2
 RUN install-tool docker
 
 # renovate: datasource=github-releases depName=kubernetes/kubectl
