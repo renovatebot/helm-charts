@@ -62,6 +62,12 @@
         "norwoodj/helm-docs"
       ],
       "extractVersion": "^v(?<version>.*)$"
+    },
+    {
+      "description": "installer requires v-prefix",
+      "packageNames": ["helm/chart-testing"],
+      "paths": [".github/workflows/*.yaml"],
+      "extractVersion": "^(?<version>.*)$"
     }
   ]
 }
