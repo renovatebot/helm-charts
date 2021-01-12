@@ -6,7 +6,7 @@ COPY tools /usr/local/build
 ARG DOCKER_VERSION=20.10.2
 RUN install-tool docker
 
-# renovate: datasource=github-releases depName=kubernetes/kubectl
+# renovate: datasource=github-tags depName=kubernetes/kubectl
 ARG KUBECTL_VERSION=1.20.1
 RUN install-tool kubectl
 
