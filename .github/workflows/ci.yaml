@@ -22,7 +22,7 @@ jobs:
         with:
           version: 3.4.0 #renovate: datasource=github-releases depName=helm/helm
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v2.2.1
         with:
           python-version: 3.7
 
