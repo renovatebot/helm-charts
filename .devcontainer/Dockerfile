@@ -23,7 +23,7 @@ ARG CHART_TESTING_VERSION=3.3.1
 RUN install-tool chart-testing
 
 # renovate: datasource=github-releases depName=norwoodj/helm-docs
-ARG HELM_DOCS_VERSION=1.4.0
+ARG HELM_DOCS_VERSION=1.5.0
 RUN install-tool helm-docs
 
 # renovate: datasource=github-releases depName=instrumenta/kubeval
