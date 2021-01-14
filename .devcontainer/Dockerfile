@@ -15,7 +15,7 @@ ARG KIND_VERSION=0.9.0
 RUN install-tool kind
 
 # renovate: datasource=github-releases depName=helm/helm
-ARG HELM_VERSION=3.4.2
+ARG HELM_VERSION=3.5.0
 RUN install-tool helm
 
 # renovate: datasource=github-releases depName=helm/chart-testing
