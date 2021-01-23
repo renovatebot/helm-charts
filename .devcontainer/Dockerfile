@@ -11,7 +11,7 @@ ARG KUBECTL_VERSION=1.20.1
 RUN install-tool kubectl
 
 # renovate: datasource=github-releases depName=kubernetes-sigs/kind
-ARG KIND_VERSION=0.9.0
+ARG KIND_VERSION=0.10.0
 RUN install-tool kind
 
 # renovate: datasource=github-releases depName=helm/helm
