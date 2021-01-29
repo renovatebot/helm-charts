@@ -1,4 +1,4 @@
-FROM renovate/buildpack:2-focal@sha256:bca0fb359cb24db165b02a3f16b76f93a555353aea2c7017a8a648c47f3383f3
+FROM renovate/buildpack:2-focal@sha256:1a5cdc646f7be133c61176d96452453bf4896b79dc6f47ee84bf9f7c5a6ecd82
 
 COPY tools /usr/local/build
 
