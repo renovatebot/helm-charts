@@ -4,6 +4,41 @@ entries:
   - annotations:
       artifacthub.io/images: |
         - name: renovate
+          image: renovate/renovate:24.32.0
+      artifacthub.io/license: AGPL-3.0-only
+      artifacthub.io/links: |
+        - name: docs
+          url: https://docs.renovatebot.com
+    apiVersion: v2
+    appVersion: 24.32.0
+    created: "2021-01-31T17:45:31.689562305Z"
+    description: Universal dependency update tool that fits into your workflows.
+    digest: fddf1b084ef810c78f0ca1714825d64dd641d59b2b7b8937542d42b85bc14d10
+    home: https://github.com/renovatebot/renovate
+    icon: https://docs.renovatebot.com/assets/images/logo.png
+    keywords:
+    - automated
+    - dependencies
+    - dependency
+    - management
+    - update
+    maintainers:
+    - email: jamie.magee@gmail.com
+      name: JamieMagee
+    - email: michael.kriese@visualon.de
+      name: viceice
+    - email: rhys@arkins.net
+      name: rarkins
+    name: renovate
+    sources:
+    - https://github.com/renovatebot/renovate
+    - https://github.com/renovatebot/helm-charts
+    urls:
+    - https://github.com/renovatebot/helm-charts/releases/download/renovate-24.32.0/renovate-24.32.0.tgz
+    version: 24.32.0
+  - annotations:
+      artifacthub.io/images: |
+        - name: renovate
           image: renovate/renovate:24.31.0
       artifacthub.io/license: AGPL-3.0-only
       artifacthub.io/links: |
