@@ -3,7 +3,7 @@ FROM renovate/buildpack:2-focal@sha256:d8ecd2f88038785c39835e25e6bf848460f690846
 COPY tools /usr/local/build
 
 # renovate: datasource=github-releases depName=moby/moby
-ARG DOCKER_VERSION=20.10.2
+ARG DOCKER_VERSION=20.10.3
 RUN install-tool docker
 
 # renovate: datasource=github-tags depName=kubernetes/kubectl
