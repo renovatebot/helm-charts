@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>renovatebot/presets-internal"],
+  "extends": ["local>renovatebot/.github"],
   "assignees": ["rarkins", "viceice", "JamieMagee"],
   "regexManagers": [
     {
