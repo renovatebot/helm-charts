@@ -42,6 +42,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.annotations | object | `{}` |  |
 | cronjob.concurrencyPolicy | string | `""` |  |
 | cronjob.failedJobsHistoryLimit | string | `""` |  |
+| cronjob.jobBackoffLimit | string | `""` |  |
 | cronjob.jobRestartPolicy | string | `"Never"` |  |
 | cronjob.labels | object | `{}` |  |
 | cronjob.schedule | string | `"0 1 * * *"` |  |

@@ -27,6 +27,7 @@ spec:
       labels:
         {{- include "renovate.selectorLabels" . | nindent 8 }}
     spec:
+      backoffLimit: {{ .Values.cronjob.jobBackoffLimit }}
       template:
         metadata:
           labels:
