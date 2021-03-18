@@ -33,7 +33,7 @@ jobs:
         run: |
           for dir in charts/*/
           do
-              cd ${dir} && helm dependency build
+              (cd ${dir}; helm dependency build)
           done
 
       - name: Run chart-releaser
