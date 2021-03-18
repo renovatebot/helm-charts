@@ -55,6 +55,10 @@ The following table lists the configurable parameters of the chart and the defau
 | imagePullSecrets | object | `{}` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
+| redis.cluster.enabled | bool | `false` |  |
+| redis.enabled | bool | `false` |  |
+| redis.nameOverride | string | `"redis"` |  |
+| redis.usePassword | bool | `false` |  |
 | renovate.config | string | `""` |  |
 | resources | object | `{}` |  |
 | secrets | object | `{}` |  |

@@ -71,3 +71,21 @@ resources:
   #  memory: 128Mi
 
 envFrom: []
+
+redis:
+  # Configuration for a Redis subchart. Additional documenation at
+  # https://github.com/bitnami/charts/tree/master/bitnami/redis.
+
+  # Enable the Redis subchart?
+  enabled: false
+
+  # Must be defined since redis.fullname references .Chart.Name which is different in the subchart.
+  # https://github.com/bitnami/charts/blob/b6f97be0078b50af30ea8042628ef4a6c5eb4279/bitnami/redis/templates/_helpers.tpl#L25
+  nameOverride: redis
+
+  # Disable clustering by default
+  cluster:
+    enabled: false
+
+  # Don't require a password by default
+  usePassword: false

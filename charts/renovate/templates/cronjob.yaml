@@ -56,6 +56,11 @@ spec:
                 readOnly: true
               {{- end }}
               {{- if or .Values.secrets .Values.existingSecret .Values.envFrom }}
+              {{- if .Values.redis.enabled }}
+              env:
+                - name: RENOVATE_REDIS_URL
+                  value: redis://{{ template "redis.fullname" (set (deepCopy .) "Values" .Values.redis) }}-master
+              {{- end }}
               envFrom:
                 {{- if or .Values.secrets .Values.existingSecret }}
                 - secretRef:
