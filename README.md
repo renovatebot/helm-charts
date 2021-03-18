@@ -29,3 +29,13 @@ helm install --generate-name --set renovate.config='\{\"token\":\"...\"\}' renov
 ```
 
 **NOTE**: `renovate.config` must be a valid Renovate [self-hosted configuration](https://docs.renovatebot.com/self-hosted-configuration/)
+
+## Contributing
+
+When using this repo locally or contributing to this repo, you will need to build the dependencies used for each helm chart. You can run the following commands to do so:
+
+```bash
+cd charts/renovate
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm dependency build
+```
