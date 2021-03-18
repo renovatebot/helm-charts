@@ -1,0 +1,30 @@
+imagePullSecrets:
+  - name: myregistrykey
+envFrom:
+  - configMapRef:
+      name: my-config
+secrets:
+  my-secret-1: |
+    123
+  my-secret-2: |
+    456
+ssh_config:
+  enabled: true
+  config: |
+    Host *
+      ForwardAgent yes
+renovate:
+  config: |
+    {
+      "platform": "gitlab",
+      "endpoint": "https://gitlab.example.com/api/v4",
+      "token": "your-gitlab-renovate-user-token",
+      "autodiscover": "false",
+      "dryRun": true,
+      "printConfig": true,
+      "logLevel": "debug",
+      "repositories": ["username/repo", "orgname/repo"]
+    }
+
+redis:
+  enabled: true
