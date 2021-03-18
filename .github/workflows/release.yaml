@@ -27,7 +27,7 @@ jobs:
           version: 3.4.0 #renovate: datasource=github-releases depName=helm/helm
 
       - name: Add external Helm repos
-        run: helm repo add bitname https://charts.bitnami.com/bitnami
+        run: helm repo add bitnami https://charts.bitnami.com/bitnami
 
       - name: Build chart dependencies
         run: |
