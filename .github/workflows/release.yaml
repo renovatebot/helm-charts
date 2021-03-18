@@ -26,6 +26,16 @@ jobs:
         with:
           version: 3.4.0 #renovate: datasource=github-releases depName=helm/helm
 
+      - name: Add external Helm repos
+        run: helm repo add bitnami https://charts.bitnami.com/bitnami
+
+      - name: Build chart dependencies
+        run: |
+          for dir in charts/*/
+          do
+              (cd ${dir}; helm dependency build)
+          done
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.2.0
         with:

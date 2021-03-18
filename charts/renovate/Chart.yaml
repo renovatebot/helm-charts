@@ -29,3 +29,8 @@ annotations:
   artifacthub.io/links: |
     - name: docs
       url: https://docs.renovatebot.com
+dependencies:
+  - name: redis
+    repository: https://charts.bitnami.com/bitnami
+    version: 12.8.3
+    condition: redis.enabled
