@@ -13,7 +13,7 @@ curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz https:
 tar -xf /tmp/kubeval.tar.gz kubeval
 
 # add helm repos
-helm repo add bitname https://charts.bitnami.com/bitnami
+helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # validate charts
 for CHART_DIR in ${CHART_DIRS}; do
