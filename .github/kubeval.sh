@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
+
 # renovate: datasource=github-releases depName=instrumenta/kubeval
 KUBEVAL_VERSION=0.15.0
 
