@@ -27,5 +27,5 @@ ARG HELM_DOCS_VERSION=1.5.0
 RUN install-tool helm-docs
 
 # renovate: datasource=github-releases depName=instrumenta/kubeval
-ARG KUBEVAL_VERSION=0.16.0
+ARG KUBEVAL_VERSION=v0.16.1
 RUN install-tool kubeval
