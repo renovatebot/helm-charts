@@ -3,7 +3,7 @@ set -euxo pipefail
 
 
 # renovate: datasource=github-releases depName=instrumenta/kubeval
-KUBEVAL_VERSION=0.15.0
+KUBEVAL_VERSION=0.16.0
 
 CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | cut -d '/' -f 2 | uniq)"
 SCHEMA_LOCATION="https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/"
