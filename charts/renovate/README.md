@@ -47,6 +47,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.labels | object | `{}` |  |
 | cronjob.schedule | string | `"0 1 * * *"` |  |
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
+| env | object | `{}` |  |
 | envFrom | list | `[]` |  |
 | existingSecret | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
@@ -60,6 +61,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.nameOverride | string | `"redis"` |  |
 | redis.usePassword | bool | `false` |  |
 | renovate.config | string | `""` |  |
+| renovate.externalConfigFile | string | `"Bring your own config file, using your own mount"` |  |
 | resources | object | `{}` |  |
 | secrets | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` |  |

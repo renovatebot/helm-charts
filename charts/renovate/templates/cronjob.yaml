@@ -46,21 +46,35 @@ spec:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
+              {{- if or .Values.renovate.config .Values.ssh_config.enabled }}
               volumeMounts:
+              {{- if .Values.renovate.config }}
               - name: config-volume
                 mountPath: /usr/src/app/config.json
                 subPath: config.json
+              {{- end }}
               {{- if .Values.ssh_config.enabled }}
               - name: ssh-config-volume
                 mountPath: /home/ubuntu/.ssh
                 readOnly: true
               {{- end }}
-              {{- if or .Values.secrets .Values.existingSecret .Values.envFrom }}
-              {{- if .Values.redis.enabled }}
+              {{- end }}
+              {{- if or .Values.redis.enabled .Values.renovate.externalConfigFile .Values.env }}
               env:
+                {{- if .Values.renovate.externalConfigFile }}
+                - name: RENOVATE_CONFIG_FILE
+                  value: {{ .Values.renovate.externalConfigFile }}
+                {{- end }}
+                {{- if .Values.redis.enabled }}
                 - name: RENOVATE_REDIS_URL
                   value: redis://{{ template "redis.fullname" (set (deepCopy .) "Values" .Values.redis) }}-master
+                {{- end }}
+                {{- range $k, $v := .Values.env }}
+                - name: {{ $k | quote }}
+                  value: {{ $v | quote }}
+                {{- end }}
               {{- end }}
+              {{- if or .Values.secrets .Values.existingSecret .Values.envFrom }}
               envFrom:
                 {{- if or .Values.secrets .Values.existingSecret }}
                 - secretRef:
@@ -73,9 +87,11 @@ spec:
               resources:
                 {{ toYaml .Values.resources | nindent 16 }}
           volumes:
+            {{- if .Values.renovate.config }}
             - name: config-volume
               configMap:
                 name: {{ include "renovate.fullname" . }}-config
+            {{- end }}
             {{- if .Values.ssh_config.enabled }}
             - name: ssh-config-volume
               secret:
