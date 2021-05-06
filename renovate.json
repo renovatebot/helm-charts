@@ -39,13 +39,6 @@
   ],
   "packageRules": [
     {
-      "description": "Automerge renovate minor and patch updates",
-      "packageNames": ["renovate/renovate"],
-      "updateTypes": ["major", "minor", "patch"],
-      "automergeType": "branch",
-      "automerge": true
-    },
-    {
       "paths": ["charts/renovate/README.md"],
       "schedule": null,
       "semanticCommitType": "chore",
