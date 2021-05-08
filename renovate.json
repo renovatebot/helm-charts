@@ -42,8 +42,7 @@
       "paths": ["charts/renovate/README.md"],
       "schedule": null,
       "semanticCommitType": "chore",
-      "semanticCommitScope": "deps",
-      "additionalBranchPrefix": "docker-"
+      "semanticCommitScope": "deps"
     },
     {
       "packageNames": [
