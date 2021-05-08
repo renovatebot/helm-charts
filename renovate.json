@@ -42,7 +42,8 @@
       "paths": ["charts/renovate/README.md"],
       "schedule": null,
       "semanticCommitType": "chore",
-      "semanticCommitScope": "deps"
+      "semanticCommitScope": "deps",
+      "additionalBranchPrefix": ""
     },
     {
       "packageNames": [
