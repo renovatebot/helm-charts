@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - 'charts/**'
+      
+  workflow_dispatch:
 
 jobs:
   release:
@@ -37,8 +39,8 @@ jobs:
           done
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.2.0
+        uses: helm/chart-releaser-action@v1.2.1
         with:
           version: v1.1.1 #renovate: datasource=github-releases depName=helm/chart-releaser
         env:
-          CR_TOKEN: '${{ secrets.CR_TOKEN }}'
+          CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
