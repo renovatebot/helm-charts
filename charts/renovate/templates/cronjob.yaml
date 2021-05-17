@@ -59,11 +59,11 @@ spec:
                 readOnly: true
               {{- end }}
               {{- end }}
-              {{- if or .Values.redis.enabled .Values.renovate.externalConfigFile .Values.env }}
+              {{- if or .Values.redis.enabled .Values.renovate.existingConfigFile .Values.env }}
               env:
-                {{- if .Values.renovate.externalConfigFile }}
+                {{- if .Values.renovate.existingConfigFile }}
                 - name: RENOVATE_CONFIG_FILE
-                  value: {{ .Values.renovate.externalConfigFile }}
+                  value: {{ .Values.renovate.existingConfigFile }}
                 {{- end }}
                 {{- if .Values.redis.enabled }}
                 - name: RENOVATE_REDIS_URL

@@ -21,7 +21,7 @@ image:
 imagePullSecrets: {}
 
 renovate:
-  externalConfigFile: ''
+  existingConfigFile: ''
   config: ''
   # See https://docs.renovatebot.com/self-hosted-configuration
   # config: |
