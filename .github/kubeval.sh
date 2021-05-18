@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 
-# renovate: datasource=github-releases depName=instrumenta/kubeval
+# renovate: datasource=github-releases depName=kubeval lookupName=instrumenta/kubeval
 KUBEVAL_VERSION=v0.16.1
 
 CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | cut -d '/' -f 2 | uniq)"

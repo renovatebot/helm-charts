@@ -85,6 +85,8 @@ jobs:
           - v1.17.11
           - v1.18.8
           - v1.19.3
+          - v1.20.2
+          #- v1.21.1 does not work yet
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
@@ -95,11 +97,12 @@ jobs:
         uses: helm/kind-action@v1.1.0
         with:
           node_image: kindest/node:${{ matrix.k8s }}
+          version: v0.10.0 #renovate: datasource=github-releases depName=kind lookupName=kubernetes-sigs/kind
 
       - name: Install chart-testing
         uses: helm/chart-testing-action@v2.0.1
         with:
-          version: v3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
+          version: v3.3.0 #renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
 
       - name: Run chart install
         run: ct install --config .github/ct.yaml
