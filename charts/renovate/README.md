@@ -61,7 +61,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.nameOverride | string | `"redis"` |  |
 | redis.usePassword | bool | `false` |  |
 | renovate.config | string | `""` |  |
-| renovate.existingConfigFile | string | `"Bring your own config file, using your own mount"` |  |
+| renovate.existingConfigFile | string | `""` |  |
 | resources | object | `{}` |  |
 | secrets | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` |  |
