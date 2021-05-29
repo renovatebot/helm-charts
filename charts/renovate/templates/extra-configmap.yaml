@@ -1,0 +1,13 @@
+{{- if .Values.extraConfigmaps -}}
+{{- range .Values.extraConfigmaps -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "renovate.fullname" $ }}-extra-{{ .name }}
+  labels:
+    {{- include "renovate.labels" $ | nindent 4 }}
+data:
+  {{- toYaml  .data | nindent 2}}
+---
+{{- end }}
+{{- end }}
