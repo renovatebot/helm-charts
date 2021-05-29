@@ -50,6 +50,9 @@ The following table lists the configurable parameters of the chart and the defau
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
 | existingSecret | string | `""` |  |
+| extraConfigmaps | list | `[]` |  |
+| extraVolumeMounts | list | `[]` |  |
+| extraVolumes | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
 | image.tag | string | `"25.33.2"` |  |
