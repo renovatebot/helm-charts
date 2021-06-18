@@ -49,6 +49,14 @@ secrets: {}
 # or provide the name of an existing secret to be read instead.
 existingSecret: ''
 
+dind:
+  # Enable dind sidecar?
+  enabled: false
+  image:
+    repository: docker
+    tag: 19.03.14-dind
+    pullPolicy: IfNotPresent
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
