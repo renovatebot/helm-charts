@@ -47,6 +47,10 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.labels | object | `{}` |  |
 | cronjob.schedule | string | `"0 1 * * *"` |  |
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
+| dind.enabled | bool | `false` |  |
+| dind.image.pullPolicy | string | `"IfNotPresent"` |  |
+| dind.image.repository | string | `"docker"` |  |
+| dind.image.tag | string | `"19.03.14-dind"` |  |
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
 | existingSecret | string | `""` |  |
