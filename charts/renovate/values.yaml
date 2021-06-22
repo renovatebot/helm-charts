@@ -52,6 +52,8 @@ existingSecret: ''
 dind:
   # Enable dind sidecar?
   enabled: false
+  slim:
+    enabled: true
   image:
     repository: docker
     tag: 19.03.14-dind

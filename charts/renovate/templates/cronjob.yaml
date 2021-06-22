@@ -45,12 +45,14 @@ spec:
           containers:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              {{- include "renovate.dindForceSlim" . }}
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               {{- if .Values.dind.enabled }}
               command: ["/bin/bash", "-c"]
               args:
                 - |
                   trap "touch /tmp/main-terminated" EXIT
+                  while true; do if [[ -f "/tmp/docker-started" ]]; then break; fi; sleep 1; done
                   renovate
               {{- end }}
               {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.dind.enabled }}
@@ -87,6 +89,10 @@ spec:
                 {{- if .Values.dind.enabled }}
                 - name: DOCKER_HOST
                   value: 127.0.0.1
+                - name: DOCKER_CERT_PATH
+                  value: "/tmp/certs/client"
+                - name: DOCKER_TLS_VERIFY
+                  value: "true"
                 {{- end }}
               {{- end }}
               {{- if or .Values.secrets .Values.existingSecret .Values.envFrom }}
@@ -110,12 +116,13 @@ spec:
                 - |
                   dockerd-entrypoint.sh &
                   CHILD_PID=$!
+                  touch /tmp/docker-started
                   (while true; do if [[ -f "/tmp/main-terminated" ]]; then kill $CHILD_PID; fi; sleep 1; done) &
                   wait $CHILD_PID
                   if [[ -f "/tmp/main-terminated" ]]; then exit 0; fi
               env:
                 - name: DOCKER_TLS_CERTDIR
-                  value: ""
+                  value: "/tmp/certs"
               securityContext:
                 privileged: true
               volumeMounts:
