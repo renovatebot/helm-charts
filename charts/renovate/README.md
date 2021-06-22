@@ -51,6 +51,7 @@ The following table lists the configurable parameters of the chart and the defau
 | dind.image.pullPolicy | string | `"IfNotPresent"` |  |
 | dind.image.repository | string | `"docker"` |  |
 | dind.image.tag | string | `"19.03.14-dind"` |  |
+| dind.slim.enabled | bool | `true` |  |
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
 | existingSecret | string | `""` |  |
