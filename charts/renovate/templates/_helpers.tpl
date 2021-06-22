@@ -88,7 +88,7 @@ Define ssh config secret
 Force slim image if dind is enabled and slim is not disabled
 */}}
 {{- define "renovate.dindForceSlim" -}}
-{{- if and .Values.dind.enabled .Values.dind.slim.enabled (not (eq .Values.image.tag "slim")) -}}
-{{- required "The `slim` tag should be used when dind is enabled. If you need to use another image, set `dind.slim.enabled` to false in the values." nil -}}
+{{- if and .Values.dind.enabled .Values.dind.slim.enabled (not (eq .Values.image.tag "slim")) (not (regexMatch "^.*-slim$" .Values.image.tag)) -}}
+{{- required "The `slim` or `*-slim` tag should be used when dind is enabled. If you need to use another image, set `dind.slim.enabled` to false in the values." nil -}}
 {{- end -}}
 {{- end -}}
