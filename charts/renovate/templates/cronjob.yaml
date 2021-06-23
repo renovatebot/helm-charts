@@ -88,7 +88,7 @@ spec:
                 {{- end }}
                 {{- if .Values.dind.enabled }}
                 - name: DOCKER_HOST
-                  value: 127.0.0.1
+                  value: 127.0.0.1:2376
                 - name: DOCKER_CERT_PATH
                   value: "/tmp/certs/client"
                 - name: DOCKER_TLS_VERIFY
@@ -116,6 +116,7 @@ spec:
                 - |
                   dockerd-entrypoint.sh &
                   CHILD_PID=$!
+                  while ! (ps aux | grep 'dockerd '); do sleep 1; done
                   touch /tmp/docker-started
                   (while true; do if [[ -f "/tmp/main-terminated" ]]; then kill $CHILD_PID; fi; sleep 1; done) &
                   wait $CHILD_PID
