@@ -52,7 +52,7 @@ spec:
               args:
                 - |
                   trap "touch /tmp/main-terminated" EXIT
-                  while true; do if [[ -f "/tmp/docker-started" ]]; then break; fi; sleep 1; done
+                  while true; do if [[ -f "/tmp/dind-started" ]]; then break; fi; sleep 1; done
                   renovate
               {{- end }}
               {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.dind.enabled }}
@@ -116,8 +116,8 @@ spec:
                 - |
                   dockerd-entrypoint.sh &
                   CHILD_PID=$!
-                  while ! (ps aux | grep 'dockerd '); do sleep 1; done
-                  touch /tmp/docker-started
+                  while ! (pgrep containerd); do sleep 1; done
+                  touch /tmp/dind-started
                   (while true; do if [[ -f "/tmp/main-terminated" ]]; then kill $CHILD_PID; fi; sleep 1; done) &
                   wait $CHILD_PID
                   if [[ -f "/tmp/main-terminated" ]]; then exit 0; fi
