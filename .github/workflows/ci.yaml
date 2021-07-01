@@ -71,6 +71,7 @@ jobs:
   install-chart:
     name: install-chart
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' || github.repository_owner != github.event.pull_request.head.repo.owner.login }}
     needs:
       - lint-chart
       - lint-docs
