@@ -9,73 +9,73 @@ on:
   pull_request:
 
 jobs:
-  lint-chart:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.4
-        with:
-          fetch-depth: 0
+  # lint-chart:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2.3.4
+  #       with:
+  #         fetch-depth: 0
 
-      - name: Install Helm
-        uses: azure/setup-helm@v1
-        with:
-          version: 3.4.0 #renovate: datasource=github-releases depName=helm/helm
+  #     - name: Install Helm
+  #       uses: azure/setup-helm@v1
+  #       with:
+  #         version: 3.4.0 #renovate: datasource=github-releases depName=helm/helm
 
-      - uses: actions/setup-python@v2.2.2
-        with:
-          python-version: 3.7
+  #     - uses: actions/setup-python@v2.2.2
+  #       with:
+  #         python-version: 3.7
 
-      - name: Install chart-testing
-        uses: helm/chart-testing-action@v2.1.0
-        with:
-          version: v3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
+  #     - name: Install chart-testing
+  #       uses: helm/chart-testing-action@v2.1.0
+  #       with:
+  #         version: v3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
 
-      - name: Run lint
-        run: ct lint --config .github/ct.yaml
+  #     - name: Run lint
+  #       run: ct lint --config .github/ct.yaml
 
-  lint-docs:
-    runs-on: ubuntu-latest
-    needs: lint-chart
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.4
-      - name: Run helm-docs
-        run: .github/helm-docs.sh
+  # lint-docs:
+  #   runs-on: ubuntu-latest
+  #   needs: lint-chart
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2.3.4
+  #     - name: Run helm-docs
+  #       run: .github/helm-docs.sh
 
-  kubeval-chart:
-    runs-on: ubuntu-latest
-    needs:
-      - lint-chart
-      - lint-docs
-    strategy:
-      matrix:
-        k8s:
-          # from https://github.com/instrumenta/kubernetes-json-schema
-          - v1.14.10
-          - v1.15.7
-          - v1.16.4
-          - v1.17.4
-          - v1.18.1
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.4
-        with:
-          fetch-depth: 0
+  # kubeval-chart:
+  #   runs-on: ubuntu-latest
+  #   needs:
+  #     - lint-chart
+  #     - lint-docs
+  #   strategy:
+  #     matrix:
+  #       k8s:
+  #         # from https://github.com/instrumenta/kubernetes-json-schema
+  #         - v1.14.10
+  #         - v1.15.7
+  #         - v1.16.4
+  #         - v1.17.4
+  #         - v1.18.1
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2.3.4
+  #       with:
+  #         fetch-depth: 0
 
-      - name: Run kubeval
-        env:
-          KUBERNETES_VERSION: ${{ matrix.k8s }}
-        run: .github/kubeval.sh
+  #     - name: Run kubeval
+  #       env:
+  #         KUBERNETES_VERSION: ${{ matrix.k8s }}
+  #       run: .github/kubeval.sh
 
   install-chart:
     name: install-chart
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' || github.repository_owner != github.event.pull_request.head.repo.owner.login }}
-    needs:
-      - lint-chart
-      - lint-docs
-      - kubeval-chart
+    # if: ${{ github.event_name != 'pull_request' || github.repository_owner != github.event.pull_request.head.repo.owner.login }}
+    # needs:
+    #   - lint-chart
+    #   - lint-docs
+    #   - kubeval-chart
     strategy:
       matrix:
         k8s:
