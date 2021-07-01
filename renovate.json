@@ -30,7 +30,7 @@
       "datasourceTemplate": "docker"
     },
     {
-      "description": "Update kindest kubernets references",
+      "description": "Update kindest kubernetes references",
       "fileMatch": ["^\\.github\\/workflows\\/[^/]+\\.ya?ml$"],
       "matchStrings": [
         "\\s+- (?<currentValue>v\\d+\\.\\d+\\.\\d+) # renovate: kindest"
