@@ -71,7 +71,7 @@ jobs:
   install-chart:
     name: install-chart
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' || startsWith(github.event.pull_request.head.ref, 'renovate/') }}
+    if: ${{ github.event_name == 'pull_request' && startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     needs:
       - lint-chart
       - lint-docs
