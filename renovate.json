@@ -48,11 +48,10 @@
       "additionalBranchPrefix": ""
     },
     {
-      "description": "Disable kindest major and minor updates",
+      "description": "Require approval for kindest major and minor updates",
       "matchPackageNames": ["kindest/node"],
-      "matchPaths": [".github/workflows/*.ya?ml"],
-      "matchUpdateTypes": ["minor"],
-      "enabled": false
+      "matchUpdateTypes": ["major", "minor"],
+      "dependencyDashboardApproval": true
     }
   ]
 }
