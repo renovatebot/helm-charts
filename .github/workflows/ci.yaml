@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - 'renovate/**'
-    paths:
-      - 'charts/**'
   pull_request:
 
 jobs:
