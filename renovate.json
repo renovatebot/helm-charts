@@ -4,33 +4,26 @@
   "assignees": ["rarkins", "viceice", "JamieMagee"],
   "regexManagers": [
     {
-      "fileMatch": ["^charts/renovate/Chart.yaml$"],
-      "matchStrings": ["appVersion: '(?<currentValue>.*?)'\n"],
-      "depNameTemplate": "renovate/renovate",
-      "datasourceTemplate": "docker"
-    },
-    {
-      "fileMatch": ["^charts/renovate/Chart.yaml$"],
-      "matchStrings": ["version: '(?<currentValue>.*?)'\n"],
-      "depNameTemplate": "renovate/renovate",
-      "datasourceTemplate": "docker"
-    },
-    {
-      "fileMatch": ["^charts/renovate/Chart.yaml$"],
-      "matchStrings": ["image: (?<depName>.*?):(?<currentValue>.*?)\n"],
-      "datasourceTemplate": "docker"
-    },
-    {
-      "fileMatch": ["^charts/renovate/README.md$"],
+      "description": "Update renovate docker image references",
+      "fileMatch": ["^charts\\/renovate\\/Chart\\.yaml$"],
       "matchStrings": [
-        "\\| image.tag \\| string \\| `\"(?<currentValue>.*?)\"` \\|  \\|\n"
+        "appVersion: '(?<currentValue>.*?)'\n",
+        "version: '(?<currentValue>.*?)'\n"
       ],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
     },
     {
-      "fileMatch": ["^charts/renovate/README.md$"],
+      "description": "Update docker image references",
+      "fileMatch": ["^charts\\/renovate\\/Chart\\.yaml$"],
+      "matchStrings": ["image: (?<depName>.*?):(?<currentValue>.*?)\n"],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Update renovate docker image references",
+      "fileMatch": ["^charts\\/renovate\\/README\\.md$"],
       "matchStrings": [
+        "\\| image.tag \\| string \\| `\"(?<currentValue>.*?)\"` \\|  \\|\n",
         "(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+(?:\\+\\d+)?)"
       ],
       "depNameTemplate": "renovate/renovate",
@@ -39,7 +32,7 @@
   ],
   "packageRules": [
     {
-      "paths": ["charts/renovate/README.md"],
+      "matchFiles": ["charts/renovate/README.md"],
       "schedule": null,
       "semanticCommitType": "chore",
       "semanticCommitScope": "deps",
