@@ -50,8 +50,6 @@ jobs:
       matrix:
         k8s:
           # from https://github.com/instrumenta/kubernetes-json-schema
-          - v1.16.4
-          - v1.17.4
           - v1.18.1
     steps:
       - name: Checkout
