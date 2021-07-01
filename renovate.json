@@ -46,19 +46,8 @@
       "additionalBranchPrefix": ""
     },
     {
-      "packageNames": [
-        "helm/chart-testing",
-        "helm/helm",
-        "kubernetes/kubectl",
-        "kubernetes-sigs/kind",
-        "moby/moby",
-        "norwoodj/helm-docs"
-      ],
-      "extractVersion": "^v(?<version>.*)$"
-    },
-    {
       "description": "installer requires v-prefix",
-      "packageNames": ["helm/chart-testing"],
+      "packageNames": ["helm"],
       "paths": [".github/workflows/*.yaml"],
       "extractVersion": "^(?<version>.*)$"
     }
