@@ -20,7 +20,7 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
-          version: 3.4.0 #renovate: datasource=github-releases depName=helm lookupName=helm/helm
+          version: v3.4.0 #renovate: datasource=github-releases depName=helm lookupName=helm/helm
 
       - uses: actions/setup-python@v2.2.2
         with:
@@ -29,7 +29,7 @@ jobs:
       - name: Install chart-testing
         uses: helm/chart-testing-action@v2.1.0
         with:
-          version: v3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
+          version: v3.3.0 #renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
 
       - name: Run lint
         run: ct lint --config .github/ct.yaml
