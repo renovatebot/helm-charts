@@ -51,7 +51,7 @@
       "description": "Disable kindest major and minor updates",
       "matchPackageNames": ["kindest/node"],
       "matchPaths": [".github/workflows/*.ya?ml"],
-      "matchUpdateTypes": ["major", "minor"],
+      "matchUpdateTypes": ["minor"],
       "enabled": false
     }
   ]
