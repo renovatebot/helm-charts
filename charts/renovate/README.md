@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 25.13.0](https://img.shields.io/badge/Version-25.13.0-informational?style=flat-square) ![AppVersion: 25.13.0](https://img.shields.io/badge/AppVersion-25.13.0-informational?style=flat-square)
+![Version: 25.51.5](https://img.shields.io/badge/Version-25.51.5-informational?style=flat-square) ![AppVersion: 25.51.5](https://img.shields.io/badge/AppVersion-25.51.5-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -47,11 +47,12 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.labels | object | `{}` |  |
 | cronjob.schedule | string | `"0 1 * * *"` |  |
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
+| env | object | `{}` |  |
 | envFrom | list | `[]` |  |
 | existingSecret | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
-| image.tag | string | `"25.13.0"` |  |
+| image.tag | string | `"25.51.5"` |  |
 | imagePullSecrets | object | `{}` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
@@ -59,6 +60,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.auth.enabled | bool | `false` |  |
 | redis.enabled | bool | `false` |  |
 | renovate.config | string | `""` |  |
+| renovate.existingConfigFile | string | `""` |  |
 | resources | object | `{}` |  |
 | secrets | object | `{}` |  |
 | serviceAccount.annotations | object | `{}` |  |

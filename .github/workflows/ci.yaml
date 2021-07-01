@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - 'renovate/**'
-    paths:
-      - 'charts/**'
   pull_request:
 
 jobs:
@@ -20,16 +18,16 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
-          version: 3.4.0 #renovate: datasource=github-releases depName=helm/helm
+          version: v3.6.2 #renovate: datasource=github-releases depName=helm lookupName=helm/helm
 
       - uses: actions/setup-python@v2.2.2
         with:
           python-version: 3.7
 
       - name: Install chart-testing
-        uses: helm/chart-testing-action@v2.0.1
+        uses: helm/chart-testing-action@v2.1.0
         with:
-          version: v3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
+          version: v3.4.0 #renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
 
       - name: Run lint
         run: ct lint --config .github/ct.yaml
@@ -71,6 +69,7 @@ jobs:
   install-chart:
     name: install-chart
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' || github.repository_owner != github.event.pull_request.head.repo.owner.login || !startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     needs:
       - lint-chart
       - lint-docs
@@ -85,6 +84,8 @@ jobs:
           - v1.17.11
           - v1.18.8
           - v1.19.3
+          - v1.20.2
+          #- v1.21.1 does not work yet
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
@@ -92,14 +93,15 @@ jobs:
           fetch-depth: 0
 
       - name: Create kind ${{ matrix.k8s }} cluster
-        uses: helm/kind-action@v1.1.0
+        uses: helm/kind-action@v1.2.0
         with:
           node_image: kindest/node:${{ matrix.k8s }}
+          version: v0.11.1 #renovate: datasource=github-releases depName=kind lookupName=kubernetes-sigs/kind
 
       - name: Install chart-testing
-        uses: helm/chart-testing-action@v2.0.1
+        uses: helm/chart-testing-action@v2.1.0
         with:
-          version: v3.3.0 #renovate: datasource=github-releases depName=helm/chart-testing
+          version: v3.4.0 #renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
 
       - name: Run chart install
         run: ct install --config .github/ct.yaml

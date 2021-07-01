@@ -15,12 +15,13 @@ pod:
 
 image:
   repository: renovate/renovate
-  tag: 25.13.0
+  tag: 25.51.5
   pullPolicy: IfNotPresent
 
 imagePullSecrets: {}
 
 renovate:
+  existingConfigFile: ''
   config: ''
   # See https://docs.renovatebot.com/self-hosted-configuration
   # config: |
@@ -71,6 +72,8 @@ resources:
   #  memory: 128Mi
 
 envFrom: []
+
+env: {}
 
 redis:
   # Configuration for a Redis subchart. Additional documenation at
