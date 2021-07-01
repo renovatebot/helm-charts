@@ -28,6 +28,15 @@
       ],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Update kindest kubernetes references",
+      "fileMatch": ["^\\.github\\/workflows\\/[^/]+\\.ya?ml$"],
+      "matchStrings": [
+        "\\s+- (?<currentValue>v\\d+\\.\\d+\\.\\d+) # renovate: kindest"
+      ],
+      "depNameTemplate": "kindest/node",
+      "datasourceTemplate": "docker"
     }
   ],
   "packageRules": [
@@ -37,6 +46,12 @@
       "semanticCommitType": "chore",
       "semanticCommitScope": "deps",
       "additionalBranchPrefix": ""
+    },
+    {
+      "description": "Require approval for kindest major and minor updates",
+      "matchPackageNames": ["kindest/node"],
+      "matchUpdateTypes": ["major", "minor"],
+      "dependencyDashboardApproval": true
     }
   ]
 }

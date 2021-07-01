@@ -49,12 +49,11 @@ jobs:
     strategy:
       matrix:
         k8s:
-          # from https://github.com/instrumenta/kubernetes-json-schema
-          - v1.14.10
-          - v1.15.7
-          - v1.16.4
-          - v1.17.4
-          - v1.18.1
+          # from https://github.com/yannh/kubernetes-json-schema
+          - v1.18.20
+          - v1.19.12
+          - v1.20.8
+          - v1.21.2
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
@@ -78,14 +77,10 @@ jobs:
       matrix:
         k8s:
           # from https://hub.docker.com/r/kindest/node/tags
-          - v1.14.10
-          - v1.15.12
-          - v1.16.15
-          - v1.17.11
-          - v1.18.8
-          - v1.19.3
-          - v1.20.2
-          #- v1.21.1 does not work yet
+          - v1.18.19 #renovate: kindest
+          - v1.19.11 #renovate: kindest
+          - v1.20.7 #renovate: kindest
+          - v1.21.2 #renovate: kindest
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
