@@ -11,15 +11,7 @@ Chart documentation is automatically generated using [helm-docs](https://github.
 
 ## Kubernetes version support
 
-We test the following versions of Kubernetes:
-
-| Cloud | Lowest | Highest |
-| ----- | :----: | :-----: |
-| AWS   | `1.16` | `1.20`  |
-| Azure | `1.18` | `1.20`  |
-| GCP   | `1.18` | `1.20`  |
-
-We will test on the latest 4 versions of Kubernetes.
+We test the four latest versions of Kubernetes.
 The general concept is that we track the versions of Kubernetes that are supported by the major cloud providers.
 
 ## Add Helm repository
