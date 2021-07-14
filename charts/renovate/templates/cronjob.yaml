@@ -46,7 +46,7 @@ spec:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-              {{- if or .Values.renovate.config .Values.ssh_config.enabled }}
+              {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.extraVolumes }}
               volumeMounts:
               {{- if .Values.renovate.config }}
               - name: config-volume
@@ -57,6 +57,9 @@ spec:
               - name: ssh-config-volume
                 mountPath: /home/ubuntu/.ssh
                 readOnly: true
+              {{- end }}
+              {{- if .Values.extraVolumeMounts }}
+                {{- toYaml .Values.extraVolumeMounts | nindent 14 }}
               {{- end }}
               {{- end }}
               {{- if or .Values.redis.enabled .Values.renovate.existingConfigFile .Values.env }}
@@ -85,7 +88,7 @@ spec:
                 {{- end }}
               {{- end }}
               resources:
-                {{ toYaml .Values.resources | nindent 16 }}
+                {{- toYaml .Values.resources | nindent 16 }}
           volumes:
             {{- if .Values.renovate.config }}
             - name: config-volume
@@ -96,6 +99,9 @@ spec:
             - name: ssh-config-volume
               secret:
                 secretName: {{ include "renovate.sshSecretName" .}}
+            {{- end }}
+            {{- if .Values.extraVolumes }}
+              {{- toYaml .Values.extraVolumes | nindent 12 }}
             {{- end }}
         {{- with .Values.nodeSelector }}
           nodeSelector:
