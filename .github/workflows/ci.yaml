@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # renovate: tag=v2.3.4
         with:
           fetch-depth: 0
 
@@ -20,12 +20,12 @@ jobs:
         with:
           version: v3.6.3 #renovate: datasource=github-releases depName=helm lookupName=helm/helm
 
-      - uses: actions/setup-python@v2.2.2
+      - uses: actions/setup-python@dc73133d4da04e56a135ae2246682783cc7c7cb6 # renovate: tag=v2.2.2
         with:
           python-version: 3.7
 
       - name: Install chart-testing
-        uses: helm/chart-testing-action@v2.1.0
+        uses: helm/chart-testing-action@5f16c27cf7a4fa9c776ff73734df3909b2b65127 # renovate: tag=v2.1.0
         with:
           version: v3.4.0 #renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
 
@@ -37,7 +37,7 @@ jobs:
     needs: lint-chart
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # renovate: tag=v2.3.4
       - name: Run helm-docs
         run: .github/helm-docs.sh
 
@@ -56,7 +56,7 @@ jobs:
           - v1.21.2
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # renovate: tag=v2.3.4
         with:
           fetch-depth: 0
 
@@ -83,18 +83,18 @@ jobs:
           - v1.21.2 #renovate: kindest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # renovate: tag=v2.3.4
         with:
           fetch-depth: 0
 
       - name: Create kind ${{ matrix.k8s }} cluster
-        uses: helm/kind-action@v1.2.0
+        uses: helm/kind-action@94729529f85113b88f4f819c17ce61382e6d8478 # renovate: tag=v1.2.0
         with:
           node_image: kindest/node:${{ matrix.k8s }}
           version: v0.11.1 #renovate: datasource=github-releases depName=kind lookupName=kubernetes-sigs/kind
 
       - name: Install chart-testing
-        uses: helm/chart-testing-action@v2.1.0
+        uses: helm/chart-testing-action@5f16c27cf7a4fa9c776ff73734df3909b2b65127 # renovate: tag=v2.1.0
         with:
           version: v3.4.0 #renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
 

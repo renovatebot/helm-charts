@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # renovate: tag=v2.3.4
         with:
           fetch-depth: 0
 
@@ -39,7 +39,7 @@ jobs:
           done
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.2.1
+        uses: helm/chart-releaser-action@c25b74a986eb925b398320414b576227f375f946 # renovate: tag=v1.2.1
         with:
           version: v1.2.1 #renovate: datasource=github-releases depName=chart-releaser lookupName=helm/chart-releaser
         env:
