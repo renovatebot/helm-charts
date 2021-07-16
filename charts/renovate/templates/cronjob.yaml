@@ -44,8 +44,7 @@ spec:
           restartPolicy: {{ .Values.cronjob.jobRestartPolicy }}
           containers:
             - name: {{ .Chart.Name }}
-              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-              {{- include "renovate.dindForceSlim" . }}
+              image: "{{ .Values.image.repository }}:{{ include "renovate.imageTag" . }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               {{- if .Values.dind.enabled }}
               command: ["/bin/bash", "-c"]
