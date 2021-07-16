@@ -77,3 +77,9 @@ The following table lists the configurable parameters of the chart and the defau
 | ssh_config.existingSecret | string | `""` |  |
 | ssh_config.id_rsa | string | `""` |  |
 | ssh_config.id_rsa_pub | string | `""` |  |
+
+## Docker in Docker configuration
+
+When `dind.enabled` is set to `true`, a Docker in Docker container will run as a sidecar to supply a Docker daemon to the RenovateBot container. This allows the configuration `binarySource` to be set to `docker`, which is the default configuration in the slim Docker images.
+
+The slim suffix will be added to the tag if not present. To disable this behaviour, set `dind.slim.enabled` to `false`.
