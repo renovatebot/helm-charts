@@ -15,8 +15,13 @@ tar -xf /tmp/kubeval.tar.gz kubeval
 # add helm repos
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
+# TODO: conditionally
+apis=-a batch/v1beta1/CronJob
+
 # validate charts
 for CHART_DIR in ${CHART_DIRS}; do
   (cd charts/${CHART_DIR}; helm dependency build)
-  helm template --values charts/"${CHART_DIR}"/ci/ci-values.yaml charts/"${CHART_DIR}" | ./kubeval --strict --ignore-missing-schemas --kubernetes-version "${KUBERNETES_VERSION#v}" --schema-location "${SCHEMA_LOCATION}"
+  helm template --values charts/"${CHART_DIR}"/ci/ci-values.yaml charts/"${CHART_DIR}" \
+    $apis \
+    | ./kubeval --strict --ignore-missing-schemas --kubernetes-version "${KUBERNETES_VERSION#v}" --schema-location "${SCHEMA_LOCATION}"
 done
