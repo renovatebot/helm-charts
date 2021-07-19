@@ -44,9 +44,17 @@ spec:
           restartPolicy: {{ .Values.cronjob.jobRestartPolicy }}
           containers:
             - name: {{ .Chart.Name }}
-              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              image: "{{ .Values.image.repository }}:{{ include "renovate.imageTag" . }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-              {{- if or .Values.renovate.config .Values.ssh_config.enabled }}
+              {{- if .Values.dind.enabled }}
+              command: ["/bin/bash", "-c"]
+              args:
+                - |
+                  trap "touch /tmp/main-terminated" EXIT
+                  while true; do if [[ -f "/tmp/dind-started" ]]; then break; fi; sleep 1; done
+                  renovate
+              {{- end }}
+              {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.dind.enabled }}
               volumeMounts:
               {{- if .Values.renovate.config }}
               - name: config-volume
@@ -59,7 +67,11 @@ spec:
                 readOnly: true
               {{- end }}
               {{- end }}
-              {{- if or .Values.redis.enabled .Values.renovate.existingConfigFile .Values.env }}
+              {{- if .Values.dind.enabled }}
+              - name: {{ .Chart.Name }}-tmp-volume
+                mountPath: /tmp
+              {{- end }}
+              {{- if or .Values.redis.enabled .Values.renovate.existingConfigFile .Values.env .Values.dind.enabled }}
               env:
                 {{- if .Values.renovate.existingConfigFile }}
                 - name: RENOVATE_CONFIG_FILE
@@ -72,6 +84,14 @@ spec:
                 {{- range $k, $v := .Values.env }}
                 - name: {{ $k | quote }}
                   value: {{ $v | quote }}
+                {{- end }}
+                {{- if .Values.dind.enabled }}
+                - name: DOCKER_HOST
+                  value: 127.0.0.1:2376
+                - name: DOCKER_CERT_PATH
+                  value: "/tmp/certs/client"
+                - name: DOCKER_TLS_VERIFY
+                  value: "true"
                 {{- end }}
               {{- end }}
               {{- if or .Values.secrets .Values.existingSecret .Values.envFrom }}
@@ -86,6 +106,29 @@ spec:
               {{- end }}
               resources:
                 {{ toYaml .Values.resources | nindent 16 }}
+            {{- if .Values.dind.enabled }}
+            - name: {{ .Chart.Name }}-dind
+              image: "{{ .Values.dind.image.repository }}:{{ .Values.dind.image.tag }}"
+              imagePullPolicy: {{ .Values.dind.image.pullPolicy }}
+              command: ["/bin/sh", "-c"]
+              args:
+                - |
+                  dockerd-entrypoint.sh &
+                  CHILD_PID=$!
+                  while ! (pgrep containerd); do sleep 1; done
+                  touch /tmp/dind-started
+                  (while true; do if [[ -f "/tmp/main-terminated" ]]; then kill $CHILD_PID; fi; sleep 1; done) &
+                  wait $CHILD_PID
+                  if [[ -f "/tmp/main-terminated" ]]; then exit 0; fi
+              env:
+                - name: DOCKER_TLS_CERTDIR
+                  value: "/tmp/certs"
+              securityContext:
+                privileged: true
+              volumeMounts:
+                - name: {{ .Chart.Name }}-tmp-volume
+                  mountPath: /tmp
+            {{- end }}
           volumes:
             {{- if .Values.renovate.config }}
             - name: config-volume
@@ -96,6 +139,10 @@ spec:
             - name: ssh-config-volume
               secret:
                 secretName: {{ include "renovate.sshSecretName" .}}
+            {{- end }}
+            {{- if .Values.dind.enabled }}
+            - name: {{ .Chart.Name }}-tmp-volume
+              emptyDir: {}
             {{- end }}
         {{- with .Values.nodeSelector }}
           nodeSelector:
