@@ -1,8 +1,9 @@
 #!/bin/bash
-set -euxo pipefail
 
 mkdir ./.bin
 export PATH="./.bin:$PATH"
+
+set -euxo pipefail
 
 # renovate: datasource=github-releases depName=kubeval lookupName=instrumenta/kubeval
 KUBEVAL_VERSION=v0.16.1
@@ -15,7 +16,7 @@ SCHEMA_LOCATION="https://raw.githubusercontent.com/yannh/kubernetes-json-schema/
 
 # install kubeval
 curl --silent --show-error --fail --location --output /tmp/kubeval.tar.gz https://github.com/instrumenta/kubeval/releases/download/"${KUBEVAL_VERSION}"/kubeval-linux-amd64.tar.gz
-tar -xf /tmp/kubeval.tar.gz .bin/kubeval
+tar -C .bin/ -xf /tmp/kubeval.tar.gz kubeval
 
 # install semver compare
 curl -sSfLo .bin/semver2 https://raw.githubusercontent.com/Ariel-Rodriguez/sh-semversion-2/${SEMVER_VERSION}/semver2.sh
