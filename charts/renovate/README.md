@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 25.33.2](https://img.shields.io/badge/Version-25.33.2-informational?style=flat-square) ![AppVersion: 25.33.2](https://img.shields.io/badge/AppVersion-25.33.2-informational?style=flat-square)
+![Version: 25.56.7](https://img.shields.io/badge/Version-25.56.7-informational?style=flat-square) ![AppVersion: 25.56.7](https://img.shields.io/badge/AppVersion-25.56.7-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -47,6 +47,11 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.labels | object | `{}` |  |
 | cronjob.schedule | string | `"0 1 * * *"` |  |
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
+| dind.enabled | bool | `false` |  |
+| dind.image.pullPolicy | string | `"IfNotPresent"` |  |
+| dind.image.repository | string | `"docker.io/library/docker"` |  |
+| dind.image.tag | string | `"20.10.7-dind"` |  |
+| dind.slim.enabled | bool | `true` |  |
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
 | existingSecret | string | `""` |  |
@@ -55,7 +60,7 @@ The following table lists the configurable parameters of the chart and the defau
 | extraVolumes | list | `[]` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
-| image.tag | string | `"25.33.2"` |  |
+| image.tag | string | `"25.56.7"` |  |
 | imagePullSecrets | object | `{}` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
@@ -75,3 +80,9 @@ The following table lists the configurable parameters of the chart and the defau
 | ssh_config.existingSecret | string | `""` |  |
 | ssh_config.id_rsa | string | `""` |  |
 | ssh_config.id_rsa_pub | string | `""` |  |
+
+## Docker in Docker configuration
+
+When `dind.enabled` is set to `true`, a Docker in Docker container will run as a sidecar to supply a Docker daemon to the RenovateBot container. This allows the configuration `binarySource` to be set to `docker`, which is the default configuration in the slim Docker images.
+
+The slim suffix will be added to the tag if not present. To disable this behaviour, set `dind.slim.enabled` to `false`.
