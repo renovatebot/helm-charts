@@ -15,7 +15,7 @@ pod:
 
 image:
   repository: renovate/renovate
-  tag: 25.33.2
+  tag: 25.56.7
   pullPolicy: IfNotPresent
 
 imagePullSecrets: {}
@@ -48,6 +48,16 @@ ssh_config:
 secrets: {}
 # or provide the name of an existing secret to be read instead.
 existingSecret: ''
+
+dind:
+  # Enable dind sidecar?
+  enabled: false
+  slim:
+    enabled: true
+  image:
+    repository: docker.io/library/docker
+    tag: 20.10.7-dind
+    pullPolicy: IfNotPresent
 
 # Additional configmaps
 # A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config
@@ -99,7 +109,7 @@ resources:
   #  memory: 128Mi
   # requests:
   #  cpu: 100m
-  #  memory: 128Mi
+#  memory: 128Mi
 
 envFrom: []
 

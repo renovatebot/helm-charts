@@ -4,63 +4,54 @@
   "assignees": ["rarkins", "viceice", "JamieMagee"],
   "regexManagers": [
     {
-      "fileMatch": ["^charts/renovate/Chart.yaml$"],
-      "matchStrings": ["appVersion: '(?<currentValue>.*?)'\n"],
+      "description": "Update renovate docker image references",
+      "fileMatch": ["^charts\\/renovate\\/Chart\\.yaml$"],
+      "matchStrings": [
+        "appVersion: '(?<currentValue>.*?)'\n",
+        "version: '(?<currentValue>.*?)'\n"
+      ],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
     },
     {
-      "fileMatch": ["^charts/renovate/Chart.yaml$"],
-      "matchStrings": ["version: '(?<currentValue>.*?)'\n"],
-      "depNameTemplate": "renovate/renovate",
-      "datasourceTemplate": "docker"
-    },
-    {
-      "fileMatch": ["^charts/renovate/Chart.yaml$"],
+      "description": "Update docker image references",
+      "fileMatch": ["^charts\\/renovate\\/Chart\\.yaml$"],
       "matchStrings": ["image: (?<depName>.*?):(?<currentValue>.*?)\n"],
       "datasourceTemplate": "docker"
     },
     {
-      "fileMatch": ["^charts/renovate/README.md$"],
+      "description": "Update renovate docker image references",
+      "fileMatch": ["^charts\\/renovate\\/README\\.md$"],
       "matchStrings": [
-        "\\| image.tag \\| string \\| `\"(?<currentValue>.*?)\"` \\|  \\|\n"
+        "\\| image.tag \\| string \\| `\"(?<currentValue>.*?)\"` \\|  \\|\n",
+        "(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+(?:\\+\\d+)?)"
       ],
       "depNameTemplate": "renovate/renovate",
       "datasourceTemplate": "docker"
     },
     {
-      "fileMatch": ["^charts/renovate/README.md$"],
+      "description": "Update kindest kubernetes references",
+      "fileMatch": ["^\\.github\\/workflows\\/[^/]+\\.ya?ml$"],
       "matchStrings": [
-        "(\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+(?:\\+\\d+)?)"
+        "\\s+- (?<currentValue>v\\d+\\.\\d+\\.\\d+) # renovate: kindest"
       ],
-      "depNameTemplate": "renovate/renovate",
+      "depNameTemplate": "kindest/node",
       "datasourceTemplate": "docker"
     }
   ],
   "packageRules": [
     {
-      "paths": ["charts/renovate/README.md"],
+      "matchFiles": ["charts/renovate/README.md"],
       "schedule": null,
       "semanticCommitType": "chore",
       "semanticCommitScope": "deps",
       "additionalBranchPrefix": ""
     },
     {
-      "packageNames": [
-        "helm/chart-testing",
-        "helm/helm",
-        "kubernetes/kubectl",
-        "kubernetes-sigs/kind",
-        "moby/moby",
-        "norwoodj/helm-docs"
-      ],
-      "extractVersion": "^v(?<version>.*)$"
-    },
-    {
-      "description": "installer requires v-prefix",
-      "packageNames": ["helm/chart-testing"],
-      "paths": [".github/workflows/*.yaml"],
-      "extractVersion": "^(?<version>.*)$"
+      "description": "Require approval for kindest major and minor updates",
+      "matchPackageNames": ["kindest/node"],
+      "matchUpdateTypes": ["major", "minor"],
+      "dependencyDashboardApproval": true
     }
   ]
 }
