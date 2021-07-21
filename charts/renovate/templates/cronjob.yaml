@@ -115,7 +115,6 @@ spec:
               {{- end }}
               resources:
               {{- toYaml .Values.resources | nindent 16 }}
-            {{ toYaml .Values.resources | nindent 16 }}
             {{- if .Values.dind.enabled }}
             - name: {{ .Chart.Name }}-dind
               image: "{{ .Values.dind.image.repository }}:{{ .Values.dind.image.tag }}"
