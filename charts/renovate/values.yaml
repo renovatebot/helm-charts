@@ -21,7 +21,9 @@ image:
 imagePullSecrets: {}
 
 renovate:
+  # -- Custom exiting global renovate config
   existingConfigFile: ''
+  # -- Inline global renovate config.json
   config: ''
   # See https://docs.renovatebot.com/self-hosted-configuration
   # config: |
@@ -50,9 +52,10 @@ secrets: {}
 existingSecret: ''
 
 dind:
-  # Enable dind sidecar?
+  # -- Enable dind sidecar usage?
   enabled: false
   slim:
+    # -- Do not add `-slim` suffix to image tag when using dind
     enabled: true
   image:
     repository: docker.io/library/docker
@@ -89,7 +92,7 @@ redis:
   # Configuration for a Redis subchart. Additional documenation at
   # https://github.com/bitnami/charts/tree/master/bitnami/redis
 
-  # Enable the Redis subchart?
+  # -- Enable the Redis subchart?
   enabled: false
 
   # Must be defined since redis.fullname references .Chart.Name which is different in the subchart.
@@ -98,6 +101,7 @@ redis:
 
   # Disable clustering by default
   cluster:
+    # -- Do not use clustering, not supported by renovate
     enabled: false
 
   # Don't require a password by default
@@ -107,4 +111,5 @@ redis:
 # If you want to template helm charts but cannot access k8s API server
 # you can set api versions here
 apiVersionOverrides:
+  # -- String to override apiVersion of cronjob rendered by this helm chart
   cronjob: ''
