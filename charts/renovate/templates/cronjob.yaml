@@ -1,4 +1,3 @@
-
 {{- if .Values.apiVersionOverrides.cronjob -}}
 apiVersion: {{ .Values.apiVersionOverrides.cronjob }}
 {{- else if .Capabilities.APIVersions.Has "batch/v1/CronJob" }}
