@@ -55,9 +55,9 @@ The following table lists the configurable parameters of the chart and the defau
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
 | existingSecret | string | `""` |  |
-| extraConfigmaps | list | `[]` |  |
-| extraVolumeMounts | list | `[]` |  |
-| extraVolumes | list | `[]` |  |
+| extraConfigmaps | list | `[]` | Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config |
+| extraVolumeMounts | list | `[]` | Additional volumeMounts to the container |
+| extraVolumes | list | `[]` | Additional volumes to the pod |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
 | image.tag | string | `"25.56.7"` |  |
