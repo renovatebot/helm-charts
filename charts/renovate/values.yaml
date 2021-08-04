@@ -60,7 +60,7 @@ dind:
     pullPolicy: IfNotPresent
 
 # Additional configmaps
-# A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config
+# -- A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config
 extraConfigmaps: []
 # extraConfigmaps:
 #   - name: netrc-config
@@ -75,14 +75,14 @@ extraConfigmaps: []
 #         "key"="value"
 #         "key1"="value1"
 
-# Additional volumes to the pod
+# -- Additional volumes to the pod
 extraVolumes: []
 # extraVolumes:
 #   - name: netrc-config
 #     configMap:
 #       name: renovate-extra-netrc-config
 
-# Additional volumeMounts to the container
+# -- Additional volumeMounts to the container
 extraVolumeMounts: []
 # extraVolumeMounts:
 #   - name: netrc-config
