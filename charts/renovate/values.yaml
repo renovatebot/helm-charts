@@ -62,6 +62,35 @@ dind:
     tag: 20.10.7-dind
     pullPolicy: IfNotPresent
 
+# -- Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config
+extraConfigmaps: []
+# extraConfigmaps:
+#   - name: netrc-config
+#     data:
+#       .netrc: |-
+#         machine gitlab.example.com
+#         login gitlab-ci-token
+#         password some-pass
+#   - name: yet-another-config
+#     data:
+#       ya-config.yaml: |-
+#         "key"="value"
+#         "key1"="value1"
+
+# -- Additional volumes to the pod
+extraVolumes: []
+# extraVolumes:
+#   - name: netrc-config
+#     configMap:
+#       name: renovate-extra-netrc-config
+
+# -- Additional volumeMounts to the container
+extraVolumeMounts: []
+# extraVolumeMounts:
+#   - name: netrc-config
+#     mountPath: /home/ubuntu/.netrc
+#     subPath: .netrc
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
