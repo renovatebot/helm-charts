@@ -124,17 +124,15 @@ redis:
   # -- Enable the Redis subchart?
   enabled: false
 
-  # Must be defined since redis.fullname references .Chart.Name which is different in the subchart.
-  # https://github.com/bitnami/charts/blob/b6f97be0078b50af30ea8042628ef4a6c5eb4279/bitnami/redis/templates/_helpers.tpl#L25
-  nameOverride: redis
+  # -- Disable replication by default
+  architecture: standalone
 
-  # Disable clustering by default
-  cluster:
-    # -- Do not use clustering, not supported by renovate
-    enabled: false
+  auth:
+    # -- Don't require a password by default
+    usePassword: false
 
-  # Don't require a password by default
-  usePassword: false
+  # -- Override Kubernetes version for redis chart
+  kubeVersion: ''
 
 # Override APIVersions
 # If you want to template helm charts but cannot access k8s API server

@@ -94,3 +94,19 @@ Force slim image if dind is enabled and slim is not disabled
 {{- .Values.image.tag }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Create a default fully qualified Redis&trade; name.
+We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+*/}}
+{{- define "renovate.redis.fullname" -}}
+{{- $name := default "redis" .Values.redis.nameOverride -}}
+{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{/*
+Return the Redis&trade; hostname
+*/}}
+{{- define "renovate.redisHost" -}}
+    {{- printf "%s-master" (include "renovate.redis.fullname" .) -}}
+{{- end -}}
