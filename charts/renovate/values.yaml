@@ -58,7 +58,7 @@ dind:
     # -- Do not add `-slim` suffix to image tag when using dind
     enabled: true
   image:
-    repository: docker.io/library/docker
+    repository: docker
     tag: 20.10.7-dind
     pullPolicy: IfNotPresent
 

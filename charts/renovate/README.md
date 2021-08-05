@@ -50,7 +50,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
 | dind.enabled | bool | `false` | Enable dind sidecar usage? |
 | dind.image.pullPolicy | string | `"IfNotPresent"` |  |
-| dind.image.repository | string | `"docker.io/library/docker"` |  |
+| dind.image.repository | string | `"docker"` |  |
 | dind.image.tag | string | `"20.10.7-dind"` |  |
 | dind.slim.enabled | bool | `true` | Do not add `-slim` suffix to image tag when using dind |
 | env | object | `{}` |  |
