@@ -65,10 +65,9 @@ The following table lists the configurable parameters of the chart and the defau
 | imagePullSecrets | object | `{}` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
-| redis.cluster.enabled | bool | `false` | Do not use clustering, not supported by renovate |
+| redis.architecture | string | `"standalone"` | Disable replication by default |
+| redis.auth.usePassword | bool | `false` | Don't require a password by default |
 | redis.enabled | bool | `false` | Enable the Redis subchart? |
-| redis.nameOverride | string | `"redis"` |  |
-| redis.usePassword | bool | `false` |  |
 | renovate.config | string | `""` | Inline global renovate config.json |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | resources | object | `{}` |  |
