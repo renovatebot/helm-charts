@@ -131,6 +131,9 @@ redis:
     # -- Don't require a password by default
     usePassword: false
 
+  # -- Override Kubernetes version for redis chart
+  kubeVersion: ''
+
 # Override APIVersions
 # If you want to template helm charts but cannot access k8s API server
 # you can set api versions here

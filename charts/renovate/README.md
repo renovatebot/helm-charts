@@ -68,6 +68,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.architecture | string | `"standalone"` | Disable replication by default |
 | redis.auth.usePassword | bool | `false` | Don't require a password by default |
 | redis.enabled | bool | `false` | Enable the Redis subchart? |
+| redis.kubeVersion | string | `""` | Override Kubernetes version for redis chart |
 | renovate.config | string | `""` | Inline global renovate config.json |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | resources | object | `{}` |  |
@@ -86,3 +87,7 @@ The following table lists the configurable parameters of the chart and the defau
 When `dind.enabled` is set to `true`, a Docker in Docker container will run as a sidecar to supply a Docker daemon to the RenovateBot container. This allows the configuration `binarySource` to be set to `docker`, which is the default configuration in the slim Docker images.
 
 The slim suffix will be added to the tag if not present. To disable this behaviour, set `dind.slim.enabled` to `false`.
+
+## Redis
+
+Please checkout [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
