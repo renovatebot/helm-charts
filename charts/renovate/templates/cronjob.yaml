@@ -90,7 +90,7 @@ spec:
                 {{- end }}
                 {{- if .Values.redis.enabled }}
                 - name: RENOVATE_REDIS_URL
-                  value: redis://{{ template "common.names.fullname" (set (deepCopy .) "Values" .Values.redis) }}-master
+                  value: redis://{{ include "renovate.redisHost" . }}
                 {{- end }}
                 {{- range $k, $v := .Values.env }}
                 - name: {{ $k | quote }}
