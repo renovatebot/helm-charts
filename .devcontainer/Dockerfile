@@ -1,9 +1,9 @@
-FROM ghcr.io/containerbase/buildpack:1.12.0@sha256:ada50b06ca0539bd05b24c99e996c813b14895d2d11143b9b25c6d774d3617f1
+FROM ghcr.io/containerbase/buildpack:1.13.0@sha256:8556dd89e7635009cecfb1212185f5019f4855916e730aaa3e026767228bad39
 
 COPY tools /usr/local/buildpack
 
 # renovate: datasource=github-releases depName=docker lookupName=moby/moby
-ARG DOCKER_VERSION=v20.10.7
+ARG DOCKER_VERSION=v20.10.8
 RUN install-tool docker
 
 # renovate: datasource=github-tags depName=kubectl lookupName=kubernetes/kubectl
