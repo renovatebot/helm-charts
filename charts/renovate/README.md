@@ -66,7 +66,7 @@ The following table lists the configurable parameters of the chart and the defau
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
 | redis.architecture | string | `"standalone"` | Disable replication by default |
-| redis.auth.usePassword | bool | `false` | Don't require a password by default |
+| redis.auth.enabled | bool | `false` | Don't require a password by default |
 | redis.enabled | bool | `false` | Enable the Redis subchart? |
 | redis.kubeVersion | string | `""` | Override Kubernetes version for redis chart |
 | renovate.config | string | `""` | Inline global renovate config.json |
