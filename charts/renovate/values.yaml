@@ -129,7 +129,7 @@ redis:
 
   auth:
     # -- Don't require a password by default
-    usePassword: false
+    enabled: false
 
   # -- Override Kubernetes version for redis chart
   kubeVersion: ''
