@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 25.76.1](https://img.shields.io/badge/Version-25.76.1-informational?style=flat-square) ![AppVersion: 25.76.1](https://img.shields.io/badge/AppVersion-25.76.1-informational?style=flat-square)
+![Version: 26.1.3](https://img.shields.io/badge/Version-26.1.3-informational?style=flat-square) ![AppVersion: 26.1.3](https://img.shields.io/badge/AppVersion-26.1.3-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -61,7 +61,7 @@ The following table lists the configurable parameters of the chart and the defau
 | extraVolumes | list | `[]` | Additional volumes to the pod |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
-| image.tag | string | `"25.76.1"` |  |
+| image.tag | string | `"26.1.3"` |  |
 | imagePullSecrets | object | `{}` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
