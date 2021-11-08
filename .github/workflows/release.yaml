@@ -41,6 +41,6 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@c25b74a986eb925b398320414b576227f375f946 # renovate: tag=v1.2.1
         with:
-          version: v1.2.1 #renovate: datasource=github-releases depName=chart-releaser lookupName=helm/chart-releaser
+          version: v1.3.0 #renovate: datasource=github-releases depName=chart-releaser lookupName=helm/chart-releaser
         env:
           CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
