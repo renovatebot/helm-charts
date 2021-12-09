@@ -87,6 +87,9 @@ spec:
                 {{- if .Values.renovate.existingConfigFile }}
                 - name: RENOVATE_CONFIG_FILE
                   value: {{ .Values.renovate.existingConfigFile }}
+                {{- else if .Values.renovate.config }}
+                - name: RENOVATE_CONFIG_FILE
+                  value: /usr/src/app/config.json
                 {{- end }}
                 {{- if .Values.redis.enabled }}
                 - name: RENOVATE_REDIS_URL
