@@ -56,6 +56,11 @@
       "additionalBranchPrefix": ""
     },
     {
+      "description": "Separate minor and patch updates for kindest",
+      "matchPackageNames": ["kindest/node"],
+      "separateMinorPatch": true
+    },
+    {
       "description": "Require approval for kindest major and minor updates",
       "matchPackageNames": ["kindest/node"],
       "matchUpdateTypes": ["major", "minor"],
