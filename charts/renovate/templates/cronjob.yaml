@@ -85,7 +85,7 @@ spec:
               - name: {{ .Chart.Name }}-tmp-volume
                 mountPath: /tmp
               {{- end }}
-              {{- if or .Values.redis.enabled .Values.renovate.existingConfigFile .Values.env .Values.dind.enabled }}
+              {{- if or .Values.redis.enabled .Values.renovate.config .Values.renovate.existingConfigFile .Values.env .Values.dind.enabled }}
               env:
                 {{- if .Values.renovate.existingConfigFile }}
                 - name: RENOVATE_CONFIG_FILE
