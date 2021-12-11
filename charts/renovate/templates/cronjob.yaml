@@ -33,6 +33,9 @@ spec:
   {{- with .Values.cronjob.successfulJobsHistoryLimit }}
   successfulJobsHistoryLimit: {{ . }}
   {{- end }}
+  {{- with .Values.cronjob.startingDeadlineSeconds }}
+  startingDeadlineSeconds: {{ . }}
+  {{- end }}
   jobTemplate:
     metadata:
       labels:
