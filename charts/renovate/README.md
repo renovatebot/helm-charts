@@ -47,6 +47,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.jobRestartPolicy | string | `"Never"` |  |
 | cronjob.labels | object | `{}` |  |
 | cronjob.schedule | string | `"0 1 * * *"` |  |
+| cronjob.startingDeadlineSeconds | string | `""` |  |
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
 | cronjob.suspend | bool | `false` | If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions. |
 | dind.enabled | bool | `false` | Enable dind sidecar usage? |
