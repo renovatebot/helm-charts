@@ -88,7 +88,6 @@ spec:
               - name: {{ .Chart.Name }}-tmp-volume
                 mountPath: /tmp
               {{- end }}
-              {{- if or .Values.redis.enabled .Values.renovate.config .Values.renovate.existingConfigFile .Values.env .Values.dind.enabled }}
               env:
                 {{- if .Values.renovate.existingConfigFile }}
                 - name: RENOVATE_CONFIG_FILE
@@ -113,8 +112,6 @@ spec:
                 - name: DOCKER_TLS_VERIFY
                   value: "true"
                 {{- end }}
-              {{- end }}
-              {{- if or .Values.secrets .Values.existingSecret .Values.envFrom }}
               envFrom:
                 {{- if or .Values.secrets .Values.existingSecret }}
                 - secretRef:
@@ -123,7 +120,6 @@ spec:
                 {{- with .Values.envFrom }}
                   {{- toYaml . | nindent 16 }}
                 {{- end }}
-              {{- end }}
               resources:
                 {{- toYaml .Values.resources | nindent 16 }}
             {{- if .Values.dind.enabled }}
