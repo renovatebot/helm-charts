@@ -30,7 +30,7 @@ jobs:
           python-version: 3.7
 
       - name: Install chart-testing
-        uses: helm/chart-testing-action@5f16c27cf7a4fa9c776ff73734df3909b2b65127 # renovate: tag=v2.1.0
+        uses: helm/chart-testing-action@6b64532d456fa490a3da177fbd181ac4c8192b58 # renovate: tag=v2.2.0
         with:
           version: v3.4.0 # renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
 
@@ -103,7 +103,7 @@ jobs:
           version: v0.11.1 # renovate: datasource=github-releases depName=kind lookupName=kubernetes-sigs/kind
 
       - name: Install chart-testing
-        uses: helm/chart-testing-action@5f16c27cf7a4fa9c776ff73734df3909b2b65127 # renovate: tag=v2.1.0
+        uses: helm/chart-testing-action@6b64532d456fa490a3da177fbd181ac4c8192b58 # renovate: tag=v2.2.0
         with:
           version: v3.4.0 # renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
 
