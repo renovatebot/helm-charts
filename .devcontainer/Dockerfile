@@ -19,7 +19,7 @@ ARG HELM_VERSION=v3.7.2
 RUN install-tool helm
 
 # renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
-ARG CHART_TESTING_VERSION=v3.4.0
+ARG CHART_TESTING_VERSION=v3.5.0
 RUN install-tool chart-testing
 
 # renovate: datasource=github-releases depName=helm-docs lookupName=norwoodj/helm-docs
