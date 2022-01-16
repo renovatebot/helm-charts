@@ -4,6 +4,46 @@ entries:
   - annotations:
       artifacthub.io/images: |
         - name: renovate
+          image: renovate/renovate:31.28.0
+      artifacthub.io/license: AGPL-3.0-only
+      artifacthub.io/links: |
+        - name: docs
+          url: https://docs.renovatebot.com
+    apiVersion: v2
+    appVersion: 31.28.0
+    created: "2022-01-16T02:29:22.41412894Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.8.11
+    description: Universal dependency update tool that fits into your workflows.
+    digest: 6a665891c836e39ab6a27861598c40bad9eac11342f31f5028d6d4aa55705201
+    home: https://github.com/renovatebot/renovate
+    icon: https://docs.renovatebot.com/assets/images/logo.png
+    keywords:
+    - automated
+    - dependencies
+    - dependency
+    - management
+    - update
+    maintainers:
+    - email: jamie.magee@gmail.com
+      name: JamieMagee
+    - email: michael.kriese@visualon.de
+      name: viceice
+    - email: rhys@arkins.net
+      name: rarkins
+    name: renovate
+    sources:
+    - https://github.com/renovatebot/renovate
+    - https://github.com/renovatebot/helm-charts
+    urls:
+    - https://github.com/renovatebot/helm-charts/releases/download/renovate-31.28.0/renovate-31.28.0.tgz
+    version: 31.28.0
+  - annotations:
+      artifacthub.io/images: |
+        - name: renovate
           image: renovate/renovate:31.26.1
       artifacthub.io/license: AGPL-3.0-only
       artifacthub.io/links: |
@@ -26060,4 +26100,4 @@ entries:
     urls:
     - https://github.com/renovatebot/helm-charts/releases/download/renovate-19.200.0/renovate-19.200.0.tgz
     version: 19.200.0
-generated: "2022-01-14T23:54:09.988337645Z"
+generated: "2022-01-16T02:29:22.425913192Z"
