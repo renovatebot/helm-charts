@@ -65,6 +65,11 @@
       "matchPackageNames": ["kindest/node"],
       "matchUpdateTypes": ["major", "minor"],
       "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Trim leading v from version for helm-docs",
+      "matchPackageNames": ["helm-docs"],
+      "extractVersion": "^v(?<version>\\d+\\.\\d+\\.\\d+)$"
     }
   ]
 }
