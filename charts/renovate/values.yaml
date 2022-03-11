@@ -37,7 +37,6 @@ renovate:
   #     "autodiscover": "false",
   #     "dryRun": true,
   #     "printConfig": true,
-  #     "logLevel": "debug",
   #     "repositories": ["username/repo", "orgname/repo"]
   #   }
 
