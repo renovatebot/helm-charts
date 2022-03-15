@@ -57,6 +57,7 @@ The following table lists the configurable parameters of the chart and the defau
 | dind.slim.enabled | bool | `true` | Do not add `-slim` suffix to image tag when using dind |
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
+| envList | list | `[]` | Additional env. To helpful if you want to use anything other than a `value` source. |
 | existingSecret | string | `""` |  |
 | extraConfigmaps | list | `[]` | Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config |
 | extraVolumeMounts | list | `[]` | Additional volumeMounts to the container |

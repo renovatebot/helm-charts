@@ -119,6 +119,14 @@ envFrom: []
 
 env: {}
 
+# -- Additional env. To helpful if you want to use anything other than a `value` source.
+envList: []
+# envList:
+#   - name: POD_NAME
+#     valueFrom:
+#       fieldRef:
+#         fieldPath: metadata.name
+
 redis:
   # Configuration for a Redis subchart. Additional documenation at
   # https://github.com/bitnami/charts/tree/master/bitnami/redis
