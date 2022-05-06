@@ -61,7 +61,7 @@ dind:
     enabled: true
   image:
     repository: docker
-    tag: 20.10.14-dind
+    tag: 20.10.15-dind
     pullPolicy: IfNotPresent
 
 # -- Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config

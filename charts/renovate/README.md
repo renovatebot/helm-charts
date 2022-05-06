@@ -53,7 +53,7 @@ The following table lists the configurable parameters of the chart and the defau
 | dind.enabled | bool | `false` | Enable dind sidecar usage? |
 | dind.image.pullPolicy | string | `"IfNotPresent"` |  |
 | dind.image.repository | string | `"docker"` |  |
-| dind.image.tag | string | `"20.10.14-dind"` |  |
+| dind.image.tag | string | `"20.10.15-dind"` |  |
 | dind.slim.enabled | bool | `true` | Do not add `-slim` suffix to image tag when using dind |
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
