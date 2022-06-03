@@ -31,6 +31,6 @@ annotations:
       url: https://docs.renovatebot.com
 dependencies:
   - name: redis
-    repository: https://charts.bitnami.com/bitnami
+    repository: file://./deps/bitnami/redis/
     version: 14.8.11
     condition: redis.enabled
