@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: '32.71.3'
 description: Universal dependency update tool that fits into your workflows.
 name: renovate
-version: '32.71.3'
+version: '32.71.4'
 icon: https://docs.renovatebot.com/assets/images/logo.png
 home: https://github.com/renovatebot/renovate
 keywords:
@@ -31,6 +31,6 @@ annotations:
       url: https://docs.renovatebot.com
 dependencies:
   - name: redis
-    repository: file://./deps/bitnami/redis/
+    repository: https://raw.githubusercontent.com/bitnami/charts/eb5f9a9513d987b519f0ecd732e7031241c50328/bitnami
     version: 14.8.11
     condition: redis.enabled
