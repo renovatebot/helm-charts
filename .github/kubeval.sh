@@ -26,19 +26,19 @@ chmod +x .bin/semver2
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # Compute required kubernetes api versions
-apis=''
+apis=()
 
-if [[ "$(semver2 ${KUBERNETES_VERSION#v} 1.21.0)" -ge 0 ]]; then
-  apis="${apis} --api-versions batch/v1/CronJob"
+if [[ "$(semver2 "${KUBERNETES_VERSION#v}" 1.21.0)" -ge 0 ]]; then
+  apis=("${apis[@]}" --api-versions batch/v1/CronJob)
 else
-  apis="${apis} --api-versions batch/v1beta1/CronJob"
+  apis=("${apis[@]}" --api-versions batch/v1beta1/CronJob)
 fi
 
 # validate charts
 for CHART_DIR in ${CHART_DIRS}; do
-  (cd charts/${CHART_DIR}; helm dependency build)
+  (cd "charts/${CHART_DIR}"; helm dependency build)
   helm template \
-    $apis \
+    "${apis[@]}" \
     --values charts/"${CHART_DIR}"/ci/ci-values.yaml \
     charts/"${CHART_DIR}" | kubeval \
       --strict \
