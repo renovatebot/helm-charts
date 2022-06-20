@@ -5,7 +5,7 @@ export PATH="./.bin:$PATH"
 
 set -euxo pipefail
 
-# renovate: datasource=github-releases depName=helm-docs lookupName=norwoodj/helm-docs
+# renovate: datasource=github-releases depName=helm-docs packageName=norwoodj/helm-docs
 HELM_DOCS_VERSION=1.10.0
 
 # install helm-docs
