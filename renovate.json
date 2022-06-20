@@ -49,6 +49,12 @@
   ],
   "packageRules": [
     {
+      "description": "Don't require approval for redis major updates",
+      "matchPackageNames": ["redis"],
+      "matchManagers": ["helmv3"],
+      "dependencyDashboardApproval": false
+    },
+    {
       "matchFiles": ["charts/renovate/README.md"],
       "schedule": null,
       "semanticCommitType": "chore",
