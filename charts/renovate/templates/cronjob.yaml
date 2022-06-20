@@ -112,6 +112,9 @@ spec:
                 - name: DOCKER_TLS_VERIFY
                   value: "true"
                 {{- end }}
+                {{- with .Values.envList }}
+                  {{- toYaml . | nindent 16 }}
+                {{- end }}
               envFrom:
                 {{- if or .Values.secrets .Values.existingSecret }}
                 - secretRef:
