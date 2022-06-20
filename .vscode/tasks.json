@@ -37,7 +37,7 @@
     {
       "label": "kubeval",
       "type": "shell",
-      "command": "helm template --values ${workspaceFolder}/charts/renovate/ci/ci-values.yaml ${workspaceFolder}/charts/renovate | kubeval --strict --kubernetes-version 1.18.1 --schema-location https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/",
+      "command": "helm template --values ${workspaceFolder}/charts/renovate/ci/ci-values.yaml ${workspaceFolder}/charts/renovate | kubeval --strict --kubernetes-version 1.24.1 --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",

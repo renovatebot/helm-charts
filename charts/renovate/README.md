@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 32.3.0](https://img.shields.io/badge/Version-32.3.0-informational?style=flat-square) ![AppVersion: 32.3.0](https://img.shields.io/badge/AppVersion-32.3.0-informational?style=flat-square)
+![Version: 32.90.0](https://img.shields.io/badge/Version-32.90.0-informational?style=flat-square) ![AppVersion: 32.90.0](https://img.shields.io/badge/AppVersion-32.90.0-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -53,7 +53,7 @@ The following table lists the configurable parameters of the chart and the defau
 | dind.enabled | bool | `false` | Enable dind sidecar usage? |
 | dind.image.pullPolicy | string | `"IfNotPresent"` |  |
 | dind.image.repository | string | `"docker"` |  |
-| dind.image.tag | string | `"20.10.13-dind"` |  |
+| dind.image.tag | string | `"20.10.17-dind"` |  |
 | dind.slim.enabled | bool | `true` | Do not add `-slim` suffix to image tag when using dind |
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
@@ -64,7 +64,7 @@ The following table lists the configurable parameters of the chart and the defau
 | extraVolumes | list | `[]` | Additional volumes to the pod |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
-| image.tag | string | `"32.3.0"` |  |
+| image.tag | string | `"32.90.0"` |  |
 | imagePullSecrets | object | `{}` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
