@@ -56,6 +56,10 @@ spec:
         spec:
           serviceAccountName: {{ include "renovate.serviceAccountName" . }}
           restartPolicy: {{ .Values.cronjob.jobRestartPolicy }}
+        {{- with .Values.hostAliases }}
+          hostAliases:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
           containers:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ include "renovate.imageTag" . }}"
