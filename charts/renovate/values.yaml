@@ -143,9 +143,9 @@ apiVersionOverrides:
   # -- String to override apiVersion of cronjob rendered by this helm chart
   cronjob: ''
 
-# Override hostname resolution
-# See: https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/
+# -- Override hostname resolution
 hostAliases: []
+# See: https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/
 # hostAliases:
 #   - ip: "your-ip"
 #     hostnames:
