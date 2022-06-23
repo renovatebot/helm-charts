@@ -25,3 +25,7 @@ renovate:
       "logLevel": "debug",
       "repositories": ["username/repo", "orgname/repo"]
     }
+hostAliases:
+  - ip: "1.2.3.4"
+    hostnames:
+      - "example.com"
