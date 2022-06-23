@@ -49,6 +49,12 @@
   ],
   "packageRules": [
     {
+      "description": "Don't require approval for redis major updates",
+      "matchPackageNames": ["redis"],
+      "matchManagers": ["helmv3"],
+      "dependencyDashboardApproval": false
+    },
+    {
       "matchFiles": ["charts/renovate/README.md"],
       "schedule": null,
       "semanticCommitType": "chore",
@@ -61,10 +67,11 @@
       "separateMinorPatch": true
     },
     {
-      "description": "Require approval for kindest major and minor updates",
+      "description": "Require approval and no automerge for kindest major and minor updates",
       "matchPackageNames": ["kindest/node"],
       "matchUpdateTypes": ["major", "minor"],
-      "dependencyDashboardApproval": true
+      "dependencyDashboardApproval": true,
+      "automerge": false
     },
     {
       "description": "Trim leading v from version for helm-docs",

@@ -5,10 +5,10 @@ export PATH="./.bin:$PATH"
 
 set -euxo pipefail
 
-# renovate: datasource=github-releases depName=kubeval lookupName=instrumenta/kubeval
+# renovate: datasource=github-releases depName=kubeval packageName=instrumenta/kubeval
 KUBEVAL_VERSION=v0.16.1
 
-# renovate: datasource=github-releases depName=semver2 lookupName=Ariel-Rodriguez/sh-semversion-2
+# renovate: datasource=github-releases depName=semver2 packageName=Ariel-Rodriguez/sh-semversion-2
 SEMVER_VERSION=1.0.3
 
 CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | cut -d '/' -f 2 | uniq)"
@@ -26,19 +26,19 @@ chmod +x .bin/semver2
 helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # Compute required kubernetes api versions
-apis=''
+apis=()
 
-if [[ "$(semver2 ${KUBERNETES_VERSION#v} 1.21.0)" -ge 0 ]]; then
-  apis="${apis} --api-versions batch/v1/CronJob"
+if [[ "$(semver2 "${KUBERNETES_VERSION#v}" 1.21.0)" -ge 0 ]]; then
+  apis=("${apis[@]}" --api-versions batch/v1/CronJob)
 else
-  apis="${apis} --api-versions batch/v1beta1/CronJob"
+  apis=("${apis[@]}" --api-versions batch/v1beta1/CronJob)
 fi
 
 # validate charts
 for CHART_DIR in ${CHART_DIRS}; do
-  (cd charts/${CHART_DIR}; helm dependency build)
+  (cd "charts/${CHART_DIR}"; helm dependency build)
   helm template \
-    $apis \
+    "${apis[@]}" \
     --values charts/"${CHART_DIR}"/ci/ci-values.yaml \
     charts/"${CHART_DIR}" | kubeval \
       --strict \

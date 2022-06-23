@@ -18,7 +18,7 @@ pod:
 
 image:
   repository: renovate/renovate
-  tag: 32.83.2
+  tag: 32.90.0
   pullPolicy: IfNotPresent
 
 imagePullSecrets: {}
@@ -118,6 +118,14 @@ resources:
 envFrom: []
 
 env: {}
+
+# -- Additional env. To helpful if you want to use anything other than a `value` source.
+envList: []
+# envList:
+#   - name: POD_NAME
+#     valueFrom:
+#       fieldRef:
+#         fieldPath: metadata.name
 
 redis:
   # Configuration for a Redis subchart. Additional documenation at

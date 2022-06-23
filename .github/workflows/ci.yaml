@@ -6,7 +6,7 @@ on:
       - main
       - 'renovate/**'
   pull_request:
-  
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
   cancel-in-progress: true
@@ -23,16 +23,16 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
-          version: v3.7.2 # renovate: datasource=github-releases depName=helm lookupName=helm/helm
+          version: v3.9.0 # renovate: datasource=github-releases depName=helm packageName=helm/helm
 
-      - uses: actions/setup-python@98f2ad02fd48d057ee3b4d4f66525b231c3e52b6 # tag=v3.1.2
+      - uses: actions/setup-python@d09bd5e6005b175076f227b13d9730d56e9dcfcb # tag=v4.0.0
         with:
           python-version: 3.7
 
       - name: Install chart-testing
         uses: helm/chart-testing-action@dae259e86a35ff09145c0805e2d7dd3f7207064a # tag=v2.2.1
         with:
-          version: v3.4.0 # renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
+          version: v3.6.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
 
       - name: Run lint
         run: ct lint --config .github/ct.yaml
@@ -55,12 +55,11 @@ jobs:
       matrix:
         k8s:
           # from https://github.com/yannh/kubernetes-json-schema
-          - v1.18.20
-          - v1.19.16
-          - v1.20.13
-          - v1.21.7
-          - v1.22.4
-          - v1.23.0
+          - v1.20.15
+          - v1.21.13
+          - v1.22.10
+          - v1.23.7
+          - v1.24.1
     steps:
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
@@ -84,12 +83,11 @@ jobs:
       matrix:
         k8s:
           # from https://hub.docker.com/r/kindest/node/tags
+          - v1.20.15 # renovate: kindest
+          - v1.21.12 # renovate: kindest
+          - v1.22.9 # renovate: kindest
+          - v1.23.6 # renovate: kindest
           - v1.24.1 # renovate: kindest
-          - v1.19.11 # renovate: kindest
-          - v1.24.1 # renovate: kindest
-          - v1.21.2 # renovate: kindest
-          - v1.24.1 # renovate: kindest
-          - v1.23.0 # renovate: kindest
     steps:
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
@@ -97,15 +95,15 @@ jobs:
           fetch-depth: 0
 
       - name: Create kind ${{ matrix.k8s }} cluster
-        uses: helm/kind-action@94729529f85113b88f4f819c17ce61382e6d8478 # renovate: tag=v1.2.0
+        uses: helm/kind-action@d08cf6ff1575077dee99962540d77ce91c62387d # tag=v1.3.0
         with:
           node_image: kindest/node:${{ matrix.k8s }}
-          version: v0.11.1 # renovate: datasource=github-releases depName=kind lookupName=kubernetes-sigs/kind
+          version: v0.14.0 # renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
 
       - name: Install chart-testing
         uses: helm/chart-testing-action@dae259e86a35ff09145c0805e2d7dd3f7207064a # tag=v2.2.1
         with:
-          version: v3.4.0 # renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
+          version: v3.6.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
 
       - name: Run chart install
         run: ct install --config .github/ct.yaml

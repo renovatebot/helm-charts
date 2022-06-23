@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 32.83.2](https://img.shields.io/badge/Version-32.83.2-informational?style=flat-square) ![AppVersion: 32.83.2](https://img.shields.io/badge/AppVersion-32.83.2-informational?style=flat-square)
+![Version: 32.90.0](https://img.shields.io/badge/Version-32.90.0-informational?style=flat-square) ![AppVersion: 32.90.0](https://img.shields.io/badge/AppVersion-32.90.0-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -57,6 +57,7 @@ The following table lists the configurable parameters of the chart and the defau
 | dind.slim.enabled | bool | `true` | Do not add `-slim` suffix to image tag when using dind |
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
+| envList | list | `[]` | Additional env. To helpful if you want to use anything other than a `value` source. |
 | existingSecret | string | `""` |  |
 | extraConfigmaps | list | `[]` | Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config |
 | extraVolumeMounts | list | `[]` | Additional volumeMounts to the container |
@@ -64,7 +65,7 @@ The following table lists the configurable parameters of the chart and the defau
 | hostAliases | list | `[]` | Override hostname resolution |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
-| image.tag | string | `"32.83.2"` |  |
+| image.tag | string | `"32.90.0"` |  |
 | imagePullSecrets | object | `{}` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |

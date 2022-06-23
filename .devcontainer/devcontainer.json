@@ -1,7 +1,7 @@
 {
   "name": "renovatebot/helm-charts",
   "dockerFile": "Dockerfile",
-  "remoteUser": "ubuntu",
+  "remoteUser": "user",
   "runArgs": ["--init"],
   "mounts": ["source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"],
   "settings": {

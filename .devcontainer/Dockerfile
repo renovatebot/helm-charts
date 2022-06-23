@@ -1,31 +1,31 @@
-FROM ghcr.io/containerbase/buildpack:3.17.6@sha256:e97ba9ba67626725da4c9ce404711d80ce9b209177a608ef43ac97caeeab64dc
+FROM ghcr.io/containerbase/buildpack:4.5.2@sha256:b1090676b8635dc7adb1421575bc130a0b7d301fde0622393856f66db3d9912f
 
-COPY tools /usr/local/buildpack
+COPY tools/*.sh /usr/local/buildpack/tools/
 
-# renovate: datasource=github-releases depName=docker lookupName=moby/moby
+# renovate: datasource=github-releases depName=docker packageName=moby/moby
 ARG DOCKER_VERSION=v20.10.17
 RUN install-tool docker
 
-# renovate: datasource=github-tags depName=kubectl lookupName=kubernetes/kubectl
-ARG KUBECTL_VERSION=1.20.1
+# renovate: datasource=github-tags depName=kubectl packageName=kubernetes/kubectl
+ARG KUBECTL_VERSION=1.24.1
 RUN install-tool kubectl
 
-# renovate: datasource=github-releases depName=kind lookupName=kubernetes-sigs/kind
+# renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
 ARG KIND_VERSION=v0.14.0
 RUN install-tool kind
 
-# renovate: datasource=github-releases depName=helm lookupName=helm/helm
+# renovate: datasource=github-releases depName=helm packageName=helm/helm
 ARG HELM_VERSION=v3.9.0
 RUN install-tool helm
 
-# renovate: datasource=github-releases depName=chart-testing lookupName=helm/chart-testing
+# renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
 ARG CHART_TESTING_VERSION=v3.6.0
 RUN install-tool chart-testing
 
-# renovate: datasource=github-releases depName=helm-docs lookupName=norwoodj/helm-docs
+# renovate: datasource=github-releases depName=helm-docs packageName=norwoodj/helm-docs
 ARG HELM_DOCS_VERSION=1.10.0
 RUN install-tool helm-docs
 
-# renovate: datasource=github-releases depName=kubeval lookupName=instrumenta/kubeval
+# renovate: datasource=github-releases depName=kubeval packageName=instrumenta/kubeval
 ARG KUBEVAL_VERSION=v0.16.1
 RUN install-tool kubeval
