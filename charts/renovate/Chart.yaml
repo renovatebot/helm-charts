@@ -32,5 +32,5 @@ annotations:
 dependencies:
   - name: redis
     repository: https://charts.bitnami.com/bitnami
-    version: 17.0.3
+    version: 17.0.5
     condition: redis.enabled
