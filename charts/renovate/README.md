@@ -77,6 +77,7 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | resources | object | `{}` |  |
 | secrets | object | `{}` |  |
+| securityContext | object | `{}` | Pod-level security-context |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `false` |  |
 | serviceAccount.name | string | `""` |  |

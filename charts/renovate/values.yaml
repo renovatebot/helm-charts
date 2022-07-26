@@ -159,5 +159,5 @@ hostAliases: []
 #     hostnames:
 #       - "your-hostname"
 
-# Pod-level security-context
+# -- Pod-level security-context
 securityContext: {}
