@@ -11,6 +11,11 @@ cronjob:
   jobRestartPolicy: Never
   jobBackoffLimit: ''
   startingDeadlineSeconds: ''
+  # -- Add init containers to be run before renovate
+  initContainers: []
+  # initContainers:
+  # - name: INIT_CONTAINER_NAME
+  #   image: INIT_CONTAINER_IMAGE
 
 pod:
   annotations: {}
@@ -159,8 +164,3 @@ hostAliases: []
 #     hostnames:
 #       - "your-hostname"
 
-# -- Add init containers to be run before renovate
-initContainers: []
-# initContainers:
-# - name: INIT_CONTAINER_NAME
-#   image: INIT_CONTAINER_IMAGE

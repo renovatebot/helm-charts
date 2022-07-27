@@ -43,6 +43,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.annotations | object | `{}` |  |
 | cronjob.concurrencyPolicy | string | `""` |  |
 | cronjob.failedJobsHistoryLimit | string | `""` |  |
+| cronjob.initContainers | list | `[]` | Additional initContainers that can be executed before renovate |
 | cronjob.jobBackoffLimit | string | `""` |  |
 | cronjob.jobRestartPolicy | string | `"Never"` |  |
 | cronjob.labels | object | `{}` |  |
@@ -67,7 +68,6 @@ The following table lists the configurable parameters of the chart and the defau
 | image.repository | string | `"renovate/renovate"` |  |
 | image.tag | string | `"32.125.0"` |  |
 | imagePullSecrets | object | `{}` |  |
-| initContainers | list | `[]` | Additional initContainers that can be executed before renovate |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
 | redis.architecture | string | `"standalone"` | Disable replication by default |

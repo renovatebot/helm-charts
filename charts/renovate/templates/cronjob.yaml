@@ -60,9 +60,9 @@ spec:
           hostAliases:
             {{- toYaml . | nindent 12 }}
         {{- end }}
-          {{- if .Values.initContainers }}
+          {{- if .Values.cronjob.initContainers }}
           initContainers:
-            {{- toYaml .Values.initContainers | nindent 12 }}
+            {{- toYaml .Values.cronjob.initContainers | nindent 12 }}
           {{- end }}
           containers:
             - name: {{ .Chart.Name }}
