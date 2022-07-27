@@ -161,6 +161,6 @@ hostAliases: []
 
 # -- Add init containers to be run before renovate
 initContainers: []
-# initContainer:
+# initContainers:
 # - name: INIT_CONTAINER_NAME
 #   image: INIT_CONTAINER_IMAGE
