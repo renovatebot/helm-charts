@@ -158,3 +158,9 @@ hostAliases: []
 #   - ip: "your-ip"
 #     hostnames:
 #       - "your-hostname"
+
+# -- Add init containers to be run before renovate
+initContainers: []
+# initContainer:
+# - name: INIT_CONTAINER_NAME
+#   image: INIT_CONTAINER_IMAGE
