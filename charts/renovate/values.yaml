@@ -158,3 +158,6 @@ hostAliases: []
 #   - ip: "your-ip"
 #     hostnames:
 #       - "your-hostname"
+
+# -- Pod-level security-context
+securityContext: {}
