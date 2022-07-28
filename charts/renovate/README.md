@@ -43,6 +43,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.annotations | object | `{}` |  |
 | cronjob.concurrencyPolicy | string | `""` |  |
 | cronjob.failedJobsHistoryLimit | string | `""` |  |
+| cronjob.initContainers | list | `[]` | Additional initContainers that can be executed before renovate |
 | cronjob.jobBackoffLimit | string | `""` |  |
 | cronjob.jobRestartPolicy | string | `"Never"` |  |
 | cronjob.labels | object | `{}` |  |

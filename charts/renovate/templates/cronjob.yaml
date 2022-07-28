@@ -60,6 +60,10 @@ spec:
           hostAliases:
             {{- toYaml . | nindent 12 }}
         {{- end }}
+          {{- if .Values.cronjob.initContainers }}
+          initContainers:
+            {{- toYaml .Values.cronjob.initContainers | nindent 12 }}
+          {{- end }}
           containers:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ include "renovate.imageTag" . }}"
