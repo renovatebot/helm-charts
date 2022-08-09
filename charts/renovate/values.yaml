@@ -27,6 +27,11 @@ image:
   pullPolicy: IfNotPresent
 
 imagePullSecrets: {}
+nodeSelector: {}
+affinity: {}
+tolerations: {}
+securityContext: {}
+
 
 renovate:
   # -- Custom exiting global renovate config
