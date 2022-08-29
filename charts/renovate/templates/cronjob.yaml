@@ -131,8 +131,14 @@ spec:
                 {{- with .Values.envFrom }}
                   {{- toYaml . | nindent 16 }}
                 {{- end }}
+            {{- with .Values.renovate.securityContext }}
+              securityContext:
+                {{- toYaml . | nindent 16 }}
+            {{- end }}
+            {{- with .Values.resources }}
               resources:
-                {{- toYaml .Values.resources | nindent 16 }}
+                {{- toYaml . | nindent 16 }}
+            {{- end }}
             {{- if .Values.dind.enabled }}
             - name: {{ .Chart.Name }}-dind
               image: "{{ .Values.dind.image.repository }}:{{ .Values.dind.image.tag }}"
@@ -150,8 +156,10 @@ spec:
               env:
                 - name: DOCKER_TLS_CERTDIR
                   value: "/tmp/certs"
+            {{- with .Values.dind.securityContext }}
               securityContext:
-                privileged: true
+                {{- toYaml . | nindent 16 }}
+            {{- end }}
               volumeMounts:
                 - name: {{ .Chart.Name }}-tmp-volume
                   mountPath: /tmp

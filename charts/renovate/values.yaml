@@ -45,6 +45,9 @@ renovate:
   #     "repositories": ["username/repo", "orgname/repo"]
   #   }
 
+  # -- Renovate Container-level security-context
+  securityContext: {}
+
 ssh_config:
   enabled: false
   # Provide .ssh config file contents
@@ -68,6 +71,10 @@ dind:
     repository: docker
     tag: 20.10.17-dind
     pullPolicy: IfNotPresent
+
+  # -- DinD Container-level security-context. Privilged is needed for DinD, it will not work without!
+  securityContext:
+    privileged: true
 
 # -- Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config
 extraConfigmaps: []
@@ -107,8 +114,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ''
 
-resources:
-  {}
+resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
