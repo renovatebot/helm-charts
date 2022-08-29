@@ -55,6 +55,7 @@ The following table lists the configurable parameters of the chart and the defau
 | dind.image.pullPolicy | string | `"IfNotPresent"` |  |
 | dind.image.repository | string | `"docker"` |  |
 | dind.image.tag | string | `"20.10.17-dind"` |  |
+| dind.securityContext | object | `{"privileged":true}` | DinD Container-level security-context. Privilged is needed for DinD, it will not work without! |
 | dind.slim.enabled | bool | `true` | Do not add `-slim` suffix to image tag when using dind |
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
@@ -76,6 +77,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.kubeVersion | string | `""` | Override Kubernetes version for redis chart |
 | renovate.config | string | `""` | Inline global renovate config.json |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
+| renovate.securityContext | object | `{}` | Renovate Container-level security-context |
 | resources | object | `{}` |  |
 | secrets | object | `{}` |  |
 | securityContext | object | `{}` | Pod-level security-context |
