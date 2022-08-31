@@ -4,7 +4,7 @@
   "assignees": ["rarkins", "viceice", "JamieMagee"],
   "hostRules": [
     {
-      "concurrentRequestLimit": 5
+      "concurrentRequestLimit": 3
     }
   ],
   "regexManagers": [
