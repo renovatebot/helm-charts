@@ -83,6 +83,6 @@
       "matchPackageNames": ["renovate/renovate", "redis"],
       "semanticCommitType": "fix",
       "semanticCommitScope": null
-    },
+    }
   ]
 }
