@@ -4,7 +4,6 @@
   "assignees": ["rarkins", "viceice", "JamieMagee"],
   "hostRules": [
     {
-      "matchHost": "api.github.com",
       "concurrentRequestLimit": 5
     }
   ],
