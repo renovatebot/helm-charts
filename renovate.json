@@ -2,6 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["local>renovatebot/.github"],
   "assignees": ["rarkins", "viceice", "JamieMagee"],
+  "hostRules": [
+    {
+      "matchHost": "api.github.com",
+      "concurrentRequestLimit": 10
+    }
+  ],
   "regexManagers": [
     {
       "description": "Update renovate docker image references",
