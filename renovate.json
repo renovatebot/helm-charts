@@ -5,7 +5,7 @@
   "hostRules": [
     {
       "matchHost": "api.github.com",
-      "concurrentRequestLimit": 10
+      "concurrentRequestLimit": 5
     }
   ],
   "regexManagers": [
