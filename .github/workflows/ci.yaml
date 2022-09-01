@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Helm
-        uses: azure/setup-helm@v1
+        uses: azure/setup-helm@18bc76811624f360dbd7f18c2d4ecb32c7b87bab # tag=v1
         with:
           version: v3.9.4 # renovate: datasource=github-releases depName=helm packageName=helm/helm
 
