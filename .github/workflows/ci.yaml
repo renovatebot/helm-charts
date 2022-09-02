@@ -98,7 +98,7 @@ jobs:
         uses: helm/kind-action@d08cf6ff1575077dee99962540d77ce91c62387d # tag=v1.3.0
         with:
           node_image: kindest/node:${{ matrix.k8s }}
-          version: v0.14.0 # renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
+          version: v0.15.0 # renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
 
       - name: Install chart-testing
         uses: helm/chart-testing-action@09ed88797198755e5031f25be13da255e7e33aad # tag=v2.3.0
