@@ -23,7 +23,7 @@ pod:
 
 image:
   repository: renovate/renovate
-  tag: 32.194.2
+  tag: 32.194.3
   pullPolicy: IfNotPresent
 
 imagePullSecrets: {}
