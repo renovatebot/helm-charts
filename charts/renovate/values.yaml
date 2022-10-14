@@ -1,4 +1,5 @@
 global:
+  # -- Additional labels to be set on all renovate resources
   commonLabels: {}
 
 cronjob:
@@ -12,6 +13,7 @@ cronjob:
   failedJobsHistoryLimit: ''
   successfulJobsHistoryLimit: ''
   jobRestartPolicy: Never
+  # -- Deadline for the job to finish
   activeDeadlineSeconds: ''
   jobBackoffLimit: ''
   startingDeadlineSeconds: ''
