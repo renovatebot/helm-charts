@@ -1,3 +1,6 @@
+global:
+  commonLabels: {}
+
 cronjob:
   # At 01:00 every day
   schedule: '0 1 * * *'
@@ -9,6 +12,7 @@ cronjob:
   failedJobsHistoryLimit: ''
   successfulJobsHistoryLimit: ''
   jobRestartPolicy: Never
+  activeDeadlineSeconds: ''
   jobBackoffLimit: ''
   startingDeadlineSeconds: ''
   # -- Additional initContainers that can be executed before renovate
