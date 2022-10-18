@@ -49,7 +49,9 @@ Selector labels
 {{- define "renovate.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "renovate.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- if .Values.global.commonLabels }}
 {{ .Values.global.commonLabels | toYaml | nindent 4 }}
+{{- end }}
 {{- end -}}
 
 {{/*
