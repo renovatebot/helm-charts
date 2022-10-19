@@ -71,13 +71,18 @@ spec:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ include "renovate.imageTag" . }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-              {{- if .Values.dind.enabled }}
+              {{- if or .Values.dind.enabled .Values.cronjob.overrideCommand}}
               command: ["/bin/bash", "-c"]
               args:
-                - |
+                {{- if .Values.dind.enabled }} 
+                - | 
                   trap "touch /tmp/main-terminated" EXIT
                   while true; do if [[ -f "/tmp/dind-started" ]]; then break; fi; sleep 1; done
-                  renovate
+                {{- end }}
+                {{- if .Values.cronjob.overrideCommand }} 
+                  {{- .Values.cronjob.overrideCommand | nindent 18 }}
+                {{- end -}}
+                renovate
               {{- end }}
               {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.dind.enabled .Values.extraVolumes }}
               volumeMounts:

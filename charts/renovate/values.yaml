@@ -23,6 +23,12 @@ cronjob:
   # - name: INIT_CONTAINER_NAME
   #   image: INIT_CONTAINER_IMAGE
 
+  # -- add pre-commands before renovate runs
+  overrideCommand: ''
+  # overrideCommand: |
+  #   echo hello
+  #   echo world
+
 pod:
   annotations: {}
   labels: {}
