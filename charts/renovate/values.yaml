@@ -1,3 +1,7 @@
+global:
+  # -- Additional labels to be set on all renovate resources
+  commonLabels: {}
+
 cronjob:
   # At 01:00 every day
   schedule: '0 1 * * *'
@@ -9,6 +13,8 @@ cronjob:
   failedJobsHistoryLimit: ''
   successfulJobsHistoryLimit: ''
   jobRestartPolicy: Never
+  # -- Deadline for the job to finish
+  activeDeadlineSeconds: ''
   jobBackoffLimit: ''
   startingDeadlineSeconds: ''
   # -- Additional initContainers that can be executed before renovate

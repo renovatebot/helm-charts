@@ -40,6 +40,7 @@ The following table lists the configurable parameters of the chart and the defau
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | apiVersionOverrides.cronjob | string | `""` | String to override apiVersion of cronjob rendered by this helm chart |
+| cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` |  |
 | cronjob.concurrencyPolicy | string | `""` |  |
 | cronjob.failedJobsHistoryLimit | string | `""` |  |
@@ -64,6 +65,7 @@ The following table lists the configurable parameters of the chart and the defau
 | extraConfigmaps | list | `[]` | Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config |
 | extraVolumeMounts | list | `[]` | Additional volumeMounts to the container |
 | extraVolumes | list | `[]` | Additional volumes to the pod |
+| global.commonLabels | object | `{}` | Additional labels to be set on all renovate resources |
 | hostAliases | list | `[]` | Override hostname resolution |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |

@@ -41,7 +41,10 @@ spec:
       labels:
         {{- include "renovate.selectorLabels" . | nindent 8 }}
     spec:
+      activeDeadlineSeconds: {{ default 600 .Values.cronjob.activeDeadlineSeconds }}
+      {{- if .Values.cronjob.jobBackoffLimit }}
       backoffLimit: {{ .Values.cronjob.jobBackoffLimit }}
+      {{- end }}
       template:
         metadata:
           labels:
