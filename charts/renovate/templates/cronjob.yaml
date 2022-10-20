@@ -74,8 +74,8 @@ spec:
               {{- if or .Values.dind.enabled .Values.cronjob.overrideCommand}}
               command: ["/bin/bash", "-c"]
               args:
-                {{- if .Values.dind.enabled }} 
                 - | 
+                {{- if .Values.dind.enabled }} 
                   trap "touch /tmp/main-terminated" EXIT
                   while true; do if [[ -f "/tmp/dind-started" ]]; then break; fi; sleep 1; done
                 {{- end }}
