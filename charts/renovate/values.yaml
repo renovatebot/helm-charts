@@ -24,8 +24,8 @@ cronjob:
   #   image: INIT_CONTAINER_IMAGE
 
   # -- add pre-commands before renovate runs
-  overrideCommand: ''
-  # overrideCommand: |
+  preCommand: ''
+  # preCommand: |
   #   echo hello
   #   echo world
 
