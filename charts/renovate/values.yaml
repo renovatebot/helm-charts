@@ -23,6 +23,12 @@ cronjob:
   # - name: INIT_CONTAINER_NAME
   #   image: INIT_CONTAINER_IMAGE
 
+  # -- Prepend shell commands before renovate runs
+  preCommand: ''
+  # preCommand: |
+  #   echo hello
+  #   echo world
+
 pod:
   annotations: {}
   labels: {}
