@@ -48,7 +48,6 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.jobBackoffLimit | string | `""` |  |
 | cronjob.jobRestartPolicy | string | `"Never"` |  |
 | cronjob.labels | object | `{}` |  |
-| cronjob.preCommand | string | `""` | prepend shell commands before renovate runs |
 | cronjob.schedule | string | `"0 1 * * *"` |  |
 | cronjob.startingDeadlineSeconds | string | `""` |  |
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
