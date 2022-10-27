@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 32.241.5](https://img.shields.io/badge/Version-32.241.5-informational?style=flat-square) ![AppVersion: 32.241.5](https://img.shields.io/badge/AppVersion-32.241.5-informational?style=flat-square)
+![Version: 34.2.3](https://img.shields.io/badge/Version-34.2.3-informational?style=flat-square) ![AppVersion: 34.2.3](https://img.shields.io/badge/AppVersion-34.2.3-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -56,7 +56,7 @@ The following table lists the configurable parameters of the chart and the defau
 | dind.enabled | bool | `false` | Enable dind sidecar usage? |
 | dind.image.pullPolicy | string | `"IfNotPresent"` |  |
 | dind.image.repository | string | `"docker"` |  |
-| dind.image.tag | string | `"20.10.20-dind"` |  |
+| dind.image.tag | string | `"20.10.21-dind"` |  |
 | dind.securityContext | object | `{"privileged":true}` | DinD Container-level security-context. Privilged is needed for DinD, it will not work without! |
 | dind.slim.enabled | bool | `true` | Do not add `-slim` suffix to image tag when using dind |
 | env | object | `{}` |  |
@@ -70,7 +70,7 @@ The following table lists the configurable parameters of the chart and the defau
 | hostAliases | list | `[]` | Override hostname resolution |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
-| image.tag | string | `"32.241.5"` |  |
+| image.tag | string | `"34.2.3"` |  |
 | imagePullSecrets | object | `{}` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
