@@ -84,7 +84,7 @@ spec:
                 {{- if .Values.cronjob.preCommand }} 
                   {{- .Values.cronjob.preCommand | nindent 18 }}
                 {{- end -}}
-                renovate
+                  renovate
               {{- end }}
               {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.dind.enabled .Values.extraVolumes }}
               volumeMounts:
