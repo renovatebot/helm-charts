@@ -25,7 +25,7 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@f382f75448129b3be48f8121b9857be18d815a82 # tag=v3.4
         with:
-          version: v3.10.1 # renovate: datasource=github-releases depName=helm packageName=helm/helm
+          version: v3.10.2 # renovate: datasource=github-releases depName=helm packageName=helm/helm
 
       - name: Add external Helm repos
         run: helm repo add bitnami https://charts.bitnami.com/bitnami
