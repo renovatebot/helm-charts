@@ -3,7 +3,7 @@ FROM ghcr.io/containerbase/buildpack:5.2.6@sha256:ab8ed17ceaa62d83784ea57e139e4e
 COPY tools/*.sh /usr/local/buildpack/tools/
 
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
-ARG DOCKER_VERSION=v20.10.21
+ARG DOCKER_VERSION=v20.10.22
 RUN install-tool docker
 
 # renovate: datasource=github-tags depName=kubectl packageName=kubernetes/kubectl
