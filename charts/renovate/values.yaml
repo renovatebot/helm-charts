@@ -81,7 +81,7 @@ dind:
     enabled: true
   image:
     repository: docker
-    tag: 20.10.21-dind
+    tag: 20.10.22-dind
     pullPolicy: IfNotPresent
 
   # -- DinD Container-level security-context. Privilged is needed for DinD, it will not work without!
