@@ -57,6 +57,13 @@ renovate:
   #     "repositories": ["username/repo", "orgname/repo"]
   #   }
 
+  # -- Use the Helm tpl function on your configuration
+  # Allows you to reference values using "{{ .Values.someValue }}" in your config
+  # NOTE: using this means that you have to escape your config entries in the config
+  # key above containing {{ in the value by wrapping it like this:
+  # "key": "{{ "{{depName}}" }}"
+  configEnableHelmTpl: false
+
   # -- Renovate Container-level security-context
   securityContext: {}
 
