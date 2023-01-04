@@ -7,5 +7,5 @@ metadata:
     {{- include "renovate.labels" . | nindent 4 }}
 data:
   config.json: |-
-    {{- required "A valid .Values.renovate.config entry is required if existingConfigFile is not specified!" tpl .Values.renovate.config | nindent 4 }}
+    {{- required "A valid .Values.renovate.config entry is required if existingConfigFile is not specified!" (tpl .Values.renovate.config) | nindent 4 }}
 {{- end }}
