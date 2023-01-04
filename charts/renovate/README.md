@@ -79,7 +79,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.enabled | bool | `false` | Enable the Redis subchart? |
 | redis.kubeVersion | string | `""` | Override Kubernetes version for redis chart |
 | renovate.config | string | `""` | Inline global renovate config.json |
-| configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See values.yaml for more information |
+| renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration Allows you to reference values using "{{ .Values.someValue }}" in your config NOTE: using this means that you have to escape your config entries in the config key above containing {{ in the value by wrapping it like this: "key": "{{ "{{depName}}" }}" |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | renovate.securityContext | object | `{}` | Renovate Container-level security-context |
 | resources | object | `{}` |  |
