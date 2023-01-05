@@ -47,3 +47,10 @@ The slim suffix will be added to the tag if not present. To disable this behavio
 ## Redis
 
 Please checkout [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
+
+## renovate.configEnableHelmTpl
+Allows you to reference values using `"{{ .Values.someValue }}"` in your config
+
+**NOTE**: setting `renovate.configEnableHelmTpl` to true means that you have to
+escape your config entries containing `{{` (i.e. `"key": "{{depName}}"`) in the
+value by wrapping it like: `"key": "{{ "{{depName}}" }}"`.
