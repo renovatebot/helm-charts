@@ -79,7 +79,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.enabled | bool | `false` | Enable the Redis subchart? |
 | redis.kubeVersion | string | `""` | Override Kubernetes version for redis chart |
 | renovate.config | string | `""` | Inline global renovate config.json |
-| renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration Allows you to reference values using "{{ .Values.someValue }}" in your config NOTE: using this means that you have to escape your config entries in the config key above containing {{ in the value by wrapping it like this: "key": "{{ "{{depName}}" }}" |
+| renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See README for how to use this value |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | renovate.securityContext | object | `{}` | Renovate Container-level security-context |
 | resources | object | `{}` |  |
@@ -103,3 +103,11 @@ The slim suffix will be added to the tag if not present. To disable this behavio
 ## Redis
 
 Please checkout [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
+
+## renovate.configEnableHelmTpl
+Allows you to reference values using `"{{ .Values.someValue }}"` in your config
+
+**NOTE**: setting `renovate.configEnableHelmTpl` to true means that you have to
+escape your config entries containing `{{` (i.e. `"key": "{{depName}}"`) in the
+value by wrapping it like: `"key": "{{ "{{depName}}" }}"`.
+
