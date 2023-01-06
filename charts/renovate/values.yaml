@@ -57,6 +57,9 @@ renovate:
   #     "repositories": ["username/repo", "orgname/repo"]
   #   }
 
+  # -- Use the Helm tpl function on your configuration. See README for how to use this value
+  configEnableHelmTpl: false
+
   # -- Renovate Container-level security-context
   securityContext: {}
 
