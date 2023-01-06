@@ -104,7 +104,9 @@ The slim suffix will be added to the tag if not present. To disable this behavio
 
 Please checkout [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
 
-## renovate.configEnableHelmTpl
+## Renovate config templating
+
+Enable `renovate.configEnableHelmTpl` to use helm templates for generated renovate `config.json`.
 Allows you to reference values using `"{{ .Values.someValue }}"` in your config
 
 **NOTE**: setting `renovate.configEnableHelmTpl` to true means that you have to
