@@ -76,12 +76,12 @@ spec:
               {{- if or .Values.dind.enabled .Values.cronjob.preCommand}}
               command: ["/bin/bash", "-c"]
               args:
-                - |
-                {{- if .Values.dind.enabled }}
+                - | 
+                {{- if .Values.dind.enabled }} 
                   trap "touch /tmp/main-terminated" EXIT
                   while true; do if [[ -f "/tmp/dind-started" ]]; then break; fi; sleep 1; done
                 {{- end }}
-                {{- if .Values.cronjob.preCommand }}
+                {{- if .Values.cronjob.preCommand }} 
                   {{- .Values.cronjob.preCommand | nindent 18 }}
                 {{- end }}
                   renovate
