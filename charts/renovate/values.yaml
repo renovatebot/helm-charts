@@ -60,6 +60,9 @@ renovate:
   # -- Use the Helm tpl function on your configuration. See README for how to use this value
   configEnableHelmTpl: false
 
+  # -- Use this to create the renovate config as a secret instead of a configmap
+  configIsSecret: false
+
   # -- Renovate Container-level security-context
   securityContext: {}
 
