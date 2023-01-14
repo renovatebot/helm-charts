@@ -13,7 +13,6 @@ metadata:
 {{- if .Values.renovate.configIsSecret }}
 stringData:
 {{- else }}
-kind: ConfigMap
 data:
 {{- end }}
   config.json: |-
