@@ -176,9 +176,15 @@ spec:
             {{- end }}
           volumes:
             {{- if .Values.renovate.config }}
+              {{- if .Values.renovate.configIsSecret }}
+            - name: config-volume
+              secret:
+                secretName: {{ include "renovate.fullname" . }}-config
+              {{- else }}
             - name: config-volume
               configMap:
                 name: {{ include "renovate.fullname" . }}-config
+              {{- end }}
             {{- end }}
             {{- if .Values.ssh_config.enabled }}
             - name: ssh-config-volume

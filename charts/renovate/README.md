@@ -80,6 +80,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.kubeVersion | string | `""` | Override Kubernetes version for redis chart |
 | renovate.config | string | `""` | Inline global renovate config.json |
 | renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See README for how to use this value |
+| renovate.configIsSecret | bool | `false` | Use this to create the renovate config as a secret instead of a configmap |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | renovate.securityContext | object | `{}` | Renovate Container-level security-context |
 | resources | object | `{}` |  |
