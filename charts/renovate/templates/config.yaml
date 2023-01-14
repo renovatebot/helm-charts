@@ -1,12 +1,16 @@
 {{- if not .Values.renovate.existingConfigFile }}
 apiVersion: v1
+{{- if .Values.renovate.configIsSecret }}
+kind: Secret
+type: Opaque
+{{- else }}
+kind: ConfigMap
+{{- end }}
 metadata:
   name: {{ template "renovate.fullname" . }}-config
   labels:
     {{- include "renovate.labels" . | nindent 4 }}
 {{- if .Values.renovate.configIsSecret }}
-kind: Secret
-type: Opaque
 stringData:
 {{- else }}
 kind: ConfigMap
