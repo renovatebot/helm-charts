@@ -60,6 +60,7 @@ jobs:
           - v1.23.7
           - v1.24.1
           - v1.25.5
+          - v1.26.0
     steps:
       - name: Checkout
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
@@ -88,6 +89,7 @@ jobs:
           - v1.23.6 # renovate: kindest
           - v1.24.7 # renovate: kindest
           - v1.25.3 # renovate: kindest
+          - v1.26.0 # renovate: kindest
     steps:
       - name: Checkout
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
