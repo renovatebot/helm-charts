@@ -53,6 +53,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.startingDeadlineSeconds | string | `""` |  |
 | cronjob.successfulJobsHistoryLimit | string | `""` |  |
 | cronjob.suspend | bool | `false` | If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions. |
+| cronjob.ttlSecondsAfterFinished | string | `"""` | Time to keep the job after it finished before automatically deleting it |
 | dind.enabled | bool | `false` | Enable dind sidecar usage? |
 | dind.image.pullPolicy | string | `"IfNotPresent"` |  |
 | dind.image.repository | string | `"docker"` |  |
