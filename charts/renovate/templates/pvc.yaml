@@ -1,0 +1,13 @@
+{{- if .Values.renovate.persistence.cache.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "renovate.fullname" }}-cache
+spec:
+  storageClassName: {{ .Values.renovate.persistence.cache.storageClass }}
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.renovate.persistence.cache.storageSize }}
+{{- end }}

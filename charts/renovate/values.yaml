@@ -68,6 +68,12 @@ renovate:
   # -- Renovate Container-level security-context
   securityContext: {}
 
+  persistence:
+    cache:
+      enabled: false
+      storageClass: "default"
+      storageSize: "512Mi"
+
 ssh_config:
   enabled: false
   # Provide .ssh config file contents

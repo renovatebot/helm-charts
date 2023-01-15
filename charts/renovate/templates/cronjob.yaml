@@ -105,6 +105,10 @@ spec:
                 {{- toYaml .Values.extraVolumeMounts | nindent 14 }}
               {{- end }}
               {{- end }}
+              {{- if .Values.renovate.persistence.cache.enabled }}
+              - name: {{ include "renovate.fullname" }}-cache
+                mountPath: ?
+              {{- end }}
               {{- if .Values.dind.enabled }}
               - name: {{ .Chart.Name }}-tmp-volume
                 mountPath: /tmp
@@ -188,6 +192,11 @@ spec:
               configMap:
                 name: {{ include "renovate.fullname" . }}-config
               {{- end }}
+            {{- end }}
+            {{- if .Values.renovate.persistence.cache.enabled }}
+            - name: {{ include "renovate.fullname" }}-cache
+              persistentVolumeClaim:
+                claimName: {{ include "renovate.fullname" }}-cache
             {{- end }}
             {{- if .Values.ssh_config.enabled }}
             - name: ssh-config-volume
