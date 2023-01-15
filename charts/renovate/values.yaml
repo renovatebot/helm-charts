@@ -13,6 +13,8 @@ cronjob:
   failedJobsHistoryLimit: ''
   successfulJobsHistoryLimit: ''
   jobRestartPolicy: Never
+  # -- Time to keep the job after it finished before automatically deleting it
+  ttlSecondsAfterFinished: ''
   # -- Deadline for the job to finish
   activeDeadlineSeconds: ''
   jobBackoffLimit: ''
