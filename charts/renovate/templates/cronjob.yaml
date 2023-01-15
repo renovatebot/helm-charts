@@ -107,7 +107,7 @@ spec:
               {{- end }}
               {{- if .Values.renovate.persistence.cache.enabled }}
               - name: {{ include "renovate.fullname" }}-cache
-                mountPath: ?
+                mountPath: /tmp/renovate
               {{- end }}
               {{- if .Values.dind.enabled }}
               - name: {{ .Chart.Name }}-tmp-volume
