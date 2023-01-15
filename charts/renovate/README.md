@@ -84,7 +84,7 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.configIsSecret | bool | `false` | Use this to create the renovate config as a secret instead of a configmap |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | renovate.persistence.cache.enabled | bool | `false` | Allow the cache to persist between runs |
-| renovate.persistence.cache.storageClass | string | `"standard"` | Storage class of the cache PVC |
+| renovate.persistence.cache.storageClass | string | `""` | Storage class of the cache PVC |
 | renovate.persistence.cache.storageSize | string | `"512Mi"` | Storage size of the cache PVC |
 | renovate.securityContext | object | `{}` | Renovate Container-level security-context |
 | resources | object | `{}` |  |

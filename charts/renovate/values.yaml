@@ -74,7 +74,7 @@ renovate:
       # -- Allow the cache to persist between runs
       enabled: false
       # -- Storage class of the cache PVC
-      storageClass: "standard"
+      storageClass: ""
       # -- Storage size of the cache PVC
       storageSize: "512Mi"
 
