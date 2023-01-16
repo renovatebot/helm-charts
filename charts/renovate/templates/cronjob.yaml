@@ -106,7 +106,7 @@ spec:
               {{- end }}
               {{- end }}
               {{- if .Values.renovate.persistence.cache.enabled }}
-              - name: {{ include "renovate.fullname" }}-cache
+              - name: {{ include "renovate.fullname" . }}-cache
                 mountPath: /tmp/renovate
               {{- end }}
               {{- if .Values.dind.enabled }}
@@ -194,9 +194,9 @@ spec:
               {{- end }}
             {{- end }}
             {{- if .Values.renovate.persistence.cache.enabled }}
-            - name: {{ include "renovate.fullname" }}-cache
+            - name: {{ include "renovate.fullname" . }}-cache
               persistentVolumeClaim:
-                claimName: {{ include "renovate.fullname" }}-cache
+                claimName: {{ include "renovate.fullname" . }}-cache
             {{- end }}
             {{- if .Values.ssh_config.enabled }}
             - name: ssh-config-volume
