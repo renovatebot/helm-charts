@@ -83,6 +83,9 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See README for how to use this value |
 | renovate.configIsSecret | bool | `false` | Use this to create the renovate config as a secret instead of a configmap |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
+| renovate.persistence.cache.enabled | bool | `false` | Allow the cache to persist between runs |
+| renovate.persistence.cache.storageClass | string | `""` | Storage class of the cache PVC |
+| renovate.persistence.cache.storageSize | string | `"512Mi"` | Storage size of the cache PVC |
 | renovate.securityContext | object | `{}` | Renovate Container-level security-context |
 | resources | object | `{}` |  |
 | secrets | object | `{}` |  |
@@ -96,15 +99,11 @@ The following table lists the configurable parameters of the chart and the defau
 | ssh_config.id_rsa | string | `""` |  |
 | ssh_config.id_rsa_pub | string | `""` |  |
 
-## Docker in Docker configuration
+## Renovate persistent cache
 
-When `dind.enabled` is set to `true`, a Docker in Docker container will run as a sidecar to supply a Docker daemon to the RenovateBot container. This allows the configuration `binarySource` to be set to `docker`, which is the default configuration in the slim Docker images.
-
-The slim suffix will be added to the tag if not present. To disable this behaviour, set `dind.slim.enabled` to `false`.
-
-## Redis
-
-Please checkout [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
+To speed up execution time of jobs it could be useful to enable persistent caching. This means that Renovate
+can make use of the cache that have been build up in previous runs. Set `renovate.persistence.cache.enabled` to true
+to enable this. If necessary, the storageClass can be configured and the storageSize can be set to the preferred value.
 
 ## Renovate config templating
 
@@ -114,4 +113,14 @@ Allows you to reference values using `"{{ .Values.someValue }}"` in your config
 **NOTE**: setting `renovate.configEnableHelmTpl` to true means that you have to
 escape your config entries containing `{{` (i.e. `"key": "{{depName}}"`) in the
 value by wrapping it like: `"key": "{{ "{{depName}}" }}"`.
+
+## Docker in Docker configuration
+
+When `dind.enabled` is set to `true`, a Docker in Docker container will run as a sidecar to supply a Docker daemon to the RenovateBot container. This allows the configuration `binarySource` to be set to `docker`, which is the default configuration in the slim Docker images.
+
+The slim suffix will be added to the tag if not present. To disable this behaviour, set `dind.slim.enabled` to `false`.
+
+## Redis
+
+Please checkout [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
 

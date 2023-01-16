@@ -68,6 +68,16 @@ renovate:
   # -- Renovate Container-level security-context
   securityContext: {}
 
+  # -- Options related to persistence
+  persistence:
+    cache:
+      # -- Allow the cache to persist between runs
+      enabled: false
+      # -- Storage class of the cache PVC
+      storageClass: ""
+      # -- Storage size of the cache PVC
+      storageSize: "512Mi"
+
 ssh_config:
   enabled: false
   # Provide .ssh config file contents
