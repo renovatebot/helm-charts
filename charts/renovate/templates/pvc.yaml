@@ -6,7 +6,7 @@ metadata:
 spec:
   {{- if .Values.renovate.persistence.cache.storageClass }}
   storageClassName: {{ .Values.renovate.persistence.cache.storageClass }}
-  {{- end                                                                                                                                                                                                                                                                                                             }}
+  {{- end }}
   accessModes:
     - ReadWriteOnce
   resources:
