@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "renovate.fullname" }}-cache
+  name: {{ include "renovate.fullname" . }}-cache
 spec:
   {{- if .Values.renovate.persistence.cache.storageClass }}
   storageClassName: {{ .Values.renovate.persistence.cache.storageClass }}
