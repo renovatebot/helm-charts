@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 34.104.0](https://img.shields.io/badge/Version-34.104.0-informational?style=flat-square) ![AppVersion: 34.104.0](https://img.shields.io/badge/AppVersion-34.104.0-informational?style=flat-square)
+![Version: 34.105.3](https://img.shields.io/badge/Version-34.105.3-informational?style=flat-square) ![AppVersion: 34.105.3](https://img.shields.io/badge/AppVersion-34.105.3-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -71,7 +71,7 @@ The following table lists the configurable parameters of the chart and the defau
 | hostAliases | list | `[]` | Override hostname resolution |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
-| image.tag | string | `"34.104.0"` |  |
+| image.tag | string | `"34.105.3"` |  |
 | imagePullSecrets | object | `{}` |  |
 | pod.annotations | object | `{}` |  |
 | pod.labels | object | `{}` |  |
