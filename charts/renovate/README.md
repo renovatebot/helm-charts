@@ -70,10 +70,10 @@ The following table lists the configurable parameters of the chart and the defau
 | fullnameOverride | string | `""` | Override the fully qualified app name |
 | global.commonLabels | object | `{}` | Additional labels to be set on all renovate resources |
 | hostAliases | list | `[]` | Override hostname resolution |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"renovate/renovate"` |  |
-| image.tag | string | `"34.108.2"` |  |
-| imagePullSecrets | object | `{}` |  |
+| image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
+| image.repository | string | `"renovate/renovate"` | Repository to pull renovate image from |
+| image.tag | string | `"34.108.2"` | Renovate image tag to pull |
+| imagePullSecrets | object | `{}` | Secret to use to pull the image from the repository |
 | nameOverride | string | `""` | Override the name of the chart |
 | pod.annotations | object | `{}` | Annotations to set on the pod |
 | pod.labels | object | `{}` | Labels to set on the pod |
