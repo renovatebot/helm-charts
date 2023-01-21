@@ -117,11 +117,14 @@ dind:
     # -- Do not add `-slim` suffix to image tag when using dind
     enabled: true
   image:
+    # -- Repository to pull dind image from
     repository: docker
+    # -- dind image tag to pull
     tag: 20.10.23-dind
+    # -- "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images
     pullPolicy: IfNotPresent
 
-  # -- DinD Container-level security-context. Privilged is needed for DinD, it will not work without!
+  # -- DinD Container-level security-context. Privileged is needed for DinD, it will not work without!
   securityContext:
     privileged: true
 
