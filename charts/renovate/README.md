@@ -38,20 +38,20 @@ The following table lists the configurable parameters of the chart and the defau
 ## Values
 
 | Key | Type | Default | Description |
-|-----|------|---------|-------------|
+|-----|------|-------|-------------|
 | apiVersionOverrides.cronjob | string | `""` | String to override apiVersion of cronjob rendered by this helm chart |
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
-| cronjob.annotations | object | `{}` |  |
-| cronjob.concurrencyPolicy | string | `""` |  |
-| cronjob.failedJobsHistoryLimit | string | `""` |  |
+| cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
+| cronjob.concurrencyPolicy | string | `""` | Set to Allow to allow concurrent runs, Forbid to skip new runs if a previous run is still running or Replace to replace the previous run |
+| cronjob.failedJobsHistoryLimit | string | `""` | Amount of failed jobs to keep in history |
 | cronjob.initContainers | list | `[]` | Additional initContainers that can be executed before renovate |
-| cronjob.jobBackoffLimit | string | `""` |  |
-| cronjob.jobRestartPolicy | string | `"Never"` |  |
-| cronjob.labels | object | `{}` |  |
+| cronjob.jobBackoffLimit | string | `""` | Number of times to retry an errored job before considering it as being failed |
+| cronjob.jobRestartPolicy | string | `"Never"` | Set to Never to restart the job when the pod fails or to OnFailure to restart when a container fails |
+| cronjob.labels | object | `{}` | Labels to set on the cronjob |
 | cronjob.preCommand | string | `""` | Prepend shell commands before renovate runs |
-| cronjob.schedule | string | `"0 1 * * *"` |  |
-| cronjob.startingDeadlineSeconds | string | `""` |  |
-| cronjob.successfulJobsHistoryLimit | string | `""` |  |
+| cronjob.schedule | string | `"0 1 * * *"` | Schedules the job to run using cron notation |
+| cronjob.startingDeadlineSeconds | string | `""` | Deadline to start the job, skips execution if job misses it's configured deadline |
+| cronjob.successfulJobsHistoryLimit | string | `""` | Amount of completed jobs to keep in history |
 | cronjob.suspend | bool | `false` | If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions. |
 | cronjob.ttlSecondsAfterFinished | string | `"""` | Time to keep the job after it finished before automatically deleting it |
 | dind.enabled | bool | `false` | Enable dind sidecar usage? |
@@ -67,18 +67,21 @@ The following table lists the configurable parameters of the chart and the defau
 | extraConfigmaps | list | `[]` | Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config |
 | extraVolumeMounts | list | `[]` | Additional volumeMounts to the container |
 | extraVolumes | list | `[]` | Additional volumes to the pod |
+| fullnameOverride | string | `""` | Override the fully qualified app name |
 | global.commonLabels | object | `{}` | Additional labels to be set on all renovate resources |
 | hostAliases | list | `[]` | Override hostname resolution |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"renovate/renovate"` |  |
 | image.tag | string | `"34.108.2"` |  |
 | imagePullSecrets | object | `{}` |  |
-| pod.annotations | object | `{}` |  |
-| pod.labels | object | `{}` |  |
+| nameOverride | string | `""` | Override the name of the chart |
+| pod.annotations | object | `{}` | Annotations to set on the pod |
+| pod.labels | object | `{}` | Labels to set on the pod |
 | redis.architecture | string | `"standalone"` | Disable replication by default |
 | redis.auth.enabled | bool | `false` | Don't require a password by default |
 | redis.enabled | bool | `false` | Enable the Redis subchart? |
 | redis.kubeVersion | string | `""` | Override Kubernetes version for redis chart |
+| redis.nameOverride | string | `""` | Override the prefix of the redisHost |
 | renovate.config | string | `""` | Inline global renovate config.json |
 | renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See README for how to use this value |
 | renovate.configIsSecret | bool | `false` | Use this to create the renovate config as a secret instead of a configmap |
@@ -90,9 +93,9 @@ The following table lists the configurable parameters of the chart and the defau
 | resources | object | `{}` |  |
 | secrets | object | `{}` |  |
 | securityContext | object | `{}` | Pod-level security-context |
-| serviceAccount.annotations | object | `{}` |  |
-| serviceAccount.create | bool | `false` |  |
-| serviceAccount.name | string | `""` |  |
+| serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
+| serviceAccount.create | bool | `false` | Specifies whether a service account should be created |
+| serviceAccount.name | string | `""` | The name of the service account to use |
 | ssh_config.config | string | `""` |  |
 | ssh_config.enabled | bool | `false` |  |
 | ssh_config.existingSecret | string | `""` |  |

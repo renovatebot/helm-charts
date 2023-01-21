@@ -2,22 +2,35 @@ global:
   # -- Additional labels to be set on all renovate resources
   commonLabels: {}
 
+# -- Override the name of the chart
+nameOverride: ''
+# -- Override the fully qualified app name
+fullnameOverride: ''
+
 cronjob:
-  # At 01:00 every day
-  schedule: '0 1 * * *'
+  # -- Schedules the job to run using cron notation
+  schedule: '0 1 * * *' # At 01:00 every day
   # -- If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions.
   suspend: false
+  # -- Annotations to set on the cronjob
   annotations: {}
+  # -- Labels to set on the cronjob
   labels: {}
+  # -- Set to Allow to allow concurrent runs, Forbid to skip new runs if a previous run is still running or Replace to replace the previous run
   concurrencyPolicy: ''
+  # -- Amount of failed jobs to keep in history
   failedJobsHistoryLimit: ''
+  # -- Amount of completed jobs to keep in history
   successfulJobsHistoryLimit: ''
+  # -- Set to Never to restart the job when the pod fails or to OnFailure to restart when a container fails
   jobRestartPolicy: Never
   # -- Time to keep the job after it finished before automatically deleting it
   ttlSecondsAfterFinished: ''
   # -- Deadline for the job to finish
   activeDeadlineSeconds: ''
+  # -- Number of times to retry running the pod before considering the job as being failed
   jobBackoffLimit: ''
+  # -- Deadline to start the job, skips execution if job misses it's configured deadline
   startingDeadlineSeconds: ''
   # -- Additional initContainers that can be executed before renovate
   initContainers: []
@@ -32,7 +45,9 @@ cronjob:
   #   echo world
 
 pod:
+  # -- Annotations to set on the pod
   annotations: {}
+  # -- Labels to set on the pod
   labels: {}
 
 image:
@@ -136,11 +151,11 @@ extraVolumeMounts: []
 #     subPath: .netrc
 
 serviceAccount:
-  # Specifies whether a service account should be created
+  # -- Specifies whether a service account should be created
   create: false
-  # Annotations to add to the service account
+  # -- Annotations to add to the service account
   annotations: {}
-  # The name of the service account to use.
+  # -- The name of the service account to use
   # If not set and create is true, a name is generated using the fullname template
   name: ''
 
@@ -175,6 +190,9 @@ redis:
   # -- Enable the Redis subchart?
   enabled: false
 
+  # -- Override the prefix of the redisHost
+  nameOverride: ''
+
   # -- Disable replication by default
   architecture: standalone
 
@@ -202,3 +220,7 @@ hostAliases: []
 
 # -- Pod-level security-context
 securityContext: {}
+
+nodeSelector: ''
+affinity: ''
+tolerations: ''
