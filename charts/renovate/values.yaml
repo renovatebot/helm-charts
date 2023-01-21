@@ -16,7 +16,7 @@ cronjob:
   annotations: {}
   # -- Labels to set on the cronjob
   labels: {}
-  # -- Set to Allow to allow concurrent runs, Forbid to skip new runs if a previous run is still running or Replace to replace the previous run
+  # -- "Allow" to allow concurrent runs, "Forbid" to skip new runs if a previous run is still running or "Replace" to replace the previous run
   concurrencyPolicy: ''
   # -- Amount of failed jobs to keep in history
   failedJobsHistoryLimit: ''
@@ -81,7 +81,7 @@ renovate:
   # -- Use the Helm tpl function on your configuration. See README for how to use this value
   configEnableHelmTpl: false
 
-  # -- Use this to create the renovate config as a secret instead of a configmap
+  # -- Use this to create the renovate-config as a secret instead of a configmap
   configIsSecret: false
 
   # -- Renovate Container-level security-context

@@ -43,7 +43,7 @@ The following table lists the configurable parameters of the chart and the defau
 | apiVersionOverrides.cronjob | string | `""` | String to override apiVersion of cronjob rendered by this helm chart |
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
-| cronjob.concurrencyPolicy | string | `""` | Set to Allow to allow concurrent runs, Forbid to skip new runs if a previous run is still running or Replace to replace the previous run |
+| cronjob.concurrencyPolicy | string | `""` | "Allow" to allow concurrent runs, "Forbid" to skip new runs if a previous run is still running or "Replace" to replace the previous run |
 | cronjob.failedJobsHistoryLimit | string | `""` | Amount of failed jobs to keep in history |
 | cronjob.initContainers | list | `[]` | Additional initContainers that can be executed before renovate |
 | cronjob.jobBackoffLimit | string | `""` | Number of times to retry an errored job before considering it as being failed |
@@ -59,7 +59,7 @@ The following table lists the configurable parameters of the chart and the defau
 | dind.image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
 | dind.image.repository | string | `"docker"` | Repository to pull dind image from |
 | dind.image.tag | string | `"20.10.23-dind"` | dind image tag to pull |
-| dind.securityContext | object | `{"privileged":true}` | DinD Container-level security-context. Privilged is needed for DinD, it will not work without! |
+| dind.securityContext | object | `{"privileged":true}` | DinD Container-level security-context. Privileged is needed for DinD, it will not work without! |
 | dind.slim.enabled | bool | `true` | Do not add `-slim` suffix to image tag when using dind |
 | env | object | `{}` | Environment variables to set on the renovate container |
 | envFrom | list | `[]` | Environment variables to add from existing secrets/configmaps. Uses the keys as variable name |
@@ -86,7 +86,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.nameOverride | string | `""` | Override the prefix of the redisHost |
 | renovate.config | string | `""` | Inline global renovate config.json |
 | renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See README for how to use this value |
-| renovate.configIsSecret | bool | `false` | Use this to create the renovate config as a secret instead of a configmap |
+| renovate.configIsSecret | bool | `false` | Use this to create the renovate-config as a secret instead of a configmap |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | renovate.persistence.cache.enabled | bool | `false` | Allow the cache to persist between runs |
 | renovate.persistence.cache.storageClass | string | `""` | Storage class of the cache PVC |
@@ -131,5 +131,5 @@ The slim suffix will be added to the tag if not present. To disable this behavio
 
 ## Redis
 
-Please checkout [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
+Please check out [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
 
