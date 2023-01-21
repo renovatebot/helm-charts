@@ -98,13 +98,21 @@ renovate:
       storageSize: "512Mi"
 
 ssh_config:
+  # -- Whether to enable the use and creation of a secret containing .ssh files
   enabled: false
+
   # Provide .ssh config file contents
+  # -- Contents of the id_rsa file
   id_rsa: ''
+  # -- Contents of the id_rsa_pub file
   id_rsa_pub: ''
+  # -- Contents of the config file
   config: ''
+
   # or provide the name of an existing secret to be read instead.
+  # -- Name of the existing secret containing a valid .ssh configuration
   existingSecret: ''
+
 # Provide secrets inline
 secrets: {}
 # or provide the name of an existing secret to be read instead.

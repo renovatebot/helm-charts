@@ -96,11 +96,11 @@ The following table lists the configurable parameters of the chart and the defau
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `false` | Specifies whether a service account should be created |
 | serviceAccount.name | string | `""` | The name of the service account to use |
-| ssh_config.config | string | `""` |  |
-| ssh_config.enabled | bool | `false` |  |
-| ssh_config.existingSecret | string | `""` |  |
-| ssh_config.id_rsa | string | `""` |  |
-| ssh_config.id_rsa_pub | string | `""` |  |
+| ssh_config.config | string | `""` | Contents of the config file |
+| ssh_config.enabled | bool | `false` | Whether to enable the use and creation of a secret containing .ssh files |
+| ssh_config.existingSecret | string | `""` | Name of the existing secret containing a valid .ssh configuration |
+| ssh_config.id_rsa | string | `""` | Contents of the id_rsa file |
+| ssh_config.id_rsa_pub | string | `""` | Contents of the id_rsa_pub file |
 
 ## Renovate persistent cache
 
