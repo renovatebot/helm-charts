@@ -61,9 +61,9 @@ The following table lists the configurable parameters of the chart and the defau
 | dind.image.tag | string | `"20.10.23-dind"` | dind image tag to pull |
 | dind.securityContext | object | `{"privileged":true}` | DinD Container-level security-context. Privilged is needed for DinD, it will not work without! |
 | dind.slim.enabled | bool | `true` | Do not add `-slim` suffix to image tag when using dind |
-| env | object | `{}` |  |
-| envFrom | list | `[]` |  |
-| envList | list | `[]` | Additional env. To helpful if you want to use anything other than a `value` source. |
+| env | object | `{}` | Environment variables to set on the renovate container |
+| envFrom | list | `[]` | Environment variables to add from existing secrets/configmaps. Uses the keys as variable name |
+| envList | list | `[]` | Additional env. Helpful too if you want to use anything other than a `value` source. |
 | existingSecret | string | `""` | k8s secret to reference environment variables from. Overrides secrets if set |
 | extraConfigmaps | list | `[]` | Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config |
 | extraVolumeMounts | list | `[]` | Additional volumeMounts to the container |
@@ -92,7 +92,7 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.persistence.cache.storageClass | string | `""` | Storage class of the cache PVC |
 | renovate.persistence.cache.storageSize | string | `"512Mi"` | Storage size of the cache PVC |
 | renovate.securityContext | object | `{}` | Renovate Container-level security-context |
-| resources | object | `{}` |  |
+| resources | object | `{}` | Specify resource limits and requests for the renovate container |
 | secrets | object | `{}` | Environment variables that should be referenced from a k8s secret, cannot be used when existingSecret is set |
 | securityContext | object | `{}` | Pod-level security-context |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |

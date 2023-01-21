@@ -174,6 +174,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ''
 
+# -- Specify resource limits and requests for the renovate container
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -186,11 +187,18 @@ resources: {}
   #  cpu: 100m
   #  memory: 128Mi
 
+# -- Environment variables to add from existing secrets/configmaps. Uses the keys as variable name
 envFrom: []
+# envFrom:
+#   - secretRef:
+#     name: env-secrets
+#   - configMapRef:
+#     name: env-configmap
 
+# -- Environment variables to set on the renovate container
 env: {}
 
-# -- Additional env. To helpful if you want to use anything other than a `value` source.
+# -- Additional env. Helpful too if you want to use anything other than a `value` source.
 envList: []
 # envList:
 #   - name: POD_NAME
@@ -199,7 +207,7 @@ envList: []
 #         fieldPath: metadata.name
 
 redis:
-  # Configuration for a Redis subchart. Additional documenation at
+  # Configuration for a Redis subchart. Additional documentation at
   # https://github.com/bitnami/charts/tree/master/bitnami/redis
 
   # -- Enable the Redis subchart?
