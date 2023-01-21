@@ -63,7 +63,7 @@ The following table lists the configurable parameters of the chart and the defau
 | env | object | `{}` |  |
 | envFrom | list | `[]` |  |
 | envList | list | `[]` | Additional env. To helpful if you want to use anything other than a `value` source. |
-| existingSecret | string | `""` |  |
+| existingSecret | string | `""` | k8s secret to reference environment variables from. Overrides secrets if set |
 | extraConfigmaps | list | `[]` | Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config |
 | extraVolumeMounts | list | `[]` | Additional volumeMounts to the container |
 | extraVolumes | list | `[]` | Additional volumes to the pod |
@@ -91,7 +91,7 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.persistence.cache.storageSize | string | `"512Mi"` | Storage size of the cache PVC |
 | renovate.securityContext | object | `{}` | Renovate Container-level security-context |
 | resources | object | `{}` |  |
-| secrets | object | `{}` |  |
+| secrets | object | `{}` | Environment variables that should be referenced from a k8s secret, cannot be used when existingSecret is set |
 | securityContext | object | `{}` | Pod-level security-context |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `false` | Specifies whether a service account should be created |

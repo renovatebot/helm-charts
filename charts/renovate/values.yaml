@@ -113,9 +113,9 @@ ssh_config:
   # -- Name of the existing secret containing a valid .ssh configuration
   existingSecret: ''
 
-# Provide secrets inline
+# -- Environment variables that should be referenced from a k8s secret, cannot be used when existingSecret is set
 secrets: {}
-# or provide the name of an existing secret to be read instead.
+# -- k8s secret to reference environment variables from. Overrides secrets if set
 existingSecret: ''
 
 dind:
