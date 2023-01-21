@@ -39,6 +39,7 @@ The following table lists the configurable parameters of the chart and the defau
 
 | Key | Type | Default | Description |
 |-----|------|-------|-------------|
+| affinity | object | `{}` | Configure the pod(Anti)Affinity and/or node(Anti)Affinity |
 | apiVersionOverrides.cronjob | string | `""` | String to override apiVersion of cronjob rendered by this helm chart |
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
@@ -75,6 +76,7 @@ The following table lists the configurable parameters of the chart and the defau
 | image.tag | string | `"34.108.2"` | Renovate image tag to pull |
 | imagePullSecrets | object | `{}` | Secret to use to pull the image from the repository |
 | nameOverride | string | `""` | Override the name of the chart |
+| nodeSelector | object | `{}` | Select the node using labels to specify where the cronjob pod should run on |
 | pod.annotations | object | `{}` | Annotations to set on the pod |
 | pod.labels | object | `{}` | Labels to set on the pod |
 | redis.architecture | string | `"standalone"` | Disable replication by default |
@@ -101,6 +103,7 @@ The following table lists the configurable parameters of the chart and the defau
 | ssh_config.existingSecret | string | `""` | Name of the existing secret containing a valid .ssh configuration |
 | ssh_config.id_rsa | string | `""` | Contents of the id_rsa file |
 | ssh_config.id_rsa_pub | string | `""` | Contents of the id_rsa_pub file |
+| tolerations | list | `[]` | Configure which node taints the pod should tolerate |
 
 ## Renovate persistent cache
 

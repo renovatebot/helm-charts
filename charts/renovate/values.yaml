@@ -236,6 +236,15 @@ hostAliases: []
 # -- Pod-level security-context
 securityContext: {}
 
-nodeSelector: ''
-affinity: ''
-tolerations: ''
+# -- Select the node using labels to specify where the cronjob pod should run on
+nodeSelector: {}
+# See: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+# renovate: true
+
+# -- Configure the pod(Anti)Affinity and/or node(Anti)Affinity
+affinity: {}
+# See: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+
+# -- Configure which node taints the pod should tolerate
+tolerations: []
+# See: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
