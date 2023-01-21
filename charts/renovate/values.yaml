@@ -2,22 +2,35 @@ global:
   # -- Additional labels to be set on all renovate resources
   commonLabels: {}
 
+# -- Override the name of the chart
+nameOverride: ''
+# -- Override the fully qualified app name
+fullnameOverride: ''
+
 cronjob:
-  # At 01:00 every day
-  schedule: '0 1 * * *'
+  # -- Schedules the job to run using cron notation
+  schedule: '0 1 * * *'  # At 01:00 every day
   # -- If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions.
   suspend: false
+  # -- Annotations to set on the cronjob
   annotations: {}
+  # -- Labels to set on the cronjob
   labels: {}
+  # -- "Allow" to allow concurrent runs, "Forbid" to skip new runs if a previous run is still running or "Replace" to replace the previous run
   concurrencyPolicy: ''
+  # -- Amount of failed jobs to keep in history
   failedJobsHistoryLimit: ''
+  # -- Amount of completed jobs to keep in history
   successfulJobsHistoryLimit: ''
+  # -- Set to Never to restart the job when the pod fails or to OnFailure to restart when a container fails
   jobRestartPolicy: Never
   # -- Time to keep the job after it finished before automatically deleting it
   ttlSecondsAfterFinished: ''
   # -- Deadline for the job to finish
   activeDeadlineSeconds: ''
+  # -- Number of times to retry running the pod before considering the job as being failed
   jobBackoffLimit: ''
+  # -- Deadline to start the job, skips execution if job misses it's configured deadline
   startingDeadlineSeconds: ''
   # -- Additional initContainers that can be executed before renovate
   initContainers: []
@@ -32,14 +45,20 @@ cronjob:
   #   echo world
 
 pod:
+  # -- Annotations to set on the pod
   annotations: {}
+  # -- Labels to set on the pod
   labels: {}
 
 image:
+  # -- Repository to pull renovate image from
   repository: renovate/renovate
+  # -- Renovate image tag to pull
   tag: 34.108.3
+  # -- "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images
   pullPolicy: IfNotPresent
 
+# -- Secret to use to pull the image from the repository
 imagePullSecrets: {}
 
 renovate:
@@ -62,7 +81,7 @@ renovate:
   # -- Use the Helm tpl function on your configuration. See README for how to use this value
   configEnableHelmTpl: false
 
-  # -- Use this to create the renovate config as a secret instead of a configmap
+  # -- Use this to create the renovate-config as a secret instead of a configmap
   configIsSecret: false
 
   # -- Renovate Container-level security-context
@@ -79,16 +98,24 @@ renovate:
       storageSize: "512Mi"
 
 ssh_config:
+  # -- Whether to enable the use and creation of a secret containing .ssh files
   enabled: false
+
   # Provide .ssh config file contents
+  # -- Contents of the id_rsa file
   id_rsa: ''
+  # -- Contents of the id_rsa_pub file
   id_rsa_pub: ''
+  # -- Contents of the config file
   config: ''
+
   # or provide the name of an existing secret to be read instead.
+  # -- Name of the existing secret containing a valid .ssh configuration
   existingSecret: ''
-# Provide secrets inline
+
+# -- Environment variables that should be referenced from a k8s secret, cannot be used when existingSecret is set
 secrets: {}
-# or provide the name of an existing secret to be read instead.
+# -- k8s secret to reference environment variables from. Overrides secrets if set
 existingSecret: ''
 
 dind:
@@ -98,11 +125,14 @@ dind:
     # -- Do not add `-slim` suffix to image tag when using dind
     enabled: true
   image:
+    # -- Repository to pull dind image from
     repository: docker
+    # -- dind image tag to pull
     tag: 20.10.23-dind
+    # -- "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images
     pullPolicy: IfNotPresent
 
-  # -- DinD Container-level security-context. Privilged is needed for DinD, it will not work without!
+  # -- DinD Container-level security-context. Privileged is needed for DinD, it will not work without!
   securityContext:
     privileged: true
 
@@ -136,14 +166,15 @@ extraVolumeMounts: []
 #     subPath: .netrc
 
 serviceAccount:
-  # Specifies whether a service account should be created
+  # -- Specifies whether a service account should be created
   create: false
-  # Annotations to add to the service account
+  # -- Annotations to add to the service account
   annotations: {}
-  # The name of the service account to use.
+  # -- The name of the service account to use
   # If not set and create is true, a name is generated using the fullname template
   name: ''
 
+# -- Specify resource limits and requests for the renovate container
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -156,11 +187,18 @@ resources: {}
   #  cpu: 100m
   #  memory: 128Mi
 
+# -- Environment variables to add from existing secrets/configmaps. Uses the keys as variable name
 envFrom: []
+# envFrom:
+#   - secretRef:
+#     name: env-secrets
+#   - configMapRef:
+#     name: env-configmap
 
+# -- Environment variables to set on the renovate container
 env: {}
 
-# -- Additional env. To helpful if you want to use anything other than a `value` source.
+# -- Additional env. Helpful too if you want to use anything other than a `value` source.
 envList: []
 # envList:
 #   - name: POD_NAME
@@ -169,11 +207,14 @@ envList: []
 #         fieldPath: metadata.name
 
 redis:
-  # Configuration for a Redis subchart. Additional documenation at
+  # Configuration for a Redis subchart. Additional documentation at
   # https://github.com/bitnami/charts/tree/master/bitnami/redis
 
   # -- Enable the Redis subchart?
   enabled: false
+
+  # -- Override the prefix of the redisHost
+  nameOverride: ''
 
   # -- Disable replication by default
   architecture: standalone
@@ -202,3 +243,16 @@ hostAliases: []
 
 # -- Pod-level security-context
 securityContext: {}
+
+# -- Select the node using labels to specify where the cronjob pod should run on
+nodeSelector: {}
+# See: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+# renovate: true
+
+# -- Configure the pod(Anti)Affinity and/or node(Anti)Affinity
+affinity: {}
+# See: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+
+# -- Configure which node taints the pod should tolerate
+tolerations: []
+# See: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
