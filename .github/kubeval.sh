@@ -9,7 +9,7 @@ set -euxo pipefail
 KUBEVAL_VERSION=v0.16.1
 
 # renovate: datasource=github-releases depName=semver2 packageName=Ariel-Rodriguez/sh-semversion-2
-SEMVER_VERSION=1.0.3
+SEMVER_VERSION=v1.0.5
 
 CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | cut -d '/' -f 2 | uniq)"
 SCHEMA_LOCATION="https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/"
