@@ -181,6 +181,9 @@ spec:
                 - name: {{ .Chart.Name }}-tmp-volume
                   mountPath: /tmp
             {{- end }}
+          {{- with .Values.extraContainers }}
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
           volumes:
             {{- if .Values.renovate.config }}
               {{- if .Values.renovate.configIsSecret }}

@@ -165,6 +165,23 @@ extraVolumeMounts: []
 #     mountPath: /home/ubuntu/.netrc
 #     subPath: .netrc
 
+# -- Additional containers to the pod
+extraContainers: []
+# extraContainers:
+#   - name: vault-agent
+#     image: vault:1.6.2
+#     args:
+#     - agent
+#     - -config
+#     - /vault/config/config.hcl
+#     env:
+#     - name: VAULT_ADDR
+#       value: https://vault:8200
+#     - name: VAULT_SKIP_VERIFY
+#       value: "false"
+#     - name: VAULT_CACERT
+#       value: /vault/tls/ca.crt
+
 serviceAccount:
   # -- Specifies whether a service account should be created
   create: false
