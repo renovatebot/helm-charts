@@ -76,7 +76,7 @@ spec:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ include "renovate.imageTag" . }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-              {{- if or .Values.dind.enabled .Values.cronjob.preCommand}}
+              {{- if or .Values.dind.enabled .Values.cronjob.preCommand .Values.cronjob.postCommand}}
               command: ["/bin/bash", "-c"]
               args:
                 - |
@@ -88,6 +88,9 @@ spec:
                   {{- .Values.cronjob.preCommand | nindent 18 }}
                 {{- end }}
                   renovate
+                {{- if .Values.cronjob.postCommand }}
+                  {{- .Values.cronjob.postCommand | nindent 18 }}
+                {{- end }}
               {{- end }}
               {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.dind.enabled .Values.extraVolumes }}
               volumeMounts:

@@ -50,6 +50,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.jobRestartPolicy | string | `"Never"` | Set to Never to restart the job when the pod fails or to OnFailure to restart when a container fails |
 | cronjob.labels | object | `{}` | Labels to set on the cronjob |
 | cronjob.preCommand | string | `""` | Prepend shell commands before renovate runs |
+| cronjob.postCommand | string | `""` | Append shell commands after renovate runs |
 | cronjob.schedule | string | `"0 1 * * *"` | Schedules the job to run using cron notation |
 | cronjob.startingDeadlineSeconds | string | `""` | Deadline to start the job, skips execution if job misses it's configured deadline |
 | cronjob.successfulJobsHistoryLimit | string | `""` | Amount of completed jobs to keep in history |

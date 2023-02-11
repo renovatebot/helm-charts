@@ -44,6 +44,12 @@ cronjob:
   #   echo hello
   #   echo world
 
+  # -- Append shell commands after renovate runs
+  postCommand: ''
+  # postCommand: |
+  #   echo hello
+  #   echo world
+
 pod:
   # -- Annotations to set on the pod
   annotations: {}
