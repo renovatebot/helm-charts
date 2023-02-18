@@ -76,7 +76,7 @@ spec:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ include "renovate.imageTag" . }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-              {{- if or .Values.dind.enabled .Values.cronjob.preCommand}}
+              {{- if or .Values.dind.enabled .Values.cronjob.preCommand .Values.cronjob.postCommand}}
               command: ["/bin/bash", "-c"]
               args:
                 - |
@@ -88,6 +88,9 @@ spec:
                   {{- .Values.cronjob.preCommand | nindent 18 }}
                 {{- end }}
                   renovate
+                {{- if .Values.cronjob.postCommand }}
+                  {{- .Values.cronjob.postCommand | nindent 18 }}
+                {{- end }}
               {{- end }}
               {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.dind.enabled .Values.extraVolumes }}
               volumeMounts:
@@ -104,6 +107,10 @@ spec:
               {{- if .Values.extraVolumeMounts }}
                 {{- toYaml .Values.extraVolumeMounts | nindent 14 }}
               {{- end }}
+              {{- end }}
+              {{- if .Values.renovate.persistence.cache.enabled }}
+              - name: {{ include "renovate.fullname" . }}-cache
+                mountPath: /tmp/renovate
               {{- end }}
               {{- if .Values.dind.enabled }}
               - name: {{ .Chart.Name }}-tmp-volume
@@ -177,6 +184,9 @@ spec:
                 - name: {{ .Chart.Name }}-tmp-volume
                   mountPath: /tmp
             {{- end }}
+          {{- with .Values.extraContainers }}
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
           volumes:
             {{- if .Values.renovate.config }}
               {{- if .Values.renovate.configIsSecret }}
@@ -188,6 +198,11 @@ spec:
               configMap:
                 name: {{ include "renovate.fullname" . }}-config
               {{- end }}
+            {{- end }}
+            {{- if .Values.renovate.persistence.cache.enabled }}
+            - name: {{ include "renovate.fullname" . }}-cache
+              persistentVolumeClaim:
+                claimName: {{ include "renovate.fullname" . }}-cache
             {{- end }}
             {{- if .Values.ssh_config.enabled }}
             - name: ssh-config-volume

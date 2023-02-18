@@ -1,9 +1,9 @@
-FROM ghcr.io/containerbase/buildpack:5.10.2@sha256:9715543c3b51047ab5837d8a1a12c0a4b4b2caee6494eea4964eb248bfbbe110
+FROM ghcr.io/containerbase/buildpack:6.1.5@sha256:29ad7c34b790d31c627a76d97b6c90c9f0e02d4bf5d77986db581402e74bb609
 
 COPY tools/*.sh /usr/local/buildpack/tools/
 
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
-ARG DOCKER_VERSION=v20.10.22
+ARG DOCKER_VERSION=v20.10.23
 RUN install-tool docker
 
 # renovate: datasource=github-tags depName=kubectl packageName=kubernetes/kubectl
@@ -15,7 +15,7 @@ ARG KIND_VERSION=v0.17.0
 RUN install-tool kind
 
 # renovate: datasource=github-releases depName=helm packageName=helm/helm
-ARG HELM_VERSION=v3.10.3
+ARG HELM_VERSION=v3.11.1
 RUN install-tool helm
 
 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
