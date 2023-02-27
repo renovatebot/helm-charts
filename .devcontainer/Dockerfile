@@ -1,4 +1,4 @@
-FROM ghcr.io/containerbase/buildpack:6.3.0@sha256:b04fd349a1562141276094036d105535df492ac11fd7d23f158c418686f34493
+FROM ghcr.io/containerbase/buildpack:6.3.1@sha256:27cb30157b78c79493a6aeb317c0546252b028b4079c8d8ec27a9c826a4f4012
 
 COPY tools/*.sh /usr/local/buildpack/tools/
 
