@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir ./.bin
+mkdir -p ./.bin
 export PATH="./.bin:$PATH"
 
 set -euxo pipefail
