@@ -128,6 +128,10 @@ spec:
                 - name: RENOVATE_REDIS_URL
                   value: redis://{{ include "renovate.redisHost" . }}
                 {{- end }}
+                {{- if .Values.slim.enabled }}
+                - name: RENOVATE_BINARY_SOURCE
+                  value: install
+                {{- end }}
                 {{- range $k, $v := .Values.env }}
                 - name: {{ $k | quote }}
                   value: {{ $v | quote }}
