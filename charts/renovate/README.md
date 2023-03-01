@@ -56,6 +56,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.successfulJobsHistoryLimit | string | `""` | Amount of completed jobs to keep in history |
 | cronjob.suspend | bool | `false` | If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions. |
 | cronjob.ttlSecondsAfterFinished | string | `"""` | Time to keep the job after it finished before automatically deleting it |
+| slim.enabled | bool | `false` | Do not add `-slim` suffix to image tag |
 | dind.enabled | bool | `false` | Enable dind sidecar usage? |
 | dind.image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
 | dind.image.repository | string | `"docker"` | Repository to pull dind image from |
