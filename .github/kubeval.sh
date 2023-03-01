@@ -36,13 +36,16 @@ fi
 
 # validate charts
 for CHART_DIR in ${CHART_DIRS}; do
-  (cd "charts/${CHART_DIR}"; helm dependency build)
-  helm template \
-    "${apis[@]}" \
-    --values charts/"${CHART_DIR}"/ci/ci-values.yaml \
-    charts/"${CHART_DIR}" | kubeval \
-      --strict \
-      --ignore-missing-schemas \
-      --kubernetes-version "${KUBERNETES_VERSION#v}" \
-      --schema-location "${SCHEMA_LOCATION}"
+  VALUES_FILES=$(ls "./charts/${CHART_DIR}/ci/*.yaml")
+  for VALUES_FILE in ${VALUES_FILES}; do
+    (cd "charts/${CHART_DIR}"; helm dependency build)
+    helm template \
+      "${apis[@]}" \
+      --values "${VALUES_FILE}" \
+      charts/"${CHART_DIR}" | kubeval \
+        --strict \
+        --ignore-missing-schemas \
+        --kubernetes-version "${KUBERNETES_VERSION#v}" \
+        --schema-location "${SCHEMA_LOCATION}"
+    done
 done
