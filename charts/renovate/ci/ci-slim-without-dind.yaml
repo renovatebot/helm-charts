@@ -26,5 +26,4 @@ renovate:
       "repositories": ["username/repo", "orgname/repo"]
     }
 
-slim:
-  enabled: true
+slim: true
