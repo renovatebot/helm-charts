@@ -56,6 +56,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.successfulJobsHistoryLimit | string | `""` | Amount of completed jobs to keep in history |
 | cronjob.suspend | bool | `false` | If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions. |
 | cronjob.ttlSecondsAfterFinished | string | `"""` | Time to keep the job after it finished before automatically deleting it |
+| slim | bool | `false` | Add `-slim` suffix to image tag and `binarySource=install` |
 | dind.enabled | bool | `false` | Enable dind sidecar usage? |
 | dind.image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
 | dind.image.repository | string | `"docker"` | Repository to pull dind image from |
@@ -130,6 +131,10 @@ value by wrapping it like: `"key": "{{ "{{depName}}" }}"`.
 When `dind.enabled` is set to `true`, a Docker in Docker container will run as a sidecar to supply a Docker daemon to the RenovateBot container. This allows the configuration `binarySource` to be set to `docker`, which is the default configuration in the slim Docker images.
 
 The slim suffix will be added to the tag if not present. To disable this behaviour, set `dind.slim.enabled` to `false`.
+
+## slim configuration without Docker in Docker
+
+When `slim` is set to `true`, the slim suffix will be added to the tag if not present. This also sets the configuration `binarySource` to `install`.
 
 ## Redis
 
