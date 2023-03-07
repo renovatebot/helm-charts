@@ -132,6 +132,10 @@ When `dind.enabled` is set to `true`, a Docker in Docker container will run as a
 
 The slim suffix will be added to the tag if not present. To disable this behaviour, set `dind.slim.enabled` to `false`.
 
+## slim configuration without Docker in Docker
+
+When `slim` is set to `true`, the slim suffix will be added to the tag if not present. This also sets the configuration `binarySource` to `install`.
+
 ## Redis
 
 Please check out [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
