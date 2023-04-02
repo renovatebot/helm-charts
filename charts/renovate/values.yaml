@@ -145,6 +145,9 @@ dind:
   securityContext:
     privileged: true
 
+  # -- Set registry mirrors to use as pull cache
+  registryMirrors: []
+
 # -- Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config
 extraConfigmaps: []
 # extraConfigmaps:

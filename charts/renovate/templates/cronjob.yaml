@@ -170,7 +170,7 @@ spec:
               command: ["/bin/sh", "-c"]
               args:
                 - |
-                  dockerd-entrypoint.sh &
+                  dockerd-entrypoint.sh {{ range $mirror := .Values.dind.registryMirrors }}--registry-mirror {{ $mirror | quote }} {{ end }} &
                   CHILD_PID=$!
                   while ! (pgrep containerd); do sleep 1; done
                   touch /tmp/dind-started
