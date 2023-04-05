@@ -137,7 +137,7 @@ dind:
     # -- Repository to pull dind image from
     repository: docker
     # -- dind image tag to pull
-    tag: 20.10.23-dind
+    tag: 20.10.24-dind
     # -- "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images
     pullPolicy: IfNotPresent
 
