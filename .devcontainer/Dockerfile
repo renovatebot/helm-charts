@@ -1,4 +1,4 @@
-FROM ghcr.io/containerbase/base:7.8.2
+FROM ghcr.io/containerbase/base:7.8.3
 
 COPY tools/*.sh /usr/local/buildpack/tools/
 
