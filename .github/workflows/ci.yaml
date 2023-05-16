@@ -87,7 +87,7 @@ jobs:
           - v1.22.17 # renovate: kindest
           - v1.23.17 # renovate: kindest
           - v1.24.12 # renovate: kindest
-          - v1.25.3 # renovate: kindest
+          - v1.25.8 # renovate: kindest
           - v1.26.3 # renovate: kindest
           - v1.27.1 # renovate: kindest
     steps:
