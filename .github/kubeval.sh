@@ -22,9 +22,6 @@ tar -C .bin/ -xf /tmp/kubeval.tar.gz kubeval
 curl -sSfLo .bin/semver2 https://raw.githubusercontent.com/Ariel-Rodriguez/sh-semversion-2/${SEMVER_VERSION}/semver2.sh
 chmod +x .bin/semver2
 
-# add helm repos
-helm repo add bitnami https://charts.bitnami.com/bitnami
-
 # Compute required kubernetes api versions
 apis=()
 
