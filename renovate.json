@@ -47,7 +47,7 @@
       "description": "Update kindest kubernetes references",
       "fileMatch": ["^\\.github\\/workflows\\/[^/]+\\.ya?ml$"],
       "matchStrings": [
-        "\\s+- (?<currentValue>v\\d+\\.\\d+\\.\\d+) # renovate: kindest\\s+"
+        " +- (?<currentValue>v\\d+\\.\\d+\\.\\d+) # renovate: kindest\\n"
       ],
       "depNameTemplate": "kindest/node",
       "datasourceTemplate": "docker"
