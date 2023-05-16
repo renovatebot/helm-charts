@@ -43,7 +43,6 @@ When using this repo locally or contributing to this repo, you will need to buil
 You can run the following commands to do so:
 
 ```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
 cd charts/renovate
 helm dependency build
 ```
