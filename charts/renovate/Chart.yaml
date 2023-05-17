@@ -38,5 +38,5 @@ annotations:
 dependencies:
   - name: redis
     repository: oci://registry-1.docker.io/bitnamicharts
-    version: 17.10.3
+    version: 17.11.1
     condition: redis.enabled
