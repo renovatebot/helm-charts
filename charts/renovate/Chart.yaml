@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: '35.87.0'
+appVersion: '35.93.0'
 description: Universal dependency update tool that fits into your workflows.
 name: renovate
 version: '35.87.0+2'
@@ -25,11 +25,11 @@ annotations:
   artifacthub.io/license: AGPL-3.0-only
   artifacthub.io/images: |
     - name: renovate
-      image: renovate/renovate:35.87.0
+      image: renovate/renovate:35.93.0
       platforms:
         - linux/amd64
     - name: renovate-slim
-      image: renovate/renovate:35.87.0-slim
+      image: renovate/renovate:35.93.0-slim
       platforms:
         - linux/amd64
   artifacthub.io/links: |
