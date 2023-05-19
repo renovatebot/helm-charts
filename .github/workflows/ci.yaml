@@ -89,7 +89,7 @@ jobs:
           - v1.24.13 # renovate: kindest
           - v1.25.9 # renovate: kindest
           - v1.26.4 # renovate: kindest
-          - v1.27.1 # renovate: kindest
+          - v1.27.2 # renovate: kindest
     steps:
       - name: Checkout
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
