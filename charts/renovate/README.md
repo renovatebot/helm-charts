@@ -55,6 +55,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.startingDeadlineSeconds | string | `""` | Deadline to start the job, skips execution if job misses it's configured deadline |
 | cronjob.successfulJobsHistoryLimit | string | `""` | Amount of completed jobs to keep in history |
 | cronjob.suspend | bool | `false` | If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions. |
+| cronJob.timeZone | string | `""` | You can specify a time zone for a CronJob by setting timeZone to the name of a valid time zone. (starting with k8s 1.27) https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones |
 | cronjob.ttlSecondsAfterFinished | string | `"""` | Time to keep the job after it finished before automatically deleting it |
 | slim | bool | `false` | Add `-slim` suffix to image tag and `binarySource=install` |
 | dind.enabled | bool | `false` | Enable dind sidecar usage? |

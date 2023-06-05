@@ -10,6 +10,8 @@ fullnameOverride: ''
 cronjob:
   # -- Schedules the job to run using cron notation
   schedule: '0 1 * * *'  # At 01:00 every day
+  # -- You can specify a time zone for a CronJob by setting timeZone to the name of a valid time zone. (starting with k8s 1.27) https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones
+  timeZone: ''  # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for valid names
   # -- If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions.
   suspend: false
   # -- Annotations to set on the cronjob
