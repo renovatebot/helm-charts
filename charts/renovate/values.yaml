@@ -62,7 +62,7 @@ image:
   # -- Repository to pull renovate image from
   repository: renovate/renovate
   # -- Renovate image tag to pull
-  tag: 35.115.2
+  tag: 35.117.1
   # -- "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images
   pullPolicy: IfNotPresent
 
