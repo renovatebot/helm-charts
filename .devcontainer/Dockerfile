@@ -7,8 +7,7 @@ ARG DOCKER_VERSION=v24.0.2
 RUN install-tool docker
 
 # renovate: datasource=github-releases depName=kubectl packageName=kubernetes/kubernetes
-ARG KUBECTL_VERSION=1.24.1
-RUN install-tool kubectl
+ARG KUBECTL_VERSION=v1.27.3
 
 # renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
 ARG KIND_VERSION=v0.20.0
