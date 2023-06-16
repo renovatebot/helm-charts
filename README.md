@@ -14,6 +14,10 @@ Chart documentation is automatically generated using [helm-docs](https://github.
 We test the four latest versions of Kubernetes.
 The general concept is that we track the versions of Kubernetes that are supported by the major cloud providers.
 
+- [Amazon Elastic Kubernetes Service (Amazon EKS)](https://endoflife.date/amazon-eks)
+- [Azure Kubernetes Service (AKS)](https://endoflife.date/azure-kubernetes-service)
+- [Google Kubernetes Engine (GKE)](https://endoflife.date/google-kubernetes-engine)
+
 ## Add Helm repository
 
 ```bash
