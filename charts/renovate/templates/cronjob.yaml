@@ -21,6 +21,9 @@ metadata:
 {{- end }}
 spec:
   schedule: "{{ .Values.cronjob.schedule }}"
+  {{- with .Values.cronjob.timeZone }}
+  timeZone: {{ . }}
+  {{- end }}
   {{- with .Values.cronjob.suspend }}
   suspend: {{ . }}
   {{- end }}

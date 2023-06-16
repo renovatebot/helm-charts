@@ -1,9 +1,9 @@
-FROM ghcr.io/containerbase/base:7.10.0
+FROM ghcr.io/containerbase/base:8.0.5
 
 COPY tools/*.sh /usr/local/buildpack/tools/
 
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
-ARG DOCKER_VERSION=v23.0.6
+ARG DOCKER_VERSION=v24.0.2
 RUN install-tool docker
 
 # renovate: datasource=github-tags depName=kubectl packageName=kubernetes/kubernetes
@@ -11,11 +11,11 @@ ARG KUBECTL_VERSION=1.27.1
 RUN install-tool kubectl
 
 # renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
-ARG KIND_VERSION=v0.18.0
+ARG KIND_VERSION=v0.20.0
 RUN install-tool kind
 
 # renovate: datasource=github-releases depName=helm packageName=helm/helm
-ARG HELM_VERSION=v3.12.0
+ARG HELM_VERSION=v3.12.1
 RUN install-tool helm
 
 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
