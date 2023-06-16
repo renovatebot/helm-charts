@@ -6,7 +6,7 @@ COPY tools/*.sh /usr/local/buildpack/tools/
 ARG DOCKER_VERSION=v24.0.2
 RUN install-tool docker
 
-# renovate: datasource=github-tags depName=kubectl packageName=kubernetes/kubernetes
+# renovate: datasource=github-releases depName=kubectl packageName=kubernetes/kubernetes
 ARG KUBECTL_VERSION=v1.27.3
 RUN install-tool kubectl
 
