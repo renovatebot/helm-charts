@@ -1,6 +1,6 @@
 FROM ghcr.io/containerbase/base:9.0.3
 
-COPY tools/*.sh /usr/local/buildpack/tools/
+COPY tools/*.sh /usr/local/containerbase/tools/
 
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
 ARG DOCKER_VERSION=v24.0.2
