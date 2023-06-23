@@ -1,4 +1,4 @@
-FROM ghcr.io/containerbase/base:9.0.3
+FROM ghcr.io/containerbase/base:9.0.4
 
 COPY tools/*.sh /usr/local/containerbase/tools/
 
