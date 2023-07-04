@@ -29,7 +29,7 @@ annotations:
       platforms:
         - linux/amd64
     - name: renovate-slim
-      image: renovate/renovate:35.159.3-slim
+      image: renovate/renovate:35.159.4-slim
       platforms:
         - linux/amd64
   artifacthub.io/links: |
