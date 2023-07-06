@@ -61,7 +61,7 @@
       "dependencyDashboardApproval": false
     },
     {
-      "matchFiles": ["charts/renovate/README.md"],
+      "matchFileNames": ["charts/renovate/README.md"],
       "schedule": null,
       "semanticCommitType": "chore",
       "semanticCommitScope": "deps",
