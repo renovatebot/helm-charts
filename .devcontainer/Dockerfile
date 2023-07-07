@@ -3,7 +3,7 @@ FROM ghcr.io/containerbase/base:9.2.1
 COPY tools/*.sh /usr/local/containerbase/tools/
 
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
-ARG DOCKER_VERSION=v24.0.3
+ARG DOCKER_VERSION=v24.0.4
 RUN install-tool docker
 
 # renovate: datasource=github-releases depName=kubectl packageName=kubernetes/kubernetes
