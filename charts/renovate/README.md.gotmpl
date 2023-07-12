@@ -56,12 +56,21 @@ Allows you to reference values using `"{{ .Values.someValue }}"` in your config
 escape your config entries containing `{{` (i.e. `"key": "{{depName}}"`) in the
 value by wrapping it like: `"key": "{{ "{{depName}}" }}"`.
 
-## Docker in Docker configuration
+## Renovate full image
 
-When `dind.enabled` is set to `true`, a Docker in Docker container will run as a sidecar to supply a Docker daemon to the RenovateBot container. This allows the configuration `binarySource` to be set to `docker`, which is the default configuration in the slim Docker images.
-
-The slim suffix will be added to the tag if not present. To disable this behaviour, set `dind.slim.enabled` to `false`.
+This chart is using the slim renovate image by default.
+If you want to use the full renovate image, set the `image.tag` to `full`.
+If you like to use a specific major version, set the `image.tag` to `36-full`.
 
 ## Redis
 
 Please checkout [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
+
+## Upgrading
+
+A major chart version change can indicate that there is an incompatible breaking change needing maual actions.
+
+### To v16
+
+- The `slim` options was removed, the `latest` tag now points to the slim renovate docker image.
+- The `dind` option was removed. The `slim` renovate version uses `binarySource=install`, so no need for complex Docker in Docker setup.

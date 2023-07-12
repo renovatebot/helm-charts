@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 35.159.5](https://img.shields.io/badge/Version-35.159.5-informational?style=flat-square) ![AppVersion: 35.159.5](https://img.shields.io/badge/AppVersion-35.159.5-informational?style=flat-square)
+![Version: 36.0.0](https://img.shields.io/badge/Version-36.0.0-informational?style=flat-square) ![AppVersion: 36.0.0](https://img.shields.io/badge/AppVersion-36.0.0-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -55,15 +55,8 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.startingDeadlineSeconds | string | `""` | Deadline to start the job, skips execution if job misses it's configured deadline |
 | cronjob.successfulJobsHistoryLimit | string | `""` | Amount of completed jobs to keep in history |
 | cronjob.suspend | bool | `false` | If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions. |
-| cronJob.timeZone | string | `""` | You can specify a time zone for a CronJob by setting timeZone to the name of a valid time zone. (starting with k8s 1.27) https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones |
+| cronJob.timeZone | string | `""` | You can specify a time zone for a CronJob by setting timeZone to the name of a valid time zone. (starting with k8s 1.27) <https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones> |
 | cronjob.ttlSecondsAfterFinished | string | `"""` | Time to keep the job after it finished before automatically deleting it |
-| slim | bool | `false` | Add `-slim` suffix to image tag and `binarySource=install` |
-| dind.enabled | bool | `false` | Enable dind sidecar usage? |
-| dind.image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
-| dind.image.repository | string | `"docker"` | Repository to pull dind image from |
-| dind.image.tag | string | `"20.10.23-dind"` | dind image tag to pull |
-| dind.securityContext | object | `{"privileged":true}` | DinD Container-level security-context. Privileged is needed for DinD, it will not work without! |
-| dind.slim.enabled | bool | `true` | Do not add `-slim` suffix to image tag when using dind |
 | env | object | `{}` | Environment variables to set on the renovate container |
 | envFrom | list | `[]` | Environment variables to add from existing secrets/configmaps. Uses the keys as variable name |
 | envList | list | `[]` | Additional env. Helpful too if you want to use anything other than a `value` source. |
@@ -76,8 +69,9 @@ The following table lists the configurable parameters of the chart and the defau
 | global.commonLabels | object | `{}` | Additional labels to be set on all renovate resources |
 | hostAliases | list | `[]` | Override hostname resolution |
 | image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
-| image.repository | string | `"renovate/renovate"` | Repository to pull renovate image from |
-| image.tag | string | `"34.108.3"` | Renovate image tag to pull |
+| image.registry | string | `"ghcr.io"` | Registry to pull image from |
+| image.repository | string | `"renovatebot/renovate"` | Image name to pull |
+| image.tag | string | `"36.0.0"` | Renovate image tag to pull |
 | imagePullSecrets | object | `{}` | Secret to use to pull the image from the repository |
 | nameOverride | string | `""` | Override the name of the chart |
 | nodeSelector | object | `{}` | Select the node using labels to specify where the cronjob pod should run on |
@@ -127,17 +121,22 @@ Allows you to reference values using `"{{ .Values.someValue }}"` in your config
 escape your config entries containing `{{` (i.e. `"key": "{{depName}}"`) in the
 value by wrapping it like: `"key": "{{ "{{depName}}" }}"`.
 
-## Docker in Docker configuration
+## Renovate full image
 
-When `dind.enabled` is set to `true`, a Docker in Docker container will run as a sidecar to supply a Docker daemon to the RenovateBot container. This allows the configuration `binarySource` to be set to `docker`, which is the default configuration in the slim Docker images.
-
-The slim suffix will be added to the tag if not present. To disable this behaviour, set `dind.slim.enabled` to `false`.
-
-## slim configuration without Docker in Docker
-
-When `slim` is set to `true`, the slim suffix will be added to the tag if not present. This also sets the configuration `binarySource` to `install`.
+This chart is using the slim renovate image by default.
+If you want to use the full renovate image, set the `image.tag` to `full`.
+If you like to use a specific major version, set the `image.tag` to `36-full`.
 
 ## Redis
 
 Please check out [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
 
+## Upgrading
+
+A major chart version change can indicate that there is an incompatible breaking change needing maual actions.
+
+### To v16
+
+- The `slim` options was removed, the `latest` tag now points to the slim renovate docker image.
+- The `dind` option was removed. The `slim` renovate version uses `binarySource=install`, so no need for complex Docker in Docker setup.
+- The renovate image is now pulled from `ghcr.io/renovatebot/renovate` by default.
