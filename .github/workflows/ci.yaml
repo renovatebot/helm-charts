@@ -7,6 +7,8 @@ on:
       - 'renovate/**'
   pull_request:
 
+  merge_group:
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
   cancel-in-progress: true
@@ -105,3 +107,20 @@ jobs:
 
       - name: Run chart install
         run: ct install --config .github/ct.yaml
+
+  # Catch-all required check for test matrix
+  test-success:
+    needs:
+      - lint-chart
+      - lint-docs
+      - kubeval-chart
+      - install-chart
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    if: always()
+    steps:
+      - name: Fail for failed or cancelled install-chart
+        if: |
+          needs.install-chart.result == 'failure' ||
+          needs.install-chart.result == 'cancelled'
+        run: exit 1
