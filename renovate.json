@@ -29,7 +29,7 @@
       "description": "Update renovate docker image references",
       "fileMatch": ["^charts\\/renovate\\/README\\.md$"],
       "matchStrings": [
-        "\\|\\s+image.tag\\s+\\|\\s+string\\s+\\|\\s+`\"(?<currentValue>.*?)\"`\\s+\\|\\s+\\|\\s+",
+        "\\|\\s+image.tag\\s+\\|\\s+string\\s+\\|\\s+`\"(?<currentValue>.*?)\"`\\s+\\|\\s+",
         "(:\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+(?:\\+\\d+)?)"
       ],
       "depNameTemplate": "renovate/renovate",
