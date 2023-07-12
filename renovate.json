@@ -1,6 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>renovatebot/.github"],
+  "extends": [
+    "local>renovatebot/.github",
+    "local>renovatebot/.github//merge-queue.json"
+  ],
   "assignees": ["rarkins", "viceice", "JamieMagee"],
   "hostRules": [
     {
