@@ -19,7 +19,7 @@
         "appVersion: '(?<currentValue>.*?)'\\s+",
         "version: '(?<currentValue>.*?)'\\s+"
       ],
-      "depNameTemplate": "ghcr.io/renovate/renovate",
+      "depNameTemplate": "ghcr.io/renovatebot/renovate",
       "datasourceTemplate": "docker"
     },
     {
@@ -35,7 +35,7 @@
         "\\|\\s+image.tag\\s+\\|\\s+string\\s+\\|\\s+`\"(?<currentValue>.*?)\"`\\s+\\|\\s+",
         "(:\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+(?:\\+\\d+)?)"
       ],
-      "depNameTemplate": "ghcr.io/renovate/renovate",
+      "depNameTemplate": "ghcr.io/renovatebot/renovate",
       "datasourceTemplate": "docker"
     },
     {
@@ -80,10 +80,10 @@
       "extractVersion": "^v(?<version>\\d+\\.\\d+\\.\\d+)$"
     },
     {
-      "description": "Use fix semantic commit scope for renovate/renovate and redis updates",
+      "description": "Use fix semantic commit scope for renovate and redis updates",
       "matchPackageNames": [
         "renovate/renovate",
-        "ghcr.io/renovate/renovate",
+        "ghcr.io/renovatebot/renovate",
         "redis"
       ],
       "semanticCommitType": "fix",

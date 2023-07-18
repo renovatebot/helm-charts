@@ -25,7 +25,7 @@ annotations:
   artifacthub.io/license: AGPL-3.0-only
   artifacthub.io/images: |
     - name: renovate
-      image: ghcr.io/renovate/renovate:36.9.2
+      image: ghcr.io/renovatebot/renovate:36.9.2
       platforms:
         - linux/amd64
   artifacthub.io/links: |
