@@ -77,16 +77,12 @@ spec:
           {{- end }}
           containers:
             - name: {{ .Chart.Name }}
-              image: "{{ .Values.image.repository }}:{{ include "renovate.imageTag" . }}"
+              image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-              {{- if or .Values.dind.enabled .Values.cronjob.preCommand .Values.cronjob.postCommand}}
+              {{- if or .Values.cronjob.preCommand .Values.cronjob.postCommand}}
               command: ["/bin/bash", "-c"]
               args:
                 - |
-                {{- if .Values.dind.enabled }}
-                  trap "touch /tmp/main-terminated" EXIT
-                  while true; do if [[ -f "/tmp/dind-started" ]]; then break; fi; sleep 1; done
-                {{- end }}
                 {{- if .Values.cronjob.preCommand }}
                   {{- .Values.cronjob.preCommand | nindent 18 }}
                 {{- end }}
@@ -95,7 +91,7 @@ spec:
                   {{- .Values.cronjob.postCommand | nindent 18 }}
                 {{- end }}
               {{- end }}
-              {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.dind.enabled .Values.extraVolumes }}
+              {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.extraVolumes }}
               volumeMounts:
               {{- if .Values.renovate.config }}
               - name: config-volume
@@ -115,10 +111,6 @@ spec:
               - name: {{ include "renovate.fullname" . }}-cache
                 mountPath: /tmp/renovate
               {{- end }}
-              {{- if .Values.dind.enabled }}
-              - name: {{ .Chart.Name }}-tmp-volume
-                mountPath: /tmp
-              {{- end }}
               env:
                 {{- if .Values.renovate.existingConfigFile }}
                 - name: RENOVATE_CONFIG_FILE
@@ -131,21 +123,9 @@ spec:
                 - name: RENOVATE_REDIS_URL
                   value: redis://{{ include "renovate.redisHost" . }}
                 {{- end }}
-                {{- if .Values.slim }}
-                - name: RENOVATE_BINARY_SOURCE
-                  value: install
-                {{- end }}
                 {{- range $k, $v := .Values.env }}
                 - name: {{ $k | quote }}
                   value: {{ $v | quote }}
-                {{- end }}
-                {{- if .Values.dind.enabled }}
-                - name: DOCKER_HOST
-                  value: 127.0.0.1:2376
-                - name: DOCKER_CERT_PATH
-                  value: "/tmp/certs/client"
-                - name: DOCKER_TLS_VERIFY
-                  value: "true"
                 {{- end }}
                 {{- with .Values.envList }}
                   {{- toYaml . | nindent 16 }}
@@ -165,31 +145,6 @@ spec:
             {{- with .Values.resources }}
               resources:
                 {{- toYaml . | nindent 16 }}
-            {{- end }}
-            {{- if .Values.dind.enabled }}
-            - name: {{ .Chart.Name }}-dind
-              image: "{{ .Values.dind.image.repository }}:{{ .Values.dind.image.tag }}"
-              imagePullPolicy: {{ .Values.dind.image.pullPolicy }}
-              command: ["/bin/sh", "-c"]
-              args:
-                - |
-                  dockerd-entrypoint.sh &
-                  CHILD_PID=$!
-                  while ! (pgrep containerd); do sleep 1; done
-                  touch /tmp/dind-started
-                  (while true; do if [[ -f "/tmp/main-terminated" ]]; then kill $CHILD_PID; fi; sleep 1; done) &
-                  wait $CHILD_PID
-                  if [[ -f "/tmp/main-terminated" ]]; then exit 0; fi
-              env:
-                - name: DOCKER_TLS_CERTDIR
-                  value: "/tmp/certs"
-            {{- with .Values.dind.securityContext }}
-              securityContext:
-                {{- toYaml . | nindent 16 }}
-            {{- end }}
-              volumeMounts:
-                - name: {{ .Chart.Name }}-tmp-volume
-                  mountPath: /tmp
             {{- end }}
           {{- with .Values.extraContainers }}
             {{- tpl (toYaml .) $ | nindent 12 }}
@@ -215,10 +170,6 @@ spec:
             - name: ssh-config-volume
               secret:
                 secretName: {{ include "renovate.sshSecretName" .}}
-            {{- end }}
-            {{- if .Values.dind.enabled }}
-            - name: {{ .Chart.Name }}-tmp-volume
-              emptyDir: {}
             {{- end }}
             {{- if .Values.extraVolumes }}
               {{- toYaml .Values.extraVolumes | nindent 12 }}

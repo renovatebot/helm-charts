@@ -39,14 +39,6 @@
       "datasourceTemplate": "docker"
     },
     {
-      "description": "Update dind docker image references",
-      "fileMatch": ["^charts\\/renovate\\/README\\.md$"],
-      "matchStrings": [
-        "\\|\\s+dind.image.repository\\s+\\|\\s+string\\s+\\|\\s+`\"(?<depName>.*?)\"`\\s+\\|\\s+\\|\\s+\\|\\s+dind.image.tag\\s+\\|\\s+string\\s+\\|\\s+`\"(?<currentValue>.*?)\"`\\s+\\|\\s+\\|\\s+"
-      ],
-      "datasourceTemplate": "docker"
-    },
-    {
       "description": "Update kindest kubernetes references",
       "fileMatch": ["^\\.github\\/workflows\\/[^/]+\\.ya?ml$"],
       "matchStrings": [

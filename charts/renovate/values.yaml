@@ -10,7 +10,7 @@ fullnameOverride: ''
 cronjob:
   # -- Schedules the job to run using cron notation
   schedule: '0 1 * * *'  # At 01:00 every day
-  # -- You can specify a time zone for a CronJob by setting timeZone to the name of a valid time zone. (starting with k8s 1.27) https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones
+  # -- You can specify a time zone for a CronJob by setting timeZone to the name of a valid time zone. (starting with k8s 1.27) <https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones>
   timeZone: ''  # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for valid names
   # -- If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions.
   suspend: false
@@ -59,15 +59,14 @@ pod:
   labels: {}
 
 image:
-  # -- Repository to pull renovate image from
-  repository: renovate/renovate
+  # -- Registry to pull image from
+  registry: ghcr.io
+  # -- Image name to pull
+  repository: renovatebot/renovate
   # -- Renovate image tag to pull
-  tag: 35.159.7
+  tag: 36.7.2
   # -- "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images
   pullPolicy: IfNotPresent
-
-# -- Add `-slim` suffix to image tag and `binarySource=install`
-slim: false
 
 # -- Secret to use to pull the image from the repository
 imagePullSecrets: {}
@@ -128,24 +127,6 @@ ssh_config:
 secrets: {}
 # -- k8s secret to reference environment variables from. Overrides secrets if set
 existingSecret: ''
-
-dind:
-  # -- Enable dind sidecar usage?
-  enabled: false
-  slim:
-    # -- Do not add `-slim` suffix to image tag when using dind
-    enabled: true
-  image:
-    # -- Repository to pull dind image from
-    repository: docker
-    # -- dind image tag to pull
-    tag: 24.0.4-dind
-    # -- "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images
-    pullPolicy: IfNotPresent
-
-  # -- DinD Container-level security-context. Privileged is needed for DinD, it will not work without!
-  securityContext:
-    privileged: true
 
 # -- Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config
 extraConfigmaps: []
