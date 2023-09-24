@@ -1,4 +1,4 @@
-FROM ghcr.io/containerbase/base:9.20.3
+FROM ghcr.io/containerbase/base:9.20.4
 
 COPY tools/*.sh /usr/local/containerbase/tools/
 
@@ -23,7 +23,7 @@ ARG CHART_TESTING_VERSION=v3.8.0
 RUN install-tool chart-testing
 
 # renovate: datasource=github-releases depName=helm-docs packageName=norwoodj/helm-docs
-ARG HELM_DOCS_VERSION=1.11.2
+ARG HELM_DOCS_VERSION=1.11.0
 RUN install-tool helm-docs
 
 # renovate: datasource=github-releases depName=kubeval packageName=instrumenta/kubeval
