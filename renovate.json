@@ -12,7 +12,7 @@
       "concurrentRequestLimit": 1
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
       "customType": "regex",
       "description": "Update renovate docker image references",
