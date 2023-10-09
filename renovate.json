@@ -4,7 +4,6 @@
     "local>renovatebot/.github",
     "local>renovatebot/.github//merge-queue.json"
   ],
-  "platformAutomerge": false,
   "assignees": ["rarkins", "viceice", "JamieMagee"],
   "hostRules": [
     {
