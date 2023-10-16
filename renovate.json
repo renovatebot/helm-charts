@@ -100,8 +100,5 @@
       "extractVersion": "^(?<version>.+)$",
       "versioning": "regex:^v(?<major>\\d+)(\\.(?<minor>\\d+)(?:\\.(?<patch>\\d+))?)?$"
     }
-  ],
-  "constraints": {
-    "helm": "3.12.3"
-  }
+  ]
 }
