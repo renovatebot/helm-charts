@@ -206,6 +206,8 @@ envFrom: []
 
 # -- Environment variables to set on the renovate container
 env: {}
+# env:
+#   VARIABLE_NAME: "value"
 
 # -- Additional env. Helpful too if you want to use anything other than a `value` source.
 envList: []
