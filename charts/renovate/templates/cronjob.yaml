@@ -91,7 +91,7 @@ spec:
                   {{- .Values.cronjob.postCommand | nindent 18 }}
                 {{- end }}
               {{- end }}
-              {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.extraVolumes }}
+              {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.extraVolumeMounts }}
               volumeMounts:
               {{- if .Values.renovate.config }}
               - name: config-volume
