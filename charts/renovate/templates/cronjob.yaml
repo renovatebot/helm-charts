@@ -103,12 +103,12 @@ spec:
                 mountPath: /home/ubuntu/.ssh
                 readOnly: true
               {{- end }}
+              {{- if .Values.extraVolumeMounts }}
+                {{- toYaml .Values.extraVolumeMounts | nindent 14 }}
+              {{- end }}
               {{- if .Values.renovate.persistence.cache.enabled }}
               - name: {{ include "renovate.fullname" . }}-cache
                 mountPath: /tmp/renovate
-              {{- end }}
-              {{- if .Values.extraVolumeMounts }}
-                {{- toYaml .Values.extraVolumeMounts | nindent 14 }}
               {{- end }}
               {{- end }}
               env:
