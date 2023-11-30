@@ -27,7 +27,7 @@
       "customType": "regex",
       "description": "Update docker image references",
       "fileMatch": ["^charts\\/renovate\\/Chart\\.yaml$"],
-      "matchStrings": ["image: (?<depName>.*?):(?<currentValue>.*?)\\s+"],
+      "matchStrings": ["(?:image|name): (?<depName>.*?):(?<currentValue>.*?)\\s+"],
       "datasourceTemplate": "docker"
     },
     {

@@ -24,10 +24,11 @@ maintainers:
 annotations:
   artifacthub.io/license: AGPL-3.0-only
   artifacthub.io/images: |
-    - name: renovate
+    - name: ghcr.io/renovatebot/renovate:37.74.3
       image: ghcr.io/renovatebot/renovate:37.74.3
       platforms:
         - linux/amd64
+        - linux/arm64
   artifacthub.io/links: |
     - name: docs
       url: https://docs.renovatebot.com
