@@ -91,7 +91,7 @@ spec:
                   {{- .Values.cronjob.postCommand | nindent 18 }}
                 {{- end }}
               {{- end }}
-              {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.extraVolumes }}
+              {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.renovate.persistence.cache.enabled .Values.extraVolumeMounts }}
               volumeMounts:
               {{- if .Values.renovate.config }}
               - name: config-volume
@@ -106,10 +106,10 @@ spec:
               {{- if .Values.extraVolumeMounts }}
                 {{- toYaml .Values.extraVolumeMounts | nindent 14 }}
               {{- end }}
-              {{- end }}
               {{- if .Values.renovate.persistence.cache.enabled }}
               - name: {{ include "renovate.fullname" . }}-cache
                 mountPath: /tmp/renovate
+              {{- end }}
               {{- end }}
               env:
                 {{- if .Values.renovate.existingConfigFile }}

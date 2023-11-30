@@ -18,23 +18,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           fetch-depth: 0
 
       - name: Install Helm
         uses: azure/setup-helm@5119fcb9089d432beecbf79bb2c7915207344b78 # v3.5
         with:
-          version: v3.12.2 # renovate: datasource=github-releases depName=helm packageName=helm/helm
+          version: v3.13.2 # renovate: datasource=github-releases depName=helm packageName=helm/helm
 
-      - uses: actions/setup-python@61a6322f88396a6271a6ee3565807d608ecaddd1 # v4.7.0
+      - uses: actions/setup-python@65d7f2d534ac1bc67fcd62888c5f4f3d2cb2b236 # v4.7.1
         with:
-          python-version: 3.7
+          python-version-file: .python-version
 
       - name: Install chart-testing
-        uses: helm/chart-testing-action@e8788873172cb653a90ca2e819d79d65a66d4e76 # v2.4.0
+        uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
         with:
-          version: v3.8.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
+          version: v3.10.1 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
 
       - name: Run lint
         run: ct lint --config .github/ct.yaml
@@ -44,7 +44,7 @@ jobs:
     needs: lint-chart
     steps:
       - name: Checkout
-        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Run helm-docs
         run: .github/helm-docs.sh
 
@@ -57,13 +57,14 @@ jobs:
       matrix:
         k8s:
           # from https://github.com/yannh/kubernetes-json-schema
-          - v1.24.13
-          - v1.25.9
-          - v1.26.4
-          - v1.27.1
+          - v1.24.17
+          - v1.25.14
+          - v1.26.9
+          - v1.27.6
+          - v1.28.2
     steps:
       - name: Checkout
-        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           fetch-depth: 0
 
@@ -88,9 +89,10 @@ jobs:
           - v1.25.11 # renovate: kindest
           - v1.26.6 # renovate: kindest
           - v1.27.3 # renovate: kindest
+          - v1.28.0 # renovate: kindest
     steps:
       - name: Checkout
-        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           fetch-depth: 0
 
@@ -101,9 +103,9 @@ jobs:
           version: v0.20.0 # renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
 
       - name: Install chart-testing
-        uses: helm/chart-testing-action@e8788873172cb653a90ca2e819d79d65a66d4e76 # v2.4.0
+        uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
         with:
-          version: v3.8.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
+          version: v3.10.1 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
 
       - name: Run chart install
         run: ct install --config .github/ct.yaml
@@ -119,6 +121,21 @@ jobs:
     timeout-minutes: 1
     if: always()
     steps:
+      - name: Fail for failed or cancelled lint-chart
+        if: |
+          needs.lint-chart.result == 'failure' ||
+          needs.lint-chart.result == 'cancelled'
+        run: exit 1
+      - name: Fail for failed or cancelled lint-docs
+        if: |
+          needs.lint-docs.result == 'failure' ||
+          needs.lint-docs.result == 'cancelled'
+        run: exit 1
+      - name: Fail for failed or cancelled kubeval-chart
+        if: |
+          needs.kubeval-chart.result == 'failure' ||
+          needs.kubeval-chart.result == 'cancelled'
+        run: exit 1
       - name: Fail for failed or cancelled install-chart
         if: |
           needs.install-chart.result == 'failure' ||

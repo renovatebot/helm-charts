@@ -64,7 +64,7 @@ image:
   # -- Image name to pull
   repository: renovatebot/renovate
   # -- Renovate image tag to pull
-  tag: 36.10.1
+  tag: 37.74.3
   # -- "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images
   pullPolicy: IfNotPresent
 
@@ -206,6 +206,8 @@ envFrom: []
 
 # -- Environment variables to set on the renovate container
 env: {}
+# env:
+#   VARIABLE_NAME: "value"
 
 # -- Additional env. Helpful too if you want to use anything other than a `value` source.
 envList: []

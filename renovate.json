@@ -11,8 +11,9 @@
       "concurrentRequestLimit": 1
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "description": "Update renovate docker image references",
       "fileMatch": ["^charts\\/renovate\\/Chart\\.yaml$"],
       "matchStrings": [
@@ -23,12 +24,14 @@
       "datasourceTemplate": "docker"
     },
     {
+      "customType": "regex",
       "description": "Update docker image references",
       "fileMatch": ["^charts\\/renovate\\/Chart\\.yaml$"],
       "matchStrings": ["image: (?<depName>.*?):(?<currentValue>.*?)\\s+"],
       "datasourceTemplate": "docker"
     },
     {
+      "customType": "regex",
       "description": "Update renovate docker image references",
       "fileMatch": ["^charts\\/renovate\\/README\\.md$"],
       "matchStrings": [
@@ -39,6 +42,7 @@
       "datasourceTemplate": "docker"
     },
     {
+      "customType": "regex",
       "description": "Update kindest kubernetes references",
       "fileMatch": ["^\\.github\\/workflows\\/[^/]+\\.ya?ml$"],
       "matchStrings": [

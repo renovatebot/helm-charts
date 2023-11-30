@@ -1,14 +1,34 @@
 {
   "name": "renovatebot/helm-charts",
-  "dockerFile": "Dockerfile",
-  "remoteUser": "user",
-  "runArgs": ["--init"],
-  "mounts": ["source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"],
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+  "build": {
+    "dockerfile": "Dockerfile"
   },
-  "extensions": [
-    "ms-azuretools.vscode-docker",
-    "ms-kubernetes-tools.vscode-kubernetes-tools"
-  ]
+  "init": true,
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
+  ],
+  "customizations": {
+    "vscode": {
+      "terminal.integrated.profiles.linux": {
+        "bash": {
+          "path": "bash",
+          "icon": "terminal-bash"
+        }
+      },
+      "terminal.integrated.defaultProfile.linux": "bash",
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "EditorConfig.editorconfig",
+        "github.vscode-github-actions",
+        "ms-azuretools.vscode-docker",
+        "ms-kubernetes-tools.vscode-kubernetes-tools"
+      ],
+      "settings": {
+        "shellcheck.executablePath": "shellcheck",
+        "shellcheck.disableVersionCheck": true
+      }
+    }
+  },
+  "postCreateCommand": ".devcontainer/post-create.sh",
+  "waitFor": "postCreateCommand"
 }
