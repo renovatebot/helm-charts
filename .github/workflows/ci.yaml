@@ -29,7 +29,7 @@ jobs:
 
       - uses: actions/setup-python@65d7f2d534ac1bc67fcd62888c5f4f3d2cb2b236 # v4.7.1
         with:
-          python-version-file: '.python-version'
+          python-version-file: .python-version
 
       - name: Install chart-testing
         uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
