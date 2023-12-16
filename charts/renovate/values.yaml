@@ -74,7 +74,7 @@ imagePullSecrets: {}
 renovate:
   # -- Custom exiting global renovate config
   existingConfigFile: ''
-  # -- Inline global renovate config.json
+  # -- Inline global renovate config.json5
   config: ''
   # See https://docs.renovatebot.com/self-hosted-configuration
   # config: |

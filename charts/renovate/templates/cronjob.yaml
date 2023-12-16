@@ -95,8 +95,8 @@ spec:
               volumeMounts:
               {{- if .Values.renovate.config }}
               - name: config-volume
-                mountPath: /usr/src/app/config.json
-                subPath: config.json
+                mountPath: /usr/src/app/config.json5
+                subPath: config.json5
               {{- end }}
               {{- if .Values.ssh_config.enabled }}
               - name: ssh-config-volume
@@ -117,7 +117,7 @@ spec:
                   value: {{ .Values.renovate.existingConfigFile }}
                 {{- else if .Values.renovate.config }}
                 - name: RENOVATE_CONFIG_FILE
-                  value: /usr/src/app/config.json
+                  value: /usr/src/app/config.json5
                 {{- end }}
                 {{- if .Values.redis.enabled }}
                 - name: RENOVATE_REDIS_URL

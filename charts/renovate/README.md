@@ -20,7 +20,7 @@ helm repo update
 Using config from a file:
 
 ```bash
-helm install --generate-name --set-file renovate.config=config.json renovate/renovate
+helm install --generate-name --set-file renovate.config=config.json5 renovate/renovate
 ```
 
 Using config from a string:
@@ -82,7 +82,7 @@ The following table lists the configurable parameters of the chart and the defau
 | redis.enabled | bool | `false` | Enable the Redis subchart? |
 | redis.kubeVersion | string | `""` | Override Kubernetes version for redis chart |
 | redis.nameOverride | string | `""` | Override the prefix of the redisHost |
-| renovate.config | string | `""` | Inline global renovate config.json |
+| renovate.config | string | `""` | Inline global renovate config.json5 |
 | renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See README for how to use this value |
 | renovate.configIsSecret | bool | `false` | Use this to create the renovate-config as a secret instead of a configmap |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
@@ -114,7 +114,7 @@ can't write to the mounted PVC. For the current default user (`ubuntu`), the cor
 
 ## Renovate config templating
 
-Enable `renovate.configEnableHelmTpl` to use helm templates for generated renovate `config.json`.
+Enable `renovate.configEnableHelmTpl` to use helm templates for generated renovate `config.json5`.
 Allows you to reference values using `"{{ .Values.someValue }}"` in your config
 
 **NOTE**: setting `renovate.configEnableHelmTpl` to true means that you have to

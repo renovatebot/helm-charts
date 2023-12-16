@@ -15,7 +15,7 @@ stringData:
 {{- else }}
 data:
 {{- end }}
-  config.json: |-
+  config.json5: |-
   {{- if not .Values.renovate.configEnableHelmTpl }}
     {{- required "A valid .Values.renovate.config entry is required if existingConfigFile is not specified!" .Values.renovate.config | nindent 4 }}
   {{- else }}

@@ -30,7 +30,7 @@ helm repo update
 Using config from a file:
 
 ```bash
-helm install --generate-name --set-file renovate.config=config.json renovate/renovate
+helm install --generate-name --set-file renovate.config=config.json5 renovate/renovate
 ```
 
 Using config from a string:

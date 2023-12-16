@@ -21,7 +21,7 @@ helm repo update
 Using config from a file:
 
 ```bash
-helm install --generate-name --set-file renovate.config=config.json renovate/renovate
+helm install --generate-name --set-file renovate.config=config.json5 renovate/renovate
 ```
 
 Using config from a string:
@@ -49,7 +49,7 @@ can't write to the mounted PVC. For the current default user (`ubuntu`), the cor
 
 ## Renovate config templating
 
-Enable `renovate.configEnableHelmTpl` to use helm templates for generated renovate `config.json`.
+Enable `renovate.configEnableHelmTpl` to use helm templates for generated renovate `config.json5`.
 Allows you to reference values using `"{{ .Values.someValue }}"` in your config
 
 **NOTE**: setting `renovate.configEnableHelmTpl` to true means that you have to
