@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 37.100.2](https://img.shields.io/badge/Version-37.100.2-informational?style=flat-square) ![AppVersion: 37.100.2](https://img.shields.io/badge/AppVersion-37.100.2-informational?style=flat-square)
+![Version: 37.101.0](https://img.shields.io/badge/Version-37.101.0-informational?style=flat-square) ![AppVersion: 37.101.0](https://img.shields.io/badge/AppVersion-37.101.0-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -71,7 +71,7 @@ The following table lists the configurable parameters of the chart and the defau
 | image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
 | image.registry | string | `"ghcr.io"` | Registry to pull image from |
 | image.repository | string | `"renovatebot/renovate"` | Image name to pull |
-| image.tag | string | `"37.100.2"` | Renovate image tag to pull |
+| image.tag | string | `"37.101.0"` | Renovate image tag to pull |
 | imagePullSecrets | object | `{}` | Secret to use to pull the image from the repository |
 | nameOverride | string | `""` | Override the name of the chart |
 | nodeSelector | object | `{}` | Select the node using labels to specify where the cronjob pod should run on |
