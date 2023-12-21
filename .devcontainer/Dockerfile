@@ -24,7 +24,7 @@ ARG HELM_VERSION=v3.13.3
 RUN install-tool helm
 
 # renovate: datasource=github-releases depName=helm-docs packageName=norwoodj/helm-docs
-ARG HELM_DOCS_VERSION=1.11.3
+ARG HELM_DOCS_VERSION=1.12.0
 RUN install-tool helm-docs
 
 # renovate: datasource=github-releases depName=kubeval packageName=instrumenta/kubeval
