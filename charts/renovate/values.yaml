@@ -200,9 +200,9 @@ resources: {}
 envFrom: []
 # envFrom:
 #   - secretRef:
-#     name: env-secrets
+#       name: env-secrets
 #   - configMapRef:
-#     name: env-configmap
+#       name: env-configmap
 
 # -- Environment variables to set on the renovate container
 env: {}
