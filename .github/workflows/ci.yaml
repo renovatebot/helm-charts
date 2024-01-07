@@ -58,10 +58,11 @@ jobs:
         k8s:
           # from https://github.com/yannh/kubernetes-json-schema
           - v1.24.17
-          - v1.25.14
-          - v1.26.9
-          - v1.27.6
-          - v1.28.2
+          - v1.25.16
+          - v1.26.12
+          - v1.27.9
+          - v1.28.5
+          - v1.29.0
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -90,6 +91,7 @@ jobs:
           - v1.26.6 # renovate: kindest
           - v1.27.3 # renovate: kindest
           - v1.28.0 # renovate: kindest
+          - v1.29.0 # renovate: kindest
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
