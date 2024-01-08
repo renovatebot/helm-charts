@@ -57,8 +57,6 @@ jobs:
       matrix:
         k8s:
           # from https://github.com/yannh/kubernetes-json-schema
-          - v1.24.17
-          - v1.25.16
           - v1.26.12
           - v1.27.9
           - v1.28.5
@@ -86,8 +84,6 @@ jobs:
       matrix:
         k8s:
           # from https://hub.docker.com/r/kindest/node/tags
-          - v1.24.15 # renovate: kindest
-          - v1.25.11 # renovate: kindest
           - v1.26.6 # renovate: kindest
           - v1.27.3 # renovate: kindest
           - v1.28.0 # renovate: kindest
