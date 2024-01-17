@@ -25,7 +25,7 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@5119fcb9089d432beecbf79bb2c7915207344b78 # v3.5
         with:
-          version: v3.13.3 # renovate: datasource=github-releases depName=helm packageName=helm/helm
+          version: v3.14.0 # renovate: datasource=github-releases depName=helm packageName=helm/helm
 
       - name: Build chart dependencies
         run: |
