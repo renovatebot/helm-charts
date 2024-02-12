@@ -135,8 +135,4 @@ Please check out [bitnami redis](https://artifacthub.io/packages/helm/bitnami/re
 
 A major chart version change can indicate that there is an incompatible breaking change needing maual actions.
 
-### To v16
-
-- The `slim` options was removed, the `latest` tag now points to the slim renovate docker image.
-- The `dind` option was removed. The `slim` renovate version uses `binarySource=install`, so no need for complex Docker in Docker setup.
-- The renovate image is now pulled from `ghcr.io/renovatebot/renovate` by default.
+_No recent breaking changes needing manual actions._
