@@ -84,10 +84,12 @@ spec:
               args:
                 - |
                 {{- if .Values.cronjob.preCommand }}
+                  set -e
                   {{- .Values.cronjob.preCommand | nindent 18 }}
                 {{- end }}
                   renovate
                 {{- if .Values.cronjob.postCommand }}
+                  set -e
                   {{- .Values.cronjob.postCommand | nindent 18 }}
                 {{- end }}
               {{- end }}
