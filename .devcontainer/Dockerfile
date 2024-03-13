@@ -20,7 +20,7 @@ ARG KIND_VERSION=v0.22.0
 RUN install-tool kind
 
 # renovate: datasource=github-releases depName=helm packageName=helm/helm
-ARG HELM_VERSION=v3.14.2
+ARG HELM_VERSION=v3.14.3
 RUN install-tool helm
 
 # renovate: datasource=github-releases depName=helm-docs packageName=norwoodj/helm-docs
