@@ -1,4 +1,4 @@
-FROM ghcr.io/containerbase/devcontainer:10.1.2
+FROM ghcr.io/containerbase/devcontainer:10.1.4
 
 USER root
 
@@ -20,11 +20,11 @@ ARG KIND_VERSION=v0.22.0
 RUN install-tool kind
 
 # renovate: datasource=github-releases depName=helm packageName=helm/helm
-ARG HELM_VERSION=v3.14.1
+ARG HELM_VERSION=v3.14.3
 RUN install-tool helm
 
 # renovate: datasource=github-releases depName=helm-docs packageName=norwoodj/helm-docs
-ARG HELM_DOCS_VERSION=1.12.0
+ARG HELM_DOCS_VERSION=1.13.1
 RUN install-tool helm-docs
 
 # renovate: datasource=github-releases depName=kubeval packageName=instrumenta/kubeval
