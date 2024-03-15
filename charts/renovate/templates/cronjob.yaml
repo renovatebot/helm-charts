@@ -30,6 +30,15 @@ spec:
   {{- with .Values.cronjob.concurrencyPolicy }}
   concurrencyPolicy: {{ . }}
   {{- end }}
+  {{- with .Values.cronjob.completions }}
+  completions: {{ . }}
+  {{- end }}
+  {{- with .Values.cronjob.completionMode }}
+  completionMode: {{ . }}
+  {{- end }}
+  {{- with .Values.cronjob.parallelism}}
+  parallelism: {{ . }}
+  {{- end }}
   {{- with .Values.cronjob.failedJobsHistoryLimit }}
   failedJobsHistoryLimit: {{ . }}
   {{- end }}
