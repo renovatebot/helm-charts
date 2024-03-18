@@ -44,6 +44,15 @@ spec:
       labels:
         {{- include "renovate.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.cronjob.completions }}
+      completions: {{ . }}
+      {{- end }}
+      {{- with .Values.cronjob.completionMode }}
+      completionMode: {{ . }}
+      {{- end }}
+      {{- with .Values.cronjob.parallelism}}
+      parallelism: {{ . }}
+      {{- end }}
       {{- if .Values.cronjob.ttlSecondsAfterFinished }}
       ttlSecondsAfterFinished: {{ .Values.cronjob.ttlSecondsAfterFinished }}
       {{- end }}

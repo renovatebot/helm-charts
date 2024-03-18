@@ -43,12 +43,15 @@ The following table lists the configurable parameters of the chart and the defau
 | apiVersionOverrides.cronjob | string | `""` | String to override apiVersion of cronjob rendered by this helm chart |
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
+| cronjob.completions | string | `""` | Number of successful completions before the job is considered complete |
+| cronjob.completionMode | string | `""` | Set to `Indexed` the Pods of a Job get an associated completion index from 0 to x |
 | cronjob.concurrencyPolicy | string | `""` | "Allow" to allow concurrent runs, "Forbid" to skip new runs if a previous run is still running or "Replace" to replace the previous run |
 | cronjob.failedJobsHistoryLimit | string | `""` | Amount of failed jobs to keep in history |
 | cronjob.initContainers | list | `[]` | Additional initContainers that can be executed before renovate |
 | cronjob.jobBackoffLimit | string | `""` | Number of times to retry an errored job before considering it as being failed |
 | cronjob.jobRestartPolicy | string | `"Never"` | Set to Never to restart the job when the pod fails or to OnFailure to restart when a container fails |
 | cronjob.labels | object | `{}` | Labels to set on the cronjob |
+| cronjob.parallelism | string | `""` | Number of pods to run in parallel |
 | cronjob.preCommand | string | `""` | Prepend shell commands before renovate runs |
 | cronjob.postCommand | string | `""` | Append shell commands after renovate runs |
 | cronjob.schedule | string | `"0 1 * * *"` | Schedules the job to run using cron notation |

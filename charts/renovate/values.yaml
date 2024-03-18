@@ -20,6 +20,10 @@ cronjob:
   labels: {}
   # -- "Allow" to allow concurrent runs, "Forbid" to skip new runs if a previous run is still running or "Replace" to replace the previous run
   concurrencyPolicy: ''
+  # -- "Number of successful completions is reached to mark the job as complete"
+  completions: ''
+  # -- "Where the jobs should be NonIndexed or Indexed"
+  completionMode: ''
   # -- Amount of failed jobs to keep in history
   failedJobsHistoryLimit: ''
   # -- Amount of completed jobs to keep in history
@@ -39,7 +43,8 @@ cronjob:
   # initContainers:
   # - name: INIT_CONTAINER_NAME
   #   image: INIT_CONTAINER_IMAGE
-
+  # -- Number of pods to run in parallel
+  parallelism: ''
   # -- Prepend shell commands before renovate runs
   preCommand: ''
   # preCommand: |
