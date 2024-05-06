@@ -111,6 +111,8 @@ renovate:
       storageClass: ""
       # -- Storage size of the cache PVC
       storageSize: "512Mi"
+      # -- Existing volume, enables binding the pvc to an existing volume
+      volumeName: ""
 
 ssh_config:
   # -- Whether to enable the use and creation of a secret containing .ssh files

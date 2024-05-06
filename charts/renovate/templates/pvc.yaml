@@ -7,6 +7,9 @@ spec:
   {{- if .Values.renovate.persistence.cache.storageClass }}
   storageClassName: {{ .Values.renovate.persistence.cache.storageClass }}
   {{- end }}
+  {{- if .Values.renovate.persistence.cache.volumeName }}
+  volumeName: {{ .Values.renovate.persistence.cache.volumeName }}
+  {{- end }}
   accessModes:
     - ReadWriteOnce
   resources:
