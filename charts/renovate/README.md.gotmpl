@@ -50,11 +50,11 @@ can't write to the mounted PVC. For the current default user (`ubuntu`), the cor
 ## Renovate config templating
 
 Enable `renovate.configEnableHelmTpl` to use helm templates for generated renovate `config.json`.
-Allows you to reference values using `"{{ .Values.someValue }}"` in your config
+Allows you to reference values using `"\\{\\{ .Values.someValue \\}\\}"` in your config
 
 **NOTE**: setting `renovate.configEnableHelmTpl` to true means that you have to
-escape your config entries containing `{{` (i.e. `"key": "{{depName}}"`) in the
-value by wrapping it like: `"key": "{{ "{{depName}}" }}"`.
+escape your config entries containing `\{\{` (i.e. `"key": "\{\{depName\}\}"`) in the
+value by wrapping it like: `"key": "\{\{ "\{\{depName\}\}" \}\}"`.
 
 ## Renovate full image
 
