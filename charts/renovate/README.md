@@ -89,10 +89,11 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See README for how to use this value |
 | renovate.configIsSecret | bool | `false` | Use this to create the renovate-config as a secret instead of a configmap |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
-| renovate.persistence | object | `{"cache":{"enabled":false,"storageClass":"","storageSize":"512Mi"}}` | Options related to persistence |
+| renovate.persistence | object | `{"cache":{"enabled":false,"storageClass":"","storageSize":"512Mi","volumeName":""}}` | Options related to persistence |
 | renovate.persistence.cache.enabled | bool | `false` | Allow the cache to persist between runs |
 | renovate.persistence.cache.storageClass | string | `""` | Storage class of the cache PVC |
 | renovate.persistence.cache.storageSize | string | `"512Mi"` | Storage size of the cache PVC |
+| renovate.persistence.cache.volumeName | string | `""` | Existing volume, enables binding the pvc to an existing volume |
 | renovate.securityContext | object | `{}` | Renovate Container-level security-context |
 | resources | object | `{}` | Specify resource limits and requests for the renovate container |
 | secrets | object | `{}` | Environment variables that should be referenced from a k8s secret, cannot be used when existingSecret is set |
