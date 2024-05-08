@@ -13,5 +13,5 @@ curl --silent --show-error --fail --location --output /tmp/helm-docs.tar.gz http
 tar -C .bin/ -xf /tmp/helm-docs.tar.gz helm-docs
 
 # validate docs
-helm-docs
+helm-docs | tee | grep 'Error generating gotemplates' && exit 1
 git diff --exit-code
