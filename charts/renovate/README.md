@@ -75,6 +75,7 @@ The following table lists the configurable parameters of the chart and the defau
 | image.registry | string | `"ghcr.io"` | Registry to pull image from |
 | image.repository | string | `"renovatebot/renovate"` | Image name to pull |
 | image.tag | string | `"37.354.0"` | Renovate image tag to pull |
+| image.useFull | bool | `false` | Set `true` to use the full image. See https://docs.renovatebot.com/getting-started/running/#the-full-image |
 | imagePullSecrets | object | `{}` | Secret to use to pull the image from the repository |
 | nameOverride | string | `""` | Override the name of the chart |
 | nodeSelector | object | `{}` | Select the node using labels to specify where the cronjob pod should run on |
