@@ -88,7 +88,16 @@ spec:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-              {{- if or .Values.cronjob.preCommand .Values.cronjob.postCommand}}
+              {{- if or .Values.cronjob.commandOverride .Values.cronjob.argsOverride }}
+              {{- if .Values.cronjob.commandOverride }}
+              command:
+                {{- toYaml .Values.cronjob.commandOverride | nindent 16 }}
+              {{- end }}
+              {{- if .Values.cronjob.argsOverride }}
+              args:
+                {{- toYaml .Values.cronjob.argsOverride | nindent 16 }}
+              {{- end }}
+              {{- else if or .Values.cronjob.preCommand .Values.cronjob.postCommand }}
               command: ["/bin/bash", "-c"]
               args:
                 - |

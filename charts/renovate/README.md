@@ -43,6 +43,8 @@ The following table lists the configurable parameters of the chart and the defau
 | apiVersionOverrides.cronjob | string | `""` | String to override apiVersion of cronjob rendered by this helm chart |
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
+| cronjob.argsOverride | list | `[]` | Custom arguments to run in the container |
+| cronjob.commandOverride | list | `[]` | Custom command to run in the container |
 | cronjob.completionMode | string | `""` | "Where the jobs should be NonIndexed or Indexed" |
 | cronjob.completions | string | `""` | "Number of successful completions is reached to mark the job as complete" |
 | cronjob.concurrencyPolicy | string | `""` | "Allow" to allow concurrent runs, "Forbid" to skip new runs if a previous run is still running or "Replace" to replace the previous run |
