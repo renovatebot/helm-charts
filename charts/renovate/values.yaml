@@ -45,6 +45,10 @@ cronjob:
   #   image: INIT_CONTAINER_IMAGE
   # -- Number of pods to run in parallel
   parallelism: ''
+  # -- Custom command to run in the container
+  commandOverride: []
+  # -- Custom arguments to run in the container
+  argsOverride: []
   # -- Prepend shell commands before renovate runs
   preCommand: ''
   # preCommand: |
