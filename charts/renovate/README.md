@@ -117,8 +117,6 @@ To speed up execution time of jobs it could be useful to enable persistent cachi
 can make use of the cache that have been build up in previous runs. Set `renovate.persistence.cache.enabled` to true
 to enable this. If necessary, the storageClass can be configured and the storageSize can be set to the preferred value.
 
-**NOTE**: `securityContext.fsGroup` must be set to the correct group ID to use the persistent cache. Without it, renovate
-can't write to the mounted PVC. For the current default user (`ubuntu`), the correct fsGroup is `1000`.
 
 ## Renovate config templating
 
