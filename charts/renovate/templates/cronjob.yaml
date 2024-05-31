@@ -205,9 +205,17 @@ spec:
           tolerations:
             {{ toYaml . | nindent 12 }}
         {{- end }}
+        {{- if .Values.renovate.persistence.cache.enabled }}
+          securityContext:
+            fsGroup: 1000
+            {{- with .Values.securityContext }}
+              {{- toYaml . | nindent 12 }}
+            {{ end }}
+        {{- else }}
         {{- with .Values.securityContext }}
           securityContext:
-            {{ toYaml . | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
         {{- end }}
         {{- with .Values.imagePullSecrets }}
           imagePullSecrets:
