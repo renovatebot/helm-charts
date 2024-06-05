@@ -250,13 +250,6 @@ redis:
   # -- Override Kubernetes version for redis chart
   kubeVersion: ''
 
-# Override APIVersions
-# If you want to template helm charts but cannot access k8s API server
-# you can set api versions here
-apiVersionOverrides:
-  # -- String to override apiVersion of cronjob rendered by this helm chart
-  cronjob: ''
-
 # -- Override hostname resolution
 hostAliases: []
 # See: https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/
