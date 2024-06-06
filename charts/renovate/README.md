@@ -40,7 +40,6 @@ The following table lists the configurable parameters of the chart and the defau
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Configure the pod(Anti)Affinity and/or node(Anti)Affinity |
-| apiVersionOverrides.cronjob | string | `""` | String to override apiVersion of cronjob rendered by this helm chart |
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
 | cronjob.argsOverride | list | `[]` | Custom arguments to run in the container |
