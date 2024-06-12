@@ -207,7 +207,7 @@ spec:
         {{- end }}
         {{- if .Values.renovate.persistence.cache.enabled }}
           securityContext:
-            fsGroup: 1000
+            fsGroup: {{ .Values.securityContext.fsGroup | default 1000 }}
             {{- with .Values.securityContext }}
               {{- toYaml . | nindent 12 }}
             {{ end }}
