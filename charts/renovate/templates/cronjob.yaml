@@ -209,7 +209,10 @@ spec:
           securityContext:
             fsGroup: {{ .Values.securityContext.fsGroup | default 1000 }}
             {{- with .Values.securityContext }}
-              {{- toYaml . | nindent 12 }}
+            {{ $securityDict := omit . "fsGroup" }}
+            {{- if not (empty $securityDict) }}
+              {{- toYaml $securityDict }}
+            {{ end }}
             {{ end }}
         {{- else }}
         {{- with .Values.securityContext }}
