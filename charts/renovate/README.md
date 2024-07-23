@@ -116,7 +116,6 @@ To speed up execution time of jobs it could be useful to enable persistent cachi
 can make use of the cache that have been build up in previous runs. Set `renovate.persistence.cache.enabled` to true
 to enable this. If necessary, the storageClass can be configured and the storageSize can be set to the preferred value.
 
-
 ## Renovate config templating
 
 Enable `renovate.configEnableHelmTpl` to use helm templates for generated renovate `config.json`.
