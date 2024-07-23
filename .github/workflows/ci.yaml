@@ -27,7 +27,7 @@ jobs:
         with:
           version: v3.15.3 # renovate: datasource=github-releases depName=helm packageName=helm/helm
 
-      - uses: actions/setup-python@b64ffcaf5b410884ad320a9cfac8866006a109aa # v4.8.0
+      - uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f # v5.1.1
         with:
           python-version-file: .python-version
 
