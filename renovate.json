@@ -5,12 +5,6 @@
     "local>renovatebot/.github//merge-queue.json"
   ],
   "assignees": ["rarkins", "viceice", "JamieMagee"],
-  "hostRules": [
-    {
-      "matchHost": "api.github.com",
-      "concurrentRequestLimit": 1
-    }
-  ],
   "customManagers": [
     {
       "customType": "regex",
@@ -55,7 +49,7 @@
   "packageRules": [
     {
       "description": "Don't require approval for redis major updates",
-      "matchPackageNames": ["redis"],
+      "matchDepNames": ["redis"],
       "matchManagers": ["helmv3"],
       "dependencyDashboardApproval": false
     },
@@ -68,24 +62,24 @@
     },
     {
       "description": "Separate minor and patch updates for kindest",
-      "matchPackageNames": ["kindest/node"],
+      "matchDepNames": ["kindest/node"],
       "separateMinorPatch": true
     },
     {
       "description": "Require approval and no automerge for kindest major and minor updates",
-      "matchPackageNames": ["kindest/node"],
+      "matchDepNames": ["kindest/node"],
       "matchUpdateTypes": ["major", "minor"],
       "dependencyDashboardApproval": true,
       "automerge": false
     },
     {
       "description": "Trim leading v from version for helm-docs",
-      "matchPackageNames": ["helm-docs"],
+      "matchDepNames": ["helm-docs"],
       "extractVersion": "^v(?<version>\\d+\\.\\d+\\.\\d+)$"
     },
     {
       "description": "Use fix semantic commit scope for renovate and redis updates",
-      "matchPackageNames": [
+      "matchDepNames": [
         "renovate/renovate",
         "ghcr.io/renovatebot/renovate",
         "redis"
@@ -96,7 +90,7 @@
     {
       "description": "Workaround for azure/setup-helm action updates",
       "matchDepTypes": ["action"],
-      "matchPackageNames": ["azure/setup-helm"],
+      "matchDepNames": ["azure/setup-helm"],
       "extractVersion": "^(?<version>.+)$",
       "versioning": "regex:^v(?<major>\\d+)(\\.(?<minor>\\d+)(?:\\.(?<patch>\\d+))?)?$"
     }
