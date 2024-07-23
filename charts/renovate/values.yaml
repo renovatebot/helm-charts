@@ -73,7 +73,7 @@ image:
   # -- Image name to pull
   repository: renovatebot/renovate
   # -- Renovate image tag to pull
-  tag: 37.382.4
+  tag: 37.440.0
   # -- "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images
   pullPolicy: IfNotPresent
   # -- Set `true` to use the full image. See https://docs.renovatebot.com/getting-started/running/#the-full-image
@@ -249,13 +249,6 @@ redis:
 
   # -- Override Kubernetes version for redis chart
   kubeVersion: ''
-
-# Override APIVersions
-# If you want to template helm charts but cannot access k8s API server
-# you can set api versions here
-apiVersionOverrides:
-  # -- String to override apiVersion of cronjob rendered by this helm chart
-  cronjob: ''
 
 # -- Override hostname resolution
 hostAliases: []

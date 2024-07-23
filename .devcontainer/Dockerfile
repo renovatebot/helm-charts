@@ -1,4 +1,4 @@
-FROM ghcr.io/containerbase/devcontainer:10.6.19
+FROM ghcr.io/containerbase/devcontainer:10.16.0
 
 USER root
 
@@ -12,7 +12,7 @@ RUN install-tool chart-testing
 USER vscode
 
 # renovate: datasource=github-releases depName=kubectl packageName=kubernetes/kubernetes
-ARG KUBECTL_VERSION=v1.30.1
+ARG KUBECTL_VERSION=v1.30.3
 RUN install-tool kubectl
 
 # renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
@@ -20,11 +20,11 @@ ARG KIND_VERSION=v0.23.0
 RUN install-tool kind
 
 # renovate: datasource=github-releases depName=helm packageName=helm/helm
-ARG HELM_VERSION=v3.15.1
+ARG HELM_VERSION=v3.15.3
 RUN install-tool helm
 
 # renovate: datasource=github-releases depName=helm-docs packageName=norwoodj/helm-docs
-ARG HELM_DOCS_VERSION=1.13.1
+ARG HELM_DOCS_VERSION=1.14.2
 RUN install-tool helm-docs
 
 # renovate: datasource=github-releases depName=kubeval packageName=instrumenta/kubeval

@@ -1,12 +1,4 @@
-{{- if .Values.apiVersionOverrides.cronjob -}}
-apiVersion: {{ .Values.apiVersionOverrides.cronjob }}
-{{- else if .Capabilities.APIVersions.Has "batch/v1/CronJob" }}
 apiVersion: batch/v1
-{{- else if .Capabilities.APIVersions.Has "batch/v1beta1/CronJob" }}
-apiVersion: batch/v1beta1
-{{- else }}
-  {{- fail "\n\n ERROR: You must have at least batch/v1beta1 to use CronJob" }}
-{{- end }}
 kind: CronJob
 metadata:
   name: {{ include "renovate.fullname" . }}

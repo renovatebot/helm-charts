@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 37.382.4](https://img.shields.io/badge/Version-37.382.4-informational?style=flat-square) ![AppVersion: 37.382.4](https://img.shields.io/badge/AppVersion-37.382.4-informational?style=flat-square)
+![Version: 37.440.0](https://img.shields.io/badge/Version-37.440.0-informational?style=flat-square) ![AppVersion: 37.440.0](https://img.shields.io/badge/AppVersion-37.440.0-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -40,7 +40,6 @@ The following table lists the configurable parameters of the chart and the defau
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Configure the pod(Anti)Affinity and/or node(Anti)Affinity |
-| apiVersionOverrides.cronjob | string | `""` | String to override apiVersion of cronjob rendered by this helm chart |
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
 | cronjob.argsOverride | list | `[]` | Custom arguments to run in the container |
@@ -76,7 +75,7 @@ The following table lists the configurable parameters of the chart and the defau
 | image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
 | image.registry | string | `"ghcr.io"` | Registry to pull image from |
 | image.repository | string | `"renovatebot/renovate"` | Image name to pull |
-| image.tag | string | `"37.382.4"` | Renovate image tag to pull |
+| image.tag | string | `"37.440.0"` | Renovate image tag to pull |
 | image.useFull | bool | `false` | Set `true` to use the full image. See https://docs.renovatebot.com/getting-started/running/#the-full-image |
 | imagePullSecrets | object | `{}` | Secret to use to pull the image from the repository |
 | nameOverride | string | `""` | Override the name of the chart |
