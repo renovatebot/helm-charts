@@ -3,6 +3,11 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ include "renovate.fullname" . }}-cache
+  labels:
+    {{- include "renovate.labels" . | nindent 4 }}
+  {{- with .Values.persistence.cache.labels }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   {{- if .Values.renovate.persistence.cache.storageClass }}
   storageClassName: {{ .Values.renovate.persistence.cache.storageClass }}

@@ -93,6 +93,7 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | renovate.persistence | object | `{"cache":{"enabled":false,"storageClass":"","storageSize":"512Mi","volumeName":""}}` | Options related to persistence |
 | renovate.persistence.cache.enabled | bool | `false` | Allow the cache to persist between runs |
+| renovate.persistence.cache.labels | object | `{}` | Labels to set on the cache PVC |
 | renovate.persistence.cache.storageClass | string | `""` | Storage class of the cache PVC |
 | renovate.persistence.cache.storageSize | string | `"512Mi"` | Storage size of the cache PVC |
 | renovate.persistence.cache.volumeName | string | `""` | Existing volume, enables binding the pvc to an existing volume |
