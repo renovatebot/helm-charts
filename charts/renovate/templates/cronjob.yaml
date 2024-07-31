@@ -197,9 +197,20 @@ spec:
           tolerations:
             {{- toYaml . | nindent 12 }}
         {{- end }}
+        {{- if .Values.renovate.persistence.cache.enabled }}
+          securityContext:
+            fsGroup: {{ .Values.securityContext.fsGroup | default 1000 }}
+            {{- with .Values.securityContext }}
+            {{ $securityDict := omit . "fsGroup" }}
+            {{- if not (empty $securityDict) }}
+              {{- toYaml $securityDict }}
+            {{ end }}
+            {{ end }}
+        {{- else }}
         {{- with .Values.securityContext }}
           securityContext:
-            {{ toYaml . | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
         {{- end }}
         {{- with .Values.imagePullSecrets }}
           imagePullSecrets:
