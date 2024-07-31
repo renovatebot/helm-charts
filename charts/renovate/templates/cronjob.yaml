@@ -9,7 +9,7 @@ metadata:
   {{- end }}
 {{- if .Values.cronjob.annotations }}
   annotations:
-    {{ toYaml .Values.cronjob.annotations | nindent 4 }}
+    {{- toYaml .Values.cronjob.annotations | nindent 4 }}
 {{- end }}
 spec:
   schedule: "{{ .Values.cronjob.schedule }}"
@@ -63,7 +63,7 @@ spec:
           {{- end }}
         {{- if .Values.pod.annotations }}
           annotations:
-            {{ toYaml .Values.pod.annotations | nindent 12 }}
+            {{- toYaml .Values.pod.annotations | nindent 12 }}
         {{- end }}
         spec:
           serviceAccountName: {{ include "renovate.serviceAccountName" . }}
@@ -105,21 +105,21 @@ spec:
               {{- if or .Values.renovate.config .Values.ssh_config.enabled .Values.renovate.persistence.cache.enabled .Values.extraVolumeMounts }}
               volumeMounts:
               {{- if .Values.renovate.config }}
-              - name: config-volume
-                mountPath: /usr/src/app/config.json
-                subPath: config.json
+                - name: config-volume
+                  mountPath: /usr/src/app/config.json
+                  subPath: config.json
               {{- end }}
               {{- if .Values.ssh_config.enabled }}
-              - name: ssh-config-volume
-                mountPath: /home/ubuntu/.ssh
-                readOnly: true
+                - name: ssh-config-volume
+                  mountPath: /home/ubuntu/.ssh
+                  readOnly: true
               {{- end }}
               {{- if .Values.extraVolumeMounts }}
-                {{- toYaml .Values.extraVolumeMounts | nindent 14 }}
+                {{- toYaml .Values.extraVolumeMounts | nindent 16 }}
               {{- end }}
               {{- if .Values.renovate.persistence.cache.enabled }}
-              - name: {{ include "renovate.fullname" . }}-cache
-                mountPath: /tmp/renovate
+                - name: {{ include "renovate.fullname" . }}-cache
+                  mountPath: /tmp/renovate
               {{- end }}
               {{- end }}
               env:
@@ -187,15 +187,15 @@ spec:
             {{- end }}
         {{- with .Values.nodeSelector }}
           nodeSelector:
-            {{ toYaml . | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
         {{- end }}
         {{- with .Values.affinity }}
           affinity:
-            {{ toYaml . | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
         {{- end }}
         {{- with .Values.tolerations }}
           tolerations:
-            {{ toYaml . | nindent 12 }}
+            {{- toYaml . | nindent 12 }}
         {{- end }}
         {{- with .Values.securityContext }}
           securityContext:
