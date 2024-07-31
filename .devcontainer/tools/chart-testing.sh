@@ -6,7 +6,8 @@ require_root
 
 check_semver "$TOOL_VERSION"
 
-pip install yamale yamllint
+install-pip yamale
+install-pip yamllint
 
 curl --silent --show-error --fail --location --output /tmp/chart-testing.tar.gz https://github.com/helm/chart-testing/releases/download/v"$TOOL_VERSION"/chart-testing_"$TOOL_VERSION"_linux_amd64.tar.gz
 tar -xf /tmp/chart-testing.tar.gz -C /usr/local/bin/ ct
