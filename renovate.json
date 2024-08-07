@@ -12,16 +12,10 @@
       "fileMatch": ["^charts\\/renovate\\/Chart\\.yaml$"],
       "matchStrings": [
         "appVersion: '(?<currentValue>.*?)'\\s+",
-        "version: '(?<currentValue>.*?)'\\s+"
+        "version: '(?<currentValue>.*?)'\\s+",
+        "(?:image|name): (?<depName>.*?):(?<currentValue>.*?)\\s+"
       ],
-      "depNameTemplate": "ghcr.io/renovatebot/renovate",
-      "datasourceTemplate": "docker"
-    },
-    {
-      "customType": "regex",
-      "description": "Update docker image references",
-      "fileMatch": ["^charts\\/renovate\\/Chart\\.yaml$"],
-      "matchStrings": ["(?:image|name): (?<depName>.*?):(?<currentValue>.*?)\\s+"],
+      "depNameTemplate": "{{#if depName}}{{depName}}{{else}}ghcr.io/renovatebot/renovate{{/if}}",
       "datasourceTemplate": "docker"
     },
     {
@@ -51,6 +45,12 @@
       "description": "Don't require approval for redis major updates",
       "matchDepNames": ["redis"],
       "matchManagers": ["helmv3"],
+      "dependencyDashboardApproval": false
+    },
+    {
+      "description": "Don't require approval for renovate major updates",
+      "matchPackageNames": ["ghcr.io/renovatebot/renovate"],
+      "matchDatasources": ["docker"],
       "dependencyDashboardApproval": false
     },
     {
