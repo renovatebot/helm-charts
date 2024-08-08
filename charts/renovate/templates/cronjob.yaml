@@ -203,7 +203,7 @@ spec:
             {{- with .Values.securityContext }}
             {{ $securityDict := omit . "fsGroup" }}
             {{- if not (empty $securityDict) }}
-              {{- toYaml $securityDict }}
+              {{- toYaml $securityDict | nindent 12 }}
             {{ end }}
             {{ end }}
         {{- else }}
