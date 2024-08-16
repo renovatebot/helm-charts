@@ -29,5 +29,3 @@ renovate:
       "logLevel": "debug",
       "repositories": ["username/repo", "orgname/repo"]
     }
-
-
