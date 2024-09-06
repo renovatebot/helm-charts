@@ -199,7 +199,7 @@ spec:
         {{- end }}
         {{- if .Values.renovate.persistence.cache.enabled }}
           securityContext:
-            fsGroup: {{ .Values.securityContext.fsGroup | default 1000 }}
+            fsGroup: {{ .Values.securityContext.fsGroup | default (hasKey .Values.securityContext "fsGroup" | ternary "null" 1000) }}
             {{- with .Values.securityContext }}
             {{ $securityDict := omit . "fsGroup" }}
             {{- if not (empty $securityDict) }}
