@@ -108,6 +108,8 @@ renovate:
   # -- Renovate Container-level security-context
   securityContext: {}
 
+  # Instead of a file system cache, it is highly recommended to use the redis subchart.
+  # Take a look at https://github.com/renovatebot/renovate/discussions/30525 for more information.
   # -- Options related to persistence
   persistence:
     cache:
