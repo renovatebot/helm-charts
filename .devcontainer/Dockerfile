@@ -1,4 +1,4 @@
-FROM ghcr.io/containerbase/devcontainer:11.11.6
+FROM ghcr.io/containerbase/devcontainer:11.11.24
 
 USER root
 
@@ -11,13 +11,13 @@ RUN install-tool chart-testing v3.11.0
 USER vscode
 
 # renovate: datasource=github-releases packageName=kubernetes/kubernetes
-RUN install-tool kubectl v1.31.0
+RUN install-tool kubectl v1.31.1
 
 # renovate: datasource=github-releases packageName=kubernetes-sigs/kind
 RUN install-tool kind v0.24.0
 
 # renovate: datasource=github-releases packageName=helm/helm
-RUN install-tool helm v3.15.4
+RUN install-tool helm v3.16.1
 
 # renovate: datasource=github-releases packageName=norwoodj/helm-docs
 RUN install-tool helm-docs 1.14.2
