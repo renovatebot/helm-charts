@@ -1,6 +1,9 @@
 global:
   # -- Additional labels to be set on all renovate resources
   commonLabels: {}
+  compatibility:
+    openshift:
+      adaptSecurityContext: 'auto'
 
 # -- Override the name of the chart
 nameOverride: ''
