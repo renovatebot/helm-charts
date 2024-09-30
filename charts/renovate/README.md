@@ -71,6 +71,7 @@ The following table lists the configurable parameters of the chart and the defau
 | extraVolumes | list | `[]` | Additional volumes to the pod |
 | fullnameOverride | string | `""` | Override the fully qualified app name |
 | global.commonLabels | object | `{}` | Additional labels to be set on all renovate resources |
+| global.compatibility.openshift.adaptSecurityContext | string | `"auto"` | Adapt the securityContext sections of the deployment to make them compatible with Openshift restricted-v2 SCC: remove runAsUser, runAsGroup and fsGroup and let the platform use their allowed default IDs. Possible values: `auto` (apply if the detected running cluster is Openshift), `force` (perform the adaptation always), `disabled` (do not perform adaptation) |
 | hostAliases | list | `[]` | Override hostname resolution |
 | image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
 | image.registry | string | `"ghcr.io"` | Registry to pull image from |
