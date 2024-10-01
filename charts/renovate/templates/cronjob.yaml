@@ -155,9 +155,9 @@ spec:
                 {{- with .Values.envFrom }}
                   {{- toYaml . | nindent 16 }}
                 {{- end }}
-            {{- with .Values.renovate.securityContext }}
+            {{- if .Values.renovate.securityContext }}
               securityContext:
-                {{- toYaml . | nindent 16 }}
+                {{- include "common.compatibility.renderSecurityContext" (dict "secContext" .Values.renovate.securityContext "context" $) | nindent 16 }}
             {{- end }}
             {{- with .Values.resources }}
               resources:
@@ -203,20 +203,16 @@ spec:
           tolerations:
             {{- toYaml . | nindent 12 }}
         {{- end }}
-        {{- if .Values.renovate.persistence.cache.enabled }}
+        {{- if or .Values.securityContext .Values.renovate.persistence.cache.enabled }}
+          {{- $securityDict := .Values.securityContext }}
+
+          {{- if and .Values.renovate.persistence.cache.enabled (not .Values.securityContext.fsGroup) }}
+            {{- $securityDict = merge $securityDict (dict "fsGroup" 1000) }}
+          {{- end }}
           securityContext:
-            fsGroup: {{ .Values.securityContext.fsGroup | default 1000 }}
-            {{- with .Values.securityContext }}
-            {{ $securityDict := omit . "fsGroup" }}
             {{- if not (empty $securityDict) }}
-              {{- toYaml $securityDict | nindent 12 }}
+              {{- include "common.compatibility.renderSecurityContext" (dict "secContext" $securityDict "context" $) | nindent 12 }}
             {{ end }}
-            {{ end }}
-        {{- else }}
-        {{- with .Values.securityContext }}
-          securityContext:
-            {{- toYaml . | nindent 12 }}
-        {{- end }}
         {{- end }}
         {{- with .Values.imagePullSecrets }}
           imagePullSecrets:

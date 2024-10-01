@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 38.94.3](https://img.shields.io/badge/Version-38.94.3-informational?style=flat-square) ![AppVersion: 38.94.3](https://img.shields.io/badge/AppVersion-38.94.3-informational?style=flat-square)
+![Version: 38.106.0](https://img.shields.io/badge/Version-38.106.0-informational?style=flat-square) ![AppVersion: 38.106.0](https://img.shields.io/badge/AppVersion-38.106.0-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -73,11 +73,12 @@ The following table lists the configurable parameters of the chart and the defau
 | extraVolumes | list | `[]` | Additional volumes to the pod |
 | fullnameOverride | string | `""` | Override the fully qualified app name |
 | global.commonLabels | object | `{}` | Additional labels to be set on all renovate resources |
+| global.compatibility.openshift.adaptSecurityContext | string | `"auto"` | Adapt the securityContext sections of the deployment to make them compatible with Openshift restricted-v2 SCC: remove runAsUser, runAsGroup and fsGroup and let the platform use their allowed default IDs. Possible values: `auto` (apply if the detected running cluster is Openshift), `force` (perform the adaptation always), `disabled` (do not perform adaptation) |
 | hostAliases | list | `[]` | Override hostname resolution |
 | image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
 | image.registry | string | `"ghcr.io"` | Registry to pull image from |
 | image.repository | string | `"renovatebot/renovate"` | Image name to pull |
-| image.tag | string | `"38.94.3"` | Renovate image tag to pull |
+| image.tag | string | `"38.106.0"` | Renovate image tag to pull |
 | image.useFull | bool | `false` | Set `true` to use the full image. See https://docs.renovatebot.com/getting-started/running/#the-full-image |
 | imagePullSecrets | object | `{}` | Secret to use to pull the image from the repository |
 | nameOverride | string | `""` | Override the name of the chart |
