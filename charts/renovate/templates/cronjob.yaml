@@ -54,6 +54,12 @@ spec:
       {{- if .Values.cronjob.jobBackoffLimit }}
       backoffLimit: {{ .Values.cronjob.jobBackoffLimit }}
       {{- end }}
+      {{- with .Values.cronjob.backoffLimitPerIndex }}
+      backoffLimitPerIndex: {{ . }}
+      {{- end }}
+      {{- with .Values.cronjob.maxFailedIndexes }}
+      maxFailedIndexes: {{ . }}
+      {{- end }}
       template:
         metadata:
           labels:
