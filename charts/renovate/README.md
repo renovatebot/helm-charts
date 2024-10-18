@@ -43,6 +43,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
 | cronjob.argsOverride | list | `[]` | Custom arguments to run in the container |
+| cronjob.backoffLimitPerIndex | string | `""` | Maximal number of pod failures per index |
 | cronjob.commandOverride | list | `[]` | Custom command to run in the container |
 | cronjob.completionMode | string | `""` | "Where the jobs should be NonIndexed or Indexed" |
 | cronjob.completions | string | `""` | "Number of successful completions is reached to mark the job as complete" |
@@ -52,6 +53,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.jobBackoffLimit | string | `""` | Number of times to retry running the pod before considering the job as being failed |
 | cronjob.jobRestartPolicy | string | `"Never"` | Set to Never to restart the job when the pod fails or to OnFailure to restart when a container fails |
 | cronjob.labels | object | `{}` | Labels to set on the cronjob |
+| cronjob.maxFailedIndexes | string | `""` | Maximal number of failed indexes before terminating the Job execution |
 | cronjob.parallelism | string | `""` | Number of pods to run in parallel |
 | cronjob.postCommand | string | `""` | Append shell commands after renovate runs |
 | cronjob.preCommand | string | `""` | Prepend shell commands before renovate runs |
