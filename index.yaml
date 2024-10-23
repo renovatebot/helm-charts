@@ -3,6 +3,52 @@ entries:
   renovate:
   - annotations:
       artifacthub.io/images: |
+        - name: ghcr.io/renovatebot/renovate:38.130.0
+          image: ghcr.io/renovatebot/renovate:38.130.0
+          platforms:
+            - linux/amd64
+            - linux/arm64
+      artifacthub.io/license: AGPL-3.0-only
+      artifacthub.io/links: |
+        - name: docs
+          url: https://docs.renovatebot.com
+    apiVersion: v2
+    appVersion: 38.130.0
+    created: "2024-10-23T01:10:51.848822456Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 20.2.1
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 2.x.x
+    description: Universal dependency update tool that fits into your workflows.
+    digest: abbb40c88a5397ebe4b4093bc0f9eddd1c24e7013df02da8878113d28ca0fb89
+    home: https://github.com/renovatebot/renovate
+    icon: https://docs.renovatebot.com/assets/images/logo.png
+    keywords:
+    - automated
+    - dependencies
+    - dependency
+    - management
+    - update
+    maintainers:
+    - email: jamie.magee@gmail.com
+      name: JamieMagee
+    - email: michael.kriese@visualon.de
+      name: viceice
+    - email: rhys@arkins.net
+      name: rarkins
+    name: renovate
+    sources:
+    - https://github.com/renovatebot/renovate
+    - https://github.com/renovatebot/helm-charts
+    urls:
+    - https://github.com/renovatebot/helm-charts/releases/download/renovate-38.130.0/renovate-38.130.0.tgz
+    version: 38.130.0
+  - annotations:
+      artifacthub.io/images: |
         - name: ghcr.io/renovatebot/renovate:38.129.3
           image: ghcr.io/renovatebot/renovate:38.129.3
           platforms:
@@ -97219,4 +97265,4 @@ entries:
     urls:
     - https://github.com/renovatebot/helm-charts/releases/download/renovate-19.200.0/renovate-19.200.0.tgz
     version: 19.200.0
-generated: "2024-10-22T21:10:35.971381921Z"
+generated: "2024-10-23T01:10:51.853835595Z"
