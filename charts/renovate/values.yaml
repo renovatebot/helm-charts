@@ -279,3 +279,29 @@ affinity: {}
 # -- Configure which node taints the pod should tolerate
 tolerations: []
 # See: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+
+# -- Create extra manifests via values. Would be passed through `tpl` for templating
+extraObjects: []
+# extraObjects:
+#   - apiVersion: external-secrets.io/v1beta1
+#     kind: ExternalSecret
+#     metadata:
+#       name: '{{ include "renovate.fullname" . }}-token'
+#     spec:
+#       secretStoreRef:
+#         name: default
+#       data:
+#         - secretKey: token
+#           remoteRef:
+#             key: github-token
+#   - |
+#     apiVersion: v1
+#     kind: ConfigMap
+#     metadata:
+#       name: {{ include "renovate.fullname" . }}-config
+#     data:
+#       config.json: |
+#         {
+#           "platform": "github",
+#           "repositories": ["username/repo", "orgname/repo"]
+#         }
