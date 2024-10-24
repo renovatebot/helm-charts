@@ -67,6 +67,7 @@ The following table lists the configurable parameters of the chart and the defau
 | existingSecret | string | `""` | k8s secret to reference environment variables from. Overrides secrets if set |
 | extraConfigmaps | list | `[]` | Additional configmaps. A generated configMap name is: "renovate.fullname" + "extra" + name(below) e.g. renovate-netrc-config |
 | extraContainers | list | `[]` | Additional containers to the pod |
+| extraObjects | list | `[]` | Create extra manifests via values. Would be passed through `tpl` for templating |
 | extraVolumeMounts | list | `[]` | Additional volumeMounts to the container |
 | extraVolumes | list | `[]` | Additional volumes to the pod |
 | fullnameOverride | string | `""` | Override the fully qualified app name |
