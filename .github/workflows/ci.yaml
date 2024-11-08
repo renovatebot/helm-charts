@@ -87,7 +87,7 @@ jobs:
           # from https://hub.docker.com/r/kindest/node/tags
           - v1.27.16 # renovate: kindest
           - v1.28.13 # renovate: kindest
-          - v1.29.8 # renovate: kindest
+          - v1.29.10 # renovate: kindest
           - v1.30.4 # renovate: kindest
     steps:
       - name: Checkout
