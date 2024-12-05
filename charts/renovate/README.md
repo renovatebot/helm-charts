@@ -43,7 +43,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
 | cronjob.argsOverride | list | `[]` | Custom arguments to run in the container |
-| cronjob.backoffLimitPerIndex | string | `""` | Maximal number of pod failures per index |
+| cronjob.backoffLimitPerIndex | string | `""` | Maximal number of failures per index |
 | cronjob.commandOverride | list | `[]` | Custom command to run in the container |
 | cronjob.completionMode | string | `""` | "Where the jobs should be NonIndexed or Indexed" |
 | cronjob.completions | string | `""` | "Number of successful completions is reached to mark the job as complete" |
