@@ -40,6 +40,10 @@ cronjob:
   activeDeadlineSeconds: ''
   # -- Number of times to retry running the pod before considering the job as being failed
   jobBackoffLimit: ''
+  # -- Maximal number of failures per index
+  backoffLimitPerIndex: ''
+  # -- Maximal number of failed indexes before terminating the Job execution
+  maxFailedIndexes: ''
   # -- Deadline to start the job, skips execution if job misses it's configured deadline
   startingDeadlineSeconds: ''
   # -- Additional initContainers that can be executed before renovate
