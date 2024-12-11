@@ -3,6 +3,52 @@ entries:
   renovate:
   - annotations:
       artifacthub.io/images: |
+        - name: ghcr.io/renovatebot/renovate:39.62.1
+          image: ghcr.io/renovatebot/renovate:39.62.1
+          platforms:
+            - linux/amd64
+            - linux/arm64
+      artifacthub.io/license: AGPL-3.0-only
+      artifacthub.io/links: |
+        - name: docs
+          url: https://docs.renovatebot.com
+    apiVersion: v2
+    appVersion: 39.62.1
+    created: "2024-12-11T07:45:04.999387378Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 20.4.1
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 2.x.x
+    description: Universal dependency update tool that fits into your workflows.
+    digest: 1a8f7efc7b091e4d1bffc412f9d41ce49e5f61fc06f179ebc172d5a373a9f8d9
+    home: https://github.com/renovatebot/renovate
+    icon: https://docs.renovatebot.com/assets/images/logo.png
+    keywords:
+    - automated
+    - dependencies
+    - dependency
+    - management
+    - update
+    maintainers:
+    - email: jamie.magee@gmail.com
+      name: JamieMagee
+    - email: michael.kriese@visualon.de
+      name: viceice
+    - email: rhys@arkins.net
+      name: rarkins
+    name: renovate
+    sources:
+    - https://github.com/renovatebot/renovate
+    - https://github.com/renovatebot/helm-charts
+    urls:
+    - https://github.com/renovatebot/helm-charts/releases/download/renovate-39.62.1/renovate-39.62.1.tgz
+    version: 39.62.1
+  - annotations:
+      artifacthub.io/images: |
         - name: ghcr.io/renovatebot/renovate:39.62.0
           image: ghcr.io/renovatebot/renovate:39.62.0
           platforms:
@@ -104165,4 +104211,4 @@ entries:
     urls:
     - https://github.com/renovatebot/helm-charts/releases/download/renovate-19.200.0/renovate-19.200.0.tgz
     version: 19.200.0
-generated: "2024-12-11T02:25:16.121813792Z"
+generated: "2024-12-11T07:45:05.006816245Z"
