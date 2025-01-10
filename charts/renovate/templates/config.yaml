@@ -1,3 +1,10 @@
+{{- $configContent := "" }}
+{{- if not .Values.renovate.configEnableHelmTpl }}
+  {{- $configContent = required "A valid .Values.renovate.config entry is required if existingConfigFile is not specified!" .Values.renovate.config | nindent 4 }}
+{{- else }}
+  {{- $configContent = required "A valid .Values.renovate.config entry is required if existingConfigFile is not specified!" (tpl .Values.renovate.config .) | nindent 4 }}
+{{- end }}
+
 {{- if not .Values.renovate.existingConfigFile }}
 apiVersion: v1
 {{- if .Values.renovate.configIsSecret }}
@@ -15,10 +22,11 @@ stringData:
 {{- else }}
 data:
 {{- end }}
+{{- if .Values.renovate.configIsJavascript }}
+  config.js: |-
+  {{ $configContent }}
+{{- else }}
   config.json: |-
-  {{- if not .Values.renovate.configEnableHelmTpl }}
-    {{- required "A valid .Values.renovate.config entry is required if existingConfigFile is not specified!" .Values.renovate.config | nindent 4 }}
-  {{- else }}
-    {{- required "A valid .Values.renovate.config entry is required if existingConfigFile is not specified!" (tpl .Values.renovate.config .) | nindent 4 }}
-  {{- end }}
+  {{ $configContent }}
+{{- end }}
 {{- end }}
