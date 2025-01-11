@@ -22,7 +22,7 @@ stringData:
 {{- else }}
 data:
 {{- end }}
-{{- if .Values.renovate.configIsJavascript }}
+{{- if .Values.renovate.configIsJavaScript }}
   config.js: |-
   {{ $configContent }}
 {{- else }}

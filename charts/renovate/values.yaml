@@ -114,7 +114,7 @@ renovate:
   configIsSecret: false
 
   # -- Use this to create a config.js instead of a config.json
-  configIsJavascript: false
+  configIsJavaScript: false
 
   # -- Renovate Container-level security-context
   securityContext: {}
