@@ -34,7 +34,7 @@ jobs:
       - name: Install chart-testing
         uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
         with:
-          version: v3.11.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
+          version: v3.12.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
 
       - name: Run lint
         run: ct lint --config .github/ct.yaml
@@ -104,7 +104,7 @@ jobs:
       - name: Install chart-testing
         uses: helm/chart-testing-action@e6669bcd63d7cb57cb4380c33043eebe5d111992 # v2.6.1
         with:
-          version: v3.11.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
+          version: v3.12.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
 
       - name: Run chart install
         run: ct install --config .github/ct.yaml --all
