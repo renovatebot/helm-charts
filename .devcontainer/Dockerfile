@@ -1,4 +1,4 @@
-FROM ghcr.io/containerbase/devcontainer:13.2.2
+FROM ghcr.io/containerbase/devcontainer:13.5.10
 
 USER root
 
@@ -6,18 +6,18 @@ COPY tools/*.sh /usr/local/containerbase/tools/
 
 # installs files to /etc/ct
 # renovate: datasource=github-releases packageName=helm/chart-testing
-RUN install-tool chart-testing v3.11.0
+RUN install-tool chart-testing v3.12.0
 
 USER vscode
 
 # renovate: datasource=github-releases packageName=kubernetes/kubernetes
-RUN install-tool kubectl v1.31.3
+RUN install-tool kubectl v1.32.1
 
 # renovate: datasource=github-releases packageName=kubernetes-sigs/kind
-RUN install-tool kind v0.25.0
+RUN install-tool kind v0.26.0
 
 # renovate: datasource=github-releases packageName=helm/helm
-RUN install-tool helm v3.16.3
+RUN install-tool helm v3.17.0
 
 # renovate: datasource=github-releases packageName=norwoodj/helm-docs
 RUN install-tool helm-docs 1.14.2
