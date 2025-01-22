@@ -81,7 +81,7 @@ image:
   # -- Image name to pull
   repository: renovatebot/renovate
   # -- Renovate image tag to pull
-  tag: 39.113.0
+  tag: 39.122.0
   # -- "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images
   pullPolicy: IfNotPresent
   # -- Set `true` to use the full image. See https://docs.renovatebot.com/getting-started/running/#the-full-image
@@ -119,6 +119,9 @@ renovate:
   # -- Renovate Container-level security-context
   securityContext: {}
 
+  # Instead of a file system cache, it is highly recommended to use the redis subchart.
+  # Alternatively, SQLite is also a good choice.
+  # Take a look at https://github.com/renovatebot/renovate/discussions/30525 for more information.
   # -- Options related to persistence
   persistence:
     cache:
