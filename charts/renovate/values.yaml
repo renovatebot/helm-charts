@@ -113,6 +113,9 @@ renovate:
   # -- Use this to create the renovate-config as a secret instead of a configmap
   configIsSecret: false
 
+  # -- Use this to create a config.js instead of a config.json
+  configIsJavaScript: false
+
   # -- Renovate Container-level security-context
   securityContext: {}
 
