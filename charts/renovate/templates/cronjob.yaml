@@ -82,6 +82,7 @@ spec:
           hostAliases:
             {{- toYaml . | nindent 12 }}
         {{- end }}
+          {{- if or .Values.cronjob.initContainers .Values.ssh_config.enabled }}
           initContainers:
             {{- if .Values.ssh_config.enabled }}
             # Setting ownership on files from mounted secrets is not supported by K8s.
@@ -99,7 +100,6 @@ spec:
               volumeMounts:
                 - name: ssh-config-volume
                   mountPath: /home/ubuntu/.ssh
-                  readOnly: true
                 - name: ssh-secret-volume
                   mountPath: /ssh-secret-volume
                   readOnly: true
@@ -111,6 +111,7 @@ spec:
             {{- if .Values.cronjob.initContainers }}
             {{- toYaml .Values.cronjob.initContainers | nindent 12 }}
             {{- end }}
+          {{- end }}
           containers:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.useFull | ternary (printf "%s-full" .Values.image.tag) .Values.image.tag }}"
