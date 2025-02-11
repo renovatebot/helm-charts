@@ -1,3 +1,7 @@
+{{- $configFileName := "config.json" }}
+{{- if .Values.renovate.configIsJavaScript }}
+  {{- $configFileName = "config.js" }}
+{{- end }}
 apiVersion: batch/v1
 kind: CronJob
 metadata:
@@ -112,8 +116,8 @@ spec:
               volumeMounts:
               {{- if .Values.renovate.config }}
                 - name: config-volume
-                  mountPath: /usr/src/app/config.json
-                  subPath: config.json
+                  mountPath: /usr/src/app/{{ $configFileName }}
+                  subPath: {{ $configFileName }}
               {{- end }}
               {{- if .Values.ssh_config.enabled }}
                 - name: ssh-config-volume
@@ -134,7 +138,7 @@ spec:
                   value: {{ .Values.renovate.existingConfigFile }}
                 {{- else if .Values.renovate.config }}
                 - name: RENOVATE_CONFIG_FILE
-                  value: /usr/src/app/config.json
+                  value: /usr/src/app/{{ $configFileName }}
                 {{- end }}
                 {{- if .Values.redis.enabled }}
                 - name: RENOVATE_REDIS_URL
