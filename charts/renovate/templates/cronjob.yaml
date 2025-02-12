@@ -215,7 +215,8 @@ spec:
             {{- end }}
             {{- if .Values.ssh_config.enabled }}
             - name: ssh-config-volume
-              emptyDir: {}
+              emptyDir:
+                medium: Memory
             - name: ssh-secret-volume
               secret:
                 secretName: {{ include "renovate.sshSecretName" .}}
