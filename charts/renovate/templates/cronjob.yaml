@@ -82,9 +82,35 @@ spec:
           hostAliases:
             {{- toYaml . | nindent 12 }}
         {{- end }}
-          {{- if .Values.cronjob.initContainers }}
+          {{- if or .Values.cronjob.initContainers .Values.ssh_config.enabled }}
           initContainers:
+            {{- if .Values.ssh_config.enabled }}
+            # Setting ownership on files from mounted secrets is not supported by K8s.
+            # See https://github.com/kubernetes/kubernetes/issues/81089.
+            # So we need to copy the files to an empty-dir mount and change the ownership of those files afterwards.
+            - name: ssh-init
+              image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.useFull | ternary (printf "%s-full" .Values.image.tag) .Values.image.tag }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              command: ["/bin/bash", "-c"]
+              args:
+                - |
+                  cp /ssh-secret-volume/* /home/ubuntu/.ssh
+                  chown -R ubuntu:ubuntu /home/ubuntu/.ssh/*
+                  chmod 600 /home/ubuntu/.ssh/*
+              volumeMounts:
+                - name: ssh-config-volume
+                  mountPath: /home/ubuntu/.ssh
+                - name: ssh-secret-volume
+                  mountPath: /ssh-secret-volume
+                  readOnly: true
+              {{- if .Values.renovate.securityContext }}
+              securityContext:
+                {{- include "common.compatibility.renderSecurityContext" (dict "secContext" .Values.renovate.securityContext "context" $) | nindent 16 }}
+              {{- end }}
+            {{- end }}
+            {{- if .Values.cronjob.initContainers }}
             {{- toYaml .Values.cronjob.initContainers | nindent 12 }}
+            {{- end }}
           {{- end }}
           containers:
             - name: {{ .Chart.Name }}
@@ -189,6 +215,9 @@ spec:
             {{- end }}
             {{- if .Values.ssh_config.enabled }}
             - name: ssh-config-volume
+              emptyDir:
+                medium: Memory
+            - name: ssh-secret-volume
               secret:
                 secretName: {{ include "renovate.sshSecretName" .}}
             {{- end }}
