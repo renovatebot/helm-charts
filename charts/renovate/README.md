@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 39.173.1](https://img.shields.io/badge/Version-39.173.1-informational?style=flat-square) ![AppVersion: 39.173.1](https://img.shields.io/badge/AppVersion-39.173.1-informational?style=flat-square)
+![Version: 39.173.2](https://img.shields.io/badge/Version-39.173.2-informational?style=flat-square) ![AppVersion: 39.173.1](https://img.shields.io/badge/AppVersion-39.173.1-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -104,6 +104,7 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.persistence.cache.volumeName | string | `""` | Existing volume, enables binding the pvc to an existing volume |
 | renovate.securityContext | object | `{}` | Renovate Container-level security-context |
 | resources | object | `{}` | Specify resource limits and requests for the renovate container |
+| secretAnnotations | object | `{}` | Annotations to add to secret |
 | secrets | object | `{}` | Environment variables that should be referenced from a k8s secret, cannot be used when existingSecret is set |
 | securityContext | object | `{}` | Pod-level security-context |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
