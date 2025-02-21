@@ -10,6 +10,8 @@ global:
 nameOverride: ''
 # -- Override the fully qualified app name
 fullnameOverride: ''
+# -- Annotations to add to secret
+secretAnnotations: {}
 
 cronjob:
   # -- Schedules the job to run using cron notation
