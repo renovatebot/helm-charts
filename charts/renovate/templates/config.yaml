@@ -15,11 +15,9 @@ metadata:
   name: {{ template "renovate.fullname" . }}-config
   labels:
     {{- include "renovate.labels" . | nindent 4 }}
-  {{- if .Values.renovate.configIsSecret }}
   {{- with .Values.secretAnnotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
-  {{- end }}
   {{- end }}
 {{- if .Values.renovate.configIsSecret }}
 stringData:
