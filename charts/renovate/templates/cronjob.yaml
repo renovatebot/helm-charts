@@ -6,6 +6,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: {{ include "renovate.fullname" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "renovate.labels" . | nindent 4 }}
   {{- with .Values.cronjob.labels }}
