@@ -3,6 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ include "renovate.fullname" . }}-cache
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "renovate.labels" . | nindent 4 }}
   {{- with .Values.renovate.persistence.cache.labels }}
