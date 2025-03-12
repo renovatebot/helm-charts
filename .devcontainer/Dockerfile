@@ -11,7 +11,7 @@ RUN install-tool chart-testing v3.12.0
 USER vscode
 
 # renovate: datasource=github-releases packageName=kubernetes/kubernetes
-RUN install-tool kubectl v1.32.2
+RUN install-tool kubectl v1.32.3
 
 # renovate: datasource=github-releases packageName=kubernetes-sigs/kind
 RUN install-tool kind v0.27.0
