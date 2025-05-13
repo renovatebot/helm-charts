@@ -3,6 +3,52 @@ entries:
   renovate:
   - annotations:
       artifacthub.io/images: |
+        - name: ghcr.io/renovatebot/renovate:40.11.11
+          image: ghcr.io/renovatebot/renovate:40.11.11
+          platforms:
+            - linux/amd64
+            - linux/arm64
+      artifacthub.io/license: AGPL-3.0-only
+      artifacthub.io/links: |
+        - name: docs
+          url: https://docs.renovatebot.com
+    apiVersion: v2
+    appVersion: 40.11.11
+    created: "2025-05-13T14:22:57.630622197Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 20.13.4
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 2.x.x
+    description: Universal dependency update tool that fits into your workflows.
+    digest: 0a05b62ea1c382b8436a2cd69cef1262c6c5260e39b3c9a936930b0d4cda4c5b
+    home: https://github.com/renovatebot/renovate
+    icon: https://docs.renovatebot.com/assets/images/logo.png
+    keywords:
+    - automated
+    - dependencies
+    - dependency
+    - management
+    - update
+    maintainers:
+    - email: jamie.magee@gmail.com
+      name: JamieMagee
+    - email: michael.kriese@visualon.de
+      name: viceice
+    - email: rhys@arkins.net
+      name: rarkins
+    name: renovate
+    sources:
+    - https://github.com/renovatebot/renovate
+    - https://github.com/renovatebot/helm-charts
+    urls:
+    - https://github.com/renovatebot/helm-charts/releases/download/renovate-40.11.11/renovate-40.11.11.tgz
+    version: 40.11.11
+  - annotations:
+      artifacthub.io/images: |
         - name: ghcr.io/renovatebot/renovate:40.11.10
           image: ghcr.io/renovatebot/renovate:40.11.10
           platforms:
@@ -123577,4 +123623,4 @@ entries:
     urls:
     - https://github.com/renovatebot/helm-charts/releases/download/renovate-19.200.0/renovate-19.200.0.tgz
     version: 19.200.0
-generated: "2025-05-13T09:26:59.009879818Z"
+generated: "2025-05-13T14:22:57.637531849Z"
