@@ -17,7 +17,7 @@ RUN install-tool kubectl v1.33.1
 RUN install-tool kind v0.28.0
 
 # renovate: datasource=github-releases packageName=helm/helm
-RUN install-tool helm v3.17.3
+RUN install-tool helm v3.18.0
 
 # renovate: datasource=github-releases packageName=norwoodj/helm-docs
 RUN install-tool helm-docs 1.14.2
