@@ -118,6 +118,9 @@ renovate:
   # -- Use this to create a config.js instead of a config.json
   configIsJavaScript: false
 
+  # -- Use this to create a config.json5 instead of a config.json
+  configIsJson5: false
+
   # -- Renovate Container-level security-context
   securityContext: {}
 
