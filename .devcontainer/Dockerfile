@@ -1,4 +1,4 @@
-FROM ghcr.io/containerbase/devcontainer:13.8.52
+FROM ghcr.io/containerbase/devcontainer:13.8.53
 
 USER root
 
