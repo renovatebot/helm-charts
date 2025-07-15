@@ -21,7 +21,7 @@
     {
       "customType": "regex",
       "description": "Update renovate docker image references",
-      "managerFilePatterns": ["/^charts\\/renovate\\/README\\.md$/"],
+      "managerFilePatterns": ["charts/renovate/README.md"],
       "matchStrings": [
         "\\|\\s+image.tag\\s+\\|\\s+string\\s+\\|\\s+`\"(?<currentValue>.*?)\"`\\s+\\|\\s+",
         "(:\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+(?:\\+\\d+)?)"
