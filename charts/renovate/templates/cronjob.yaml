@@ -1,6 +1,8 @@
 {{- $configFileName := "config.json" }}
 {{- if .Values.renovate.configIsJavaScript }}
   {{- $configFileName = "config.js" }}
+{{- else if .Values.renovate.configIsJson5 }}
+  {{- $configFileName = "config.json5" }}
 {{- end }}
 apiVersion: batch/v1
 kind: CronJob

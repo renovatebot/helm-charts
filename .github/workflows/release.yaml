@@ -25,7 +25,7 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@b9e51907a09c216f16ebe8536097933489208112 # v4.3.0
         with:
-          version: v3.17.3 # renovate: datasource=github-releases depName=helm packageName=helm/helm
+          version: v3.18.4 # renovate: datasource=github-releases depName=helm packageName=helm/helm
 
       - name: Build chart dependencies
         run: |
@@ -37,7 +37,7 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@cae68fefc6b5f367a0275617c9f83181ba54714f # v1.7.0
         with:
-          version: v1.7.0 # renovate: datasource=github-releases depName=chart-releaser packageName=helm/chart-releaser
+          version: v1.8.1 # renovate: datasource=github-releases depName=chart-releaser packageName=helm/chart-releaser
         env:
           CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
           CR_GENERATE_RELEASE_NOTES: true

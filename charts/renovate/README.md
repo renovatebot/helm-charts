@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 40.7.1](https://img.shields.io/badge/Version-40.7.1-informational?style=flat-square) ![AppVersion: 40.7.1](https://img.shields.io/badge/AppVersion-40.7.1-informational?style=flat-square)
+![Version: 41.34.1](https://img.shields.io/badge/Version-41.34.1-informational?style=flat-square) ![AppVersion: 41.34.1](https://img.shields.io/badge/AppVersion-41.34.1-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -79,7 +79,7 @@ The following table lists the configurable parameters of the chart and the defau
 | image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
 | image.registry | string | `"ghcr.io"` | Registry to pull image from |
 | image.repository | string | `"renovatebot/renovate"` | Image name to pull |
-| image.tag | string | `"40.7.1"` | Renovate image tag to pull |
+| image.tag | string | `"41.34.1"` | Renovate image tag to pull |
 | image.useFull | bool | `false` | Set `true` to use the full image. See https://docs.renovatebot.com/getting-started/running/#the-full-image |
 | imagePullSecrets | object | `{}` | Secret to use to pull the image from the repository |
 | nameOverride | string | `""` | Override the name of the chart |
@@ -94,6 +94,7 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.config | string | `""` | Inline global renovate config.json |
 | renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See README for how to use this value |
 | renovate.configIsJavaScript | bool | `false` | Use this to create a config.js instead of a config.json |
+| renovate.configIsJson5 | bool | `false` | Use this to create a config.json5 instead of a config.json |
 | renovate.configIsSecret | bool | `false` | Use this to create the renovate-config as a secret instead of a configmap |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | renovate.persistence | object | `{"cache":{"enabled":false,"labels":{},"storageClass":"","storageSize":"512Mi","volumeName":""}}` | Options related to persistence |

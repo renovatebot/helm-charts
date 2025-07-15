@@ -25,7 +25,7 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@b9e51907a09c216f16ebe8536097933489208112 # v4.3.0
         with:
-          version: v3.17.3 # renovate: datasource=github-releases depName=helm packageName=helm/helm
+          version: v3.18.4 # renovate: datasource=github-releases depName=helm packageName=helm/helm
 
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
@@ -34,7 +34,7 @@ jobs:
       - name: Install chart-testing
         uses: helm/chart-testing-action@0d28d3144d3a25ea2cc349d6e59901c4ff469b3b # v2.7.0
         with:
-          version: v3.12.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
+          version: v3.13.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
 
       - name: Run lint
         run: ct lint --config .github/ct.yaml
@@ -86,9 +86,9 @@ jobs:
         k8s:
           # from https://hub.docker.com/r/kindest/node/tags
           - v1.29.14 # renovate: kindest
-          - v1.30.10 # renovate: kindest
-          - v1.31.6 # renovate: kindest
-          - v1.32.3 # renovate: kindest
+          - v1.30.13 # renovate: kindest
+          - v1.31.9 # renovate: kindest
+          - v1.32.5 # renovate: kindest
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -99,12 +99,12 @@ jobs:
         uses: helm/kind-action@a1b0e391336a6ee6713a0583f8c6240d70863de3 # v1.12.0
         with:
           node_image: kindest/node:${{ matrix.k8s }}
-          version: v0.27.0 # renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
+          version: v0.29.0 # renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
 
       - name: Install chart-testing
         uses: helm/chart-testing-action@0d28d3144d3a25ea2cc349d6e59901c4ff469b3b # v2.7.0
         with:
-          version: v3.12.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
+          version: v3.13.0 # renovate: datasource=github-releases depName=chart-testing packageName=helm/chart-testing
 
       - name: Run chart install
         run: ct install --config .github/ct.yaml --all
