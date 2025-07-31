@@ -5,6 +5,11 @@ set -ex
 PKG_REGEX="^.cr-release-packages\/([a-z-]+)-([0-9]+\.[0-9]+\.[0-9]+)\.tgz$"
 OWNER=$1
 
+if [ ! -d .cr-release-packages ] || [ -z "$(ls -A .cr-release-packages)" ]; then
+  echo "skipping, no packages found"
+  return
+fi
+
 for pkg in .cr-release-packages/*; do
   if [[ ! "${pkg}" =~ ${PKG_REGEX} ]]; then
     echo "invalid package: ${pkg}"
