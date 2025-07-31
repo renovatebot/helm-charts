@@ -103,12 +103,15 @@
           "bumpType": "{{#if isPatch}}patch{{else}}{{#if isMajor}}major{{else}}minor{{/if}}{{/if}}"
         },
         {
-          "name": "README",
+          "name": "README,text",
           "filePatterns": ["{{packageFileDir}}/README.md"],
-          "matchStrings": [
-            "\\[Version:\\s(?<version>\\d+\\.\\d+\\.\\d+)",
-            "\\/Version-(?<version>\\d+\\.\\d+\\.\\d+)"
-          ],
+          "matchStrings": ["\\[Version:\\s(?<version>\\d+\\.\\d+\\.\\d+)"],
+          "bumpType": "{{#if isPatch}}patch{{else}}{{#if isMajor}}major{{else}}minor{{/if}}{{/if}}"
+        },
+        {
+          "name": "README,badge",
+          "filePatterns": ["{{packageFileDir}}/README.md"],
+          "matchStrings": ["\\/Version-(?<version>\\d+\\.\\d+\\.\\d+)"],
           "bumpType": "{{#if isPatch}}patch{{else}}{{#if isMajor}}major{{else}}minor{{/if}}{{/if}}"
         }
       ]
