@@ -97,8 +97,9 @@
       "matchFileNames": ["charts/**"],
       "bumpVersions": [
         {
-          "filePatterns": ["{{packageFileDir}}/Chart.{yaml,yml}"],
-          "matchStrings": ["version:\\s(?<version>[^\\s]+)"],
+          "name": "Chart",
+          "filePatterns": ["{{packageFileDir}}/Chart.yaml"],
+          "matchStrings": ["\nversion:\\s(?<version>\\d+\\.\\d+\\.\\d+)"],
           "bumpType": "{{#if isPatch}}patch{{else}}{{#if isMajor}}major{{else}}minor{{/if}}{{/if}}"
         }
       ]
@@ -107,6 +108,7 @@
       "matchFileNames": ["charts/**"],
       "bumpVersions": [
         {
+          "name": "README",
           "filePatterns": ["{{packageFileDir}}/README.md"],
           "matchStrings": [
             "(?:\\[|\\/])Version(?::\\s|-)(?<version>\\d+\\.\\d+\\.\\d+)"
@@ -114,6 +116,12 @@
           "bumpType": "{{#if isPatch}}patch{{else}}{{#if isMajor}}major{{else}}minor{{/if}}{{/if}}"
         }
       ]
+    }
+  ],
+   "logLevelRemap": [
+    {
+      "matchMessage": "/bumpVersions/",
+      "newLogLevel": "debug"
     }
   ]
 }
