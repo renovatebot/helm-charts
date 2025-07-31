@@ -101,12 +101,7 @@
           "filePatterns": ["{{packageFileDir}}/Chart.yaml"],
           "matchStrings": ["\nversion:\\s(?<version>\\d+\\.\\d+\\.\\d+)"],
           "bumpType": "{{#if isPatch}}patch{{else}}{{#if isMajor}}major{{else}}minor{{/if}}{{/if}}"
-        }
-      ]
-    },
-    {
-      "matchFileNames": ["charts/**"],
-      "bumpVersions": [
+        },
         {
           "name": "README",
           "filePatterns": ["{{packageFileDir}}/README.md"],
@@ -118,7 +113,7 @@
       ]
     }
   ],
-   "logLevelRemap": [
+  "logLevelRemap": [
     {
       "matchMessage": "/bumpVersions/",
       "newLogLevel": "debug"
