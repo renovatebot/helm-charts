@@ -8,6 +8,10 @@ on:
       - 'charts/**'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -42,3 +46,29 @@ jobs:
           CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
           CR_GENERATE_RELEASE_NOTES: true
           CR_SKIP_EXISTING: true
+
+      - name: Login to GitHub Container Registry
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login -u ${{ github.actor }} --password-stdin ghcr.io
+
+      - name: Push Charts to GHCR
+        run: |
+          PKG_REGEX="^.cr-release-packages\/([a-z-]+)-([0-9]+\.[0-9]+\.[0-9]+)\.tgz$"
+          for pkg in .cr-release-packages/*; do
+            if [ ! "${pkg}" =~ ${PKG_REGEX} ]; then
+              echo "invalid package: ${pkg}"
+              continue
+            fi
+
+            pkg_name=${BASH_REMATCH[1]}
+            pkg_version=${BASH_REMATCH[2]}
+
+            echo "checking chart ${pkg_name}@${pkg_version}"
+
+            if helm pull oci://ghcr.io/${{ github.repository_owner }}/charts/${pkg_name} --version ${pkg_version} 2> /dev/null; then
+              echo "skipping, package exists"
+              continue
+            fi
+            echo "pushing package"
+            helm push "${pkg}" oci://ghcr.io/${{ github.repository_owner }}/charts
+          done
