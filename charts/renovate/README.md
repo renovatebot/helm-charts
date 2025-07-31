@@ -125,7 +125,7 @@ can make use of the cache that have been build up in previous runs. Set `renovat
 to enable this. If necessary, the storageClass can be configured and the storageSize can be set to the preferred value.
 
 **HINT**: It is highly recommended to use the redis subchart or SQLite for caching, instead of disk caching.
-Take a look at <https://github.com/renovatebot/renovate/discussions/30525> for more information.
+Take a look at https://github.com/renovatebot/renovate/discussions/30525 for more information.
 
 ## Renovate config templating
 
