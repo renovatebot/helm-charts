@@ -14,8 +14,8 @@ type: Opaque
 kind: ConfigMap
 {{- end }}
 metadata:
-  name: {{ template "renovate.fullname" . }}-config
-  namespace: {{ .Release.Namespace }}
+  name: {{ include "renovate.fullname" . }}-config
+  namespace: {{ include "renovate.namespace" . }}
   labels:
     {{- include "renovate.labels" . | nindent 4 }}
   {{- with .Values.secretAnnotations }}
