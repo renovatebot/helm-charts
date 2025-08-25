@@ -7,7 +7,7 @@ OWNER=$1
 
 if [ ! -d .cr-release-packages ] || [ -z "$(ls -A .cr-release-packages)" ]; then
   echo "skipping, no packages found"
-  return
+  exit
 fi
 
 for pkg in .cr-release-packages/*; do
