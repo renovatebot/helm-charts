@@ -18,25 +18,18 @@ The general concept is that we track the versions of Kubernetes that are support
 - [Azure Kubernetes Service (AKS)](https://endoflife.date/azure-kubernetes-service)
 - [Google Kubernetes Engine (GKE)](https://endoflife.date/google-kubernetes-engine)
 
-## Add Helm repository
-
-```bash
-helm repo add renovate https://docs.renovatebot.com/helm-charts
-helm repo update
-```
-
 ## Install chart
 
 Using config from a file:
 
 ```bash
-helm install --generate-name --set-file renovate.config=config.json renovate/renovate
+helm install --generate-name --set-file renovate.config=config.json oci://ghcr.io/renovatebot/charts/renovate
 ```
 
 Using config from a string:
 
 ```bash
-helm install --generate-name --set renovate.config='\{\"token\":\"...\"\}' renovate/renovate
+helm install --generate-name --set renovate.config='\{\"token\":\"...\"\}' oci://ghcr.io/renovatebot/charts/renovate
 ```
 
 **Note**: `renovate.config` must be a valid Renovate [self-hosted configuration](https://docs.renovatebot.com/self-hosted-configuration/).
