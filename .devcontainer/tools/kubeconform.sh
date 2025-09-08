@@ -8,4 +8,4 @@ curl --silent --show-error --fail --location --output /tmp/kubeconform.tar.gz "h
 tar -xf /tmp/kubeconform.tar.gz -C /usr/local/bin/ kubeconform
 rm /tmp/kubeconform.tar.gz
 
-kubeconform -version
+kubeconform -v
