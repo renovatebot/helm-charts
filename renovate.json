@@ -4,7 +4,7 @@
     "local>renovatebot/.github",
     "local>renovatebot/.github//merge-queue.json"
   ],
-  "assignees": ["rarkins", "viceice", "JamieMagee"],
+  "assignees": ["viceice"],
   "customManagers": [
     {
       "customType": "regex",
