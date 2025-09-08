@@ -48,7 +48,7 @@ jobs:
       - name: Run helm-docs
         run: .github/helm-docs.sh
 
-  kubeval-chart:
+  kubeconform-chart:
     runs-on: ubuntu-latest
     needs:
       - lint-chart
@@ -70,10 +70,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run kubeval
+      - name: Run kubeconform
         env:
           KUBERNETES_VERSION: ${{ matrix.k8s }}
-        run: .github/kubeval.sh
+        run: .github/kubeconform.sh
 
   install-chart:
     name: install-chart
@@ -82,7 +82,7 @@ jobs:
     needs:
       - lint-chart
       - lint-docs
-      - kubeval-chart
+      - kubeconform-chart
     strategy:
       matrix:
         k8s:
@@ -117,7 +117,7 @@ jobs:
     needs:
       - lint-chart
       - lint-docs
-      - kubeval-chart
+      - kubeconform-chart
       - install-chart
     runs-on: ubuntu-latest
     timeout-minutes: 1
@@ -133,10 +133,10 @@ jobs:
           needs.lint-docs.result == 'failure' ||
           needs.lint-docs.result == 'cancelled'
         run: exit 1
-      - name: Fail for failed or cancelled kubeval-chart
+      - name: Fail for failed or cancelled kubeconform-chart
         if: |
-          needs.kubeval-chart.result == 'failure' ||
-          needs.kubeval-chart.result == 'cancelled'
+          needs.kubeconform-chart.result == 'failure' ||
+          needs.kubeconform-chart.result == 'cancelled'
         run: exit 1
       - name: Fail for failed or cancelled install-chart
         if: |
