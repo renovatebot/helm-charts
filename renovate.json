@@ -41,12 +41,6 @@
   ],
   "packageRules": [
     {
-      "description": "Don't require approval for redis major updates",
-      "matchDepNames": ["redis"],
-      "matchManagers": ["helmv3"],
-      "dependencyDashboardApproval": false
-    },
-    {
       "description": "Don't require approval for renovate major updates",
       "matchPackageNames": ["ghcr.io/renovatebot/renovate"],
       "matchDatasources": ["docker"],
@@ -77,11 +71,10 @@
       "extractVersion": "^v(?<version>\\d+\\.\\d+\\.\\d+)$"
     },
     {
-      "description": "Use fix semantic commit scope for renovate and redis updates",
+      "description": "Use fix semantic commit scope for renovate updates",
       "matchDepNames": [
         "renovate/renovate",
-        "ghcr.io/renovatebot/renovate",
-        "redis"
+        "ghcr.io/renovatebot/renovate"
       ],
       "semanticCommitType": "fix",
       "semanticCommitScope": null
