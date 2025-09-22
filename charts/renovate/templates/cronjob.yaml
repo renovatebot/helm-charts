@@ -169,10 +169,6 @@ spec:
                 - name: RENOVATE_CONFIG_FILE
                   value: /usr/src/app/{{ $configFileName }}
                 {{- end }}
-                {{- if .Values.redis.enabled }}
-                - name: RENOVATE_REDIS_URL
-                  value: redis://{{ include "renovate.redisHost" . }}
-                {{- end }}
                 {{- range $k, $v := .Values.env }}
                 - name: {{ $k | quote }}
                   value: {{ $v | quote }}
