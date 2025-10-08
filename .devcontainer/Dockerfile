@@ -6,7 +6,7 @@ COPY tools/*.sh /usr/local/containerbase/tools/
 
 # installs files to /etc/ct
 # renovate: datasource=github-releases packageName=helm/chart-testing
-RUN install-tool chart-testing v3.13.0
+RUN install-tool chart-testing v3.14.0
 
 USER vscode
 
