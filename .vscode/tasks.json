@@ -7,7 +7,7 @@
       "dependsOn": [
         "ct-lint",
         "helm-docs",
-        "kubeval",
+        "kubeconform",
         "ct-install"
       ],
       "problemMatcher": [],
@@ -35,9 +35,9 @@
       }
     },
     {
-      "label": "kubeval",
+      "label": "kubeconform",
       "type": "shell",
-      "command": "helm template --values ${workspaceFolder}/charts/renovate/ci/ci-values.yaml ${workspaceFolder}/charts/renovate | kubeval --strict --kubernetes-version 1.24.1 --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/",
+      "command": "helm template --values ${workspaceFolder}/charts/renovate/ci/ci-values.yaml ${workspaceFolder}/charts/renovate | kubeconform -strict -summary -kubernetes-version 1.30.14",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",

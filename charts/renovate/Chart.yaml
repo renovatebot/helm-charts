@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: '40.11.14'
+appVersion: 42.8.1
 description: Universal dependency update tool that fits into your workflows.
 name: renovate
-version: '40.11.14'
+version: 45.5.1
 icon: https://docs.renovatebot.com/assets/images/logo.png
 home: https://github.com/renovatebot/renovate
 keywords:
@@ -24,8 +24,8 @@ maintainers:
 annotations:
   artifacthub.io/license: AGPL-3.0-only
   artifacthub.io/images: |
-    - name: ghcr.io/renovatebot/renovate:40.11.14
-      image: ghcr.io/renovatebot/renovate:40.11.14
+    - name: ghcr.io/renovatebot/renovate:42.8.1
+      image: ghcr.io/renovatebot/renovate:42.8.1
       platforms:
         - linux/amd64
         - linux/arm64
@@ -33,10 +33,6 @@ annotations:
     - name: docs
       url: https://docs.renovatebot.com
 dependencies:
-  - name: redis
-    repository: oci://registry-1.docker.io/bitnamicharts
-    version: 20.13.4
-    condition: redis.enabled
   - name: common
     repository: oci://registry-1.docker.io/bitnamicharts
     version: 2.x.x

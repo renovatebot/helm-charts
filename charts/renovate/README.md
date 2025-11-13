@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 40.11.14](https://img.shields.io/badge/Version-40.11.14-informational?style=flat-square) ![AppVersion: 40.11.14](https://img.shields.io/badge/AppVersion-40.11.14-informational?style=flat-square)
+![Version: 45.5.1](https://img.shields.io/badge/Version-45.5.1-informational?style=flat-square) ![AppVersion: 42.8.1](https://img.shields.io/badge/AppVersion-42.8.1-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
@@ -8,25 +8,18 @@ Universal dependency update tool that fits into your workflows.
 
 ## Installation
 
-### Add Helm repository
-
-```shell
-helm repo add renovate https://docs.renovatebot.com/helm-charts
-helm repo update
-```
-
 ## Install Renovate chart
 
 Using config from a file:
 
 ```bash
-helm install --generate-name --set-file renovate.config=config.json renovate/renovate
+helm install --generate-name --set-file renovate.config=config.json oci://ghcr.io/renovatebot/charts/renovate
 ```
 
 Using config from a string:
 
 ```bash
-helm install --generate-name --set renovate.config='\{\"token\":\"...\"\}' renovate/renovate
+helm install --generate-name --set renovate.config='\{\"token\":\"...\"\}' oci://ghcr.io/renovatebot/charts/renovate
 ```
 
 **NOTE**: `renovate.config` must be a valid Renovate [self-hosted configuration](https://docs.renovatebot.com/self-hosted-configuration/)
@@ -79,21 +72,17 @@ The following table lists the configurable parameters of the chart and the defau
 | image.pullPolicy | string | `"IfNotPresent"` | "IfNotPresent" to pull the image if no image with the specified tag exists on the node, "Always" to always pull the image or "Never" to try and use pre-pulled images |
 | image.registry | string | `"ghcr.io"` | Registry to pull image from |
 | image.repository | string | `"renovatebot/renovate"` | Image name to pull |
-| image.tag | string | `"40.11.14"` | Renovate image tag to pull |
-| image.useFull | bool | `false` | Set `true` to use the full image. See https://docs.renovatebot.com/getting-started/running/#the-full-image |
+| image.tag | string | `"42.8.1"` | Renovate image tag to pull |
+| image.useFull | bool | `false` | Set `true` to use the full image. See <https://docs.renovatebot.com/getting-started/running/#the-full-image> |
 | imagePullSecrets | object | `{}` | Secret to use to pull the image from the repository |
 | nameOverride | string | `""` | Override the name of the chart |
 | nodeSelector | object | `{}` | Select the node using labels to specify where the cronjob pod should run on |
 | pod.annotations | object | `{}` | Annotations to set on the pod |
 | pod.labels | object | `{}` | Labels to set on the pod |
-| redis.architecture | string | `"standalone"` | Disable replication by default |
-| redis.auth.enabled | bool | `false` | Don't require a password by default |
-| redis.enabled | bool | `false` | Enable the Redis subchart? |
-| redis.kubeVersion | string | `""` | Override Kubernetes version for redis chart |
-| redis.nameOverride | string | `""` | Override the prefix of the redisHost |
 | renovate.config | string | `""` | Inline global renovate config.json |
 | renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See README for how to use this value |
 | renovate.configIsJavaScript | bool | `false` | Use this to create a config.js instead of a config.json |
+| renovate.configIsJson5 | bool | `false` | Use this to create a config.json5 instead of a config.json |
 | renovate.configIsSecret | bool | `false` | Use this to create the renovate-config as a secret instead of a configmap |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
 | renovate.persistence | object | `{"cache":{"enabled":false,"labels":{},"storageClass":"","storageSize":"512Mi","volumeName":""}}` | Options related to persistence |
@@ -123,8 +112,8 @@ To speed up execution time of jobs it could be useful to enable persistent cachi
 can make use of the cache that have been build up in previous runs. Set `renovate.persistence.cache.enabled` to true
 to enable this. If necessary, the storageClass can be configured and the storageSize can be set to the preferred value.
 
-**HINT**: It is highly recommended to use the redis subchart or SQLite for caching, instead of disk caching.
-Take a look at https://github.com/renovatebot/renovate/discussions/30525 for more information.
+**HINT**: It is highly recommended to use [SQLite](https://docs.renovatebot.com/self-hosted-experimental/#renovate_x_sqlite_package_cache) for caching, instead of disk caching.
+Take a look at <https://github.com/renovatebot/renovate/discussions/30525> for more information.
 
 ## Renovate config templating
 
@@ -141,12 +130,10 @@ This chart is using the slim renovate image by default.
 If you want to use the full renovate image, set the `image.tag` to `full`.
 If you like to use a specific major version, set the `image.tag` to `36-full`.
 
-## Redis
-
-Please check out [bitnami redis](https://artifacthub.io/packages/helm/bitnami/redis) chart for additional redis configuration.
-
 ## Upgrading
 
 A major chart version change can indicate that there is an incompatible breaking change needing manual actions.
 
-_No recent breaking changes needing manual actions._
+### to v44
+
+Redis subchart was removed. If you previously used it then bring your own redis or use [SQLite](https://docs.renovatebot.com/self-hosted-experimental/#renovate_x_sqlite_package_cache) for caching.

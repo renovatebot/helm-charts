@@ -4,16 +4,18 @@
     "local>renovatebot/.github",
     "local>renovatebot/.github//merge-queue.json"
   ],
-  "assignees": ["rarkins", "viceice", "JamieMagee"],
+  "ignorePresets": [
+    "github>renovatebot/.github:weekly-docs-references"
+  ],
+  "assignees": ["viceice"],
   "customManagers": [
     {
       "customType": "regex",
       "description": "Update renovate docker image references",
-      "fileMatch": ["^charts\\/renovate\\/Chart\\.yaml$"],
+      "managerFilePatterns": ["charts/renovate/Chart.yaml"],
       "matchStrings": [
-        "appVersion: '(?<currentValue>.*?)'\\s+",
-        "version: '(?<currentValue>.*?)'\\s+",
-        "(?:image|name): (?<depName>.*?):(?<currentValue>.*?)\\s+"
+        "appVersion:\\s+(?<currentValue>[^\\s]+)",
+        "(?:image|name): (?<depName>.*?):(?<currentValue>[^\\s]+)"
       ],
       "depNameTemplate": "{{#if depName}}{{depName}}{{else}}ghcr.io/renovatebot/renovate{{/if}}",
       "datasourceTemplate": "docker"
@@ -21,10 +23,10 @@
     {
       "customType": "regex",
       "description": "Update renovate docker image references",
-      "fileMatch": ["^charts\\/renovate\\/README\\.md$"],
+      "managerFilePatterns": ["charts/renovate/README.md"],
       "matchStrings": [
         "\\|\\s+image.tag\\s+\\|\\s+string\\s+\\|\\s+`\"(?<currentValue>.*?)\"`\\s+\\|\\s+",
-        "(:\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+(?:\\+\\d+)?)"
+        "AppVersion(?::\\s|-)(?<currentValue>\\d+\\.\\d+\\.\\d+(?:\\+\\d+)?)"
       ],
       "depNameTemplate": "ghcr.io/renovatebot/renovate",
       "datasourceTemplate": "docker"
@@ -32,7 +34,7 @@
     {
       "customType": "regex",
       "description": "Update kindest kubernetes references",
-      "fileMatch": ["^\\.github\\/workflows\\/[^/]+\\.ya?ml$"],
+      "managerFilePatterns": ["/^\\.github\\/workflows\\/[^/]+\\.ya?ml$/"],
       "matchStrings": [
         " +- (?<currentValue>v\\d+\\.\\d+\\.\\d+) # renovate: kindest\\n"
       ],
@@ -41,12 +43,6 @@
     }
   ],
   "packageRules": [
-    {
-      "description": "Don't require approval for redis major updates",
-      "matchDepNames": ["redis"],
-      "matchManagers": ["helmv3"],
-      "dependencyDashboardApproval": false
-    },
     {
       "description": "Don't require approval for renovate major updates",
       "matchPackageNames": ["ghcr.io/renovatebot/renovate"],
@@ -78,11 +74,10 @@
       "extractVersion": "^v(?<version>\\d+\\.\\d+\\.\\d+)$"
     },
     {
-      "description": "Use fix semantic commit scope for renovate and redis updates",
+      "description": "Use fix semantic commit scope for renovate updates",
       "matchDepNames": [
         "renovate/renovate",
-        "ghcr.io/renovatebot/renovate",
-        "redis"
+        "ghcr.io/renovatebot/renovate"
       ],
       "semanticCommitType": "fix",
       "semanticCommitScope": null
@@ -93,6 +88,35 @@
       "matchDepNames": ["azure/setup-helm"],
       "extractVersion": "^(?<version>.+)$",
       "versioning": "regex:^v(?<major>\\d+)(\\.(?<minor>\\d+)(?:\\.(?<patch>\\d+))?)?$"
+    },
+    {
+      "matchFileNames": ["charts/**"],
+      "bumpVersions": [
+        {
+          "name": "Chart",
+          "filePatterns": ["{{packageFileDir}}/Chart.yaml"],
+          "matchStrings": ["version:\\s(?<version>\\d+\\.\\d+\\.\\d+)"],
+          "bumpType": "{{#if isPatch}}patch{{else}}{{#if isMajor}}major{{else}}minor{{/if}}{{/if}}"
+        },
+        {
+          "name": "README,text",
+          "filePatterns": ["{{packageFileDir}}/README.md"],
+          "matchStrings": ["\\[Version:\\s(?<version>\\d+\\.\\d+\\.\\d+)"],
+          "bumpType": "{{#if isPatch}}patch{{else}}{{#if isMajor}}major{{else}}minor{{/if}}{{/if}}"
+        },
+        {
+          "name": "README,badge",
+          "filePatterns": ["{{packageFileDir}}/README.md"],
+          "matchStrings": ["\\/Version-(?<version>\\d+\\.\\d+\\.\\d+)"],
+          "bumpType": "{{#if isPatch}}patch{{else}}{{#if isMajor}}major{{else}}minor{{/if}}{{/if}}"
+        }
+      ]
+    }
+  ],
+  "logLevelRemap": [
+    {
+      "matchMessage": "/bumpVersions/",
+      "newLogLevel": "debug"
     }
   ]
 }
