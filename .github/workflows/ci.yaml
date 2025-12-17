@@ -91,7 +91,7 @@ jobs:
           - v1.30.13 # renovate: kindest
           - v1.31.12 # renovate: kindest
           - v1.32.11 # renovate: kindest
-          - v1.33.4 # renovate: kindest
+          - v1.33.7 # renovate: kindest
           - v1.34.3 # renovate: kindest
     steps:
       - name: Checkout
