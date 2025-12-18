@@ -14,7 +14,7 @@ USER vscode
 RUN install-tool kubectl v1.35.0
 
 # renovate: datasource=github-releases packageName=kubernetes-sigs/kind
-RUN install-tool kind v0.30.0
+RUN install-tool kind v0.31.0
 
 # renovate: datasource=github-releases packageName=helm/helm
 RUN install-tool helm v3.19.4
