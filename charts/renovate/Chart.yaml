@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: 42.92.9
+appVersion: 42.92.11
 description: Universal dependency update tool that fits into your workflows.
 name: renovate
-version: 45.85.9
+version: 45.85.10
 icon: https://docs.renovatebot.com/assets/images/logo.png
 home: https://github.com/renovatebot/renovate
 keywords:
@@ -24,8 +24,8 @@ maintainers:
 annotations:
   artifacthub.io/license: AGPL-3.0-only
   artifacthub.io/images: |
-    - name: ghcr.io/renovatebot/renovate:42.92.9
-      image: ghcr.io/renovatebot/renovate:42.92.9
+    - name: ghcr.io/renovatebot/renovate:42.92.11
+      image: ghcr.io/renovatebot/renovate:42.92.11
       platforms:
         - linux/amd64
         - linux/arm64
