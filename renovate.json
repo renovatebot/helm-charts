@@ -4,9 +4,6 @@
     "local>renovatebot/.github",
     "local>renovatebot/.github//merge-queue.json"
   ],
-  "ignorePresets": [
-    "github>renovatebot/.github:weekly-docs-references"
-  ],
   "assignees": ["viceice"],
   "customManagers": [
     {
