@@ -1,6 +1,6 @@
 # renovate
 
-![Version: 46.4.3](https://img.shields.io/badge/Version-46.4.3-informational?style=flat-square) ![AppVersion: 43.4.3](https://img.shields.io/badge/AppVersion-43.4.3-informational?style=flat-square)
+![Version: 46.5.0](https://img.shields.io/badge/Version-46.5.0-informational?style=flat-square) ![AppVersion: 43.4.3](https://img.shields.io/badge/AppVersion-43.4.3-informational?style=flat-square)
 
 Universal dependency update tool that fits into your workflows.
 
