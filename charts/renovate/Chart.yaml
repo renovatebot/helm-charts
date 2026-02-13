@@ -15,12 +15,10 @@ sources:
   - https://github.com/renovatebot/renovate
   - https://github.com/renovatebot/helm-charts
 maintainers:
-  - name: JamieMagee
-    email: jamie.magee@gmail.com
   - name: viceice
     email: michael.kriese@visualon.de
-  - name: rarkins
-    email: rhys@arkins.net
+  - name: JamieTanna
+    email: jamie@jamietanna.co.uk
 annotations:
   artifacthub.io/license: AGPL-3.0-only
   artifacthub.io/images: |
