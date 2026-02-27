@@ -227,6 +227,9 @@ spec:
           nodeSelector:
             {{- toYaml . | nindent 12 }}
         {{- end }}
+        {{- if .Values.pod.priorityClassName }}
+          priorityClassName: {{ .Values.pod.priorityClassName }}
+        {{- end }}
         {{- with .Values.affinity }}
           affinity:
             {{- toYaml . | nindent 12 }}
