@@ -77,6 +77,9 @@ pod:
   # -- Labels to set on the pod
   labels: {}
 
+  # -- Priority class to set on the pod
+  priorityClassName: ""
+
 image:
   # -- Registry to pull image from
   registry: ghcr.io
