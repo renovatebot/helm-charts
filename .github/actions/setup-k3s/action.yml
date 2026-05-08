@@ -1,0 +1,25 @@
+# action.yml
+name: setup-k3s
+description: 'setup k3s'
+
+inputs:
+  version:
+    description: 'k3s version'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - shell: bash
+      name: install k3s
+      run: |
+        curl -sfL https://get.k3s.io | sudo INSTALL_K3S_VERSION=${INPUT_VERSION} K3S_KUBECONFIG_MODE=644 sh -s - server
+        echo "KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> $GITHUB_ENV
+    - shell: bash
+      name: check k3s
+      run: kubectl cluster-info
+    - shell: bash
+      name: wait for nodes ready
+      run: |
+        sleep 3
+        kubectl wait --for=condition=Ready nodes --all --timeout=600s

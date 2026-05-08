@@ -1,8 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>renovatebot/.github",
-    "local>renovatebot/.github//merge-queue.json"
+    "github>renovatebot/.github",
+    "github>renovatebot/.github//merge-queue.json",
+    "github>renovatebot/helm-charts//.github/renovate/k3s.json"
   ],
   "assignees": ["viceice"],
   "customManagers": [
@@ -37,6 +38,15 @@
       ],
       "depNameTemplate": "kindest/node",
       "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "description": "Update k3s kubernetes references",
+      "managerFilePatterns": [".github/workflows/*.y{,a}ml"],
+      "matchStrings": [" +- (?<currentValue>.+?) # renovate: k3s\\n"],
+      "depNameTemplate": "k3s",
+      "packageNameTemplate": "k3s-io/k3s",
+      "datasourceTemplate": "github-releases"
     }
   ],
   "packageRules": [
@@ -72,10 +82,7 @@
     },
     {
       "description": "Use fix semantic commit scope for renovate updates",
-      "matchDepNames": [
-        "renovate/renovate",
-        "ghcr.io/renovatebot/renovate"
-      ],
+      "matchDepNames": ["renovate/renovate", "ghcr.io/renovatebot/renovate"],
       "semanticCommitType": "fix",
       "semanticCommitScope": null
     },

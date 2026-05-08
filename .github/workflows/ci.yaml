@@ -20,6 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         with:
+          show-progress: false
           fetch-depth: 0
 
       - name: Install Helm
@@ -46,6 +47,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+        with:
+          show-progress: false
       - name: Run helm-docs
         run: .github/helm-docs.sh
 
@@ -69,6 +72,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         with:
+          show-progress: false
           fetch-depth: 0
 
       - name: Run kubeconform
@@ -86,24 +90,29 @@ jobs:
       - kubeconform-chart
     strategy:
       matrix:
-        k8s:
-          # from https://hub.docker.com/r/kindest/node/tags
-          - v1.31.14 # renovate: kindest
-          - v1.32.11 # renovate: kindest
-          - v1.33.7 # renovate: kindest
-          - v1.34.3 # renovate: kindest
-          - v1.35.1 # renovate: kindest
+        k3s:
+          # https://github.com/renovatebot/helm-charts/issues/579
+          # https://github.com/k3s-io/k3s/branches
+          # oldest supported version
+          - v1.31.14+k3s1 # renovate: k3s
+          # oldstable version
+          - v1.34.7+k3s1 # renovate: k3s
+          # https://github.com/k3s-io/k3s/blob/master/channel.yaml#L3-L4
+          # stable version
+          - v1.35.4+k3s1 # renovate: k3s
+          # latest version
+          - v1.36.0+k3s1 # renovate: k3s
     steps:
       - name: Checkout
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         with:
+          show-progress: false
           fetch-depth: 0
+          filter: blob:none # We don't need all blobs
 
-      - name: Create kind ${{ matrix.k8s }} cluster
-        uses: helm/kind-action@ef37e7f390d99f746eb8b610417061a60e82a6cc # v1.14.0
+      - uses: ./.github/actions/setup-k3s
         with:
-          node_image: kindest/node:${{ matrix.k8s }}
-          version: v0.31.0 # renovate: datasource=github-releases depName=kind packageName=kubernetes-sigs/kind
+          version: ${{ matrix.k3s }}
 
       - name: Install chart-testing
         uses: helm/chart-testing-action@6ec842c01de15ebb84c8627d2744a0c2f2755c9f # v2.8.0
