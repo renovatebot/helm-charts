@@ -90,22 +90,19 @@ jobs:
       - kubeconform-chart
     strategy:
       matrix:
-        # k8s:
-        #   # from https://hub.docker.com/r/kindest/node/tags
-        #   - v1.30.13 # renovate: kindest
-        #   - v1.31.14 # renovate: kindest
-        #   - v1.32.11 # renovate: kindest
-        #   - v1.33.7 # renovate: kindest
-        #   - v1.34.3 # renovate: kindest
         k3s:
+          # https://github.com/renovatebot/helm-charts/issues/579
           # https://github.com/k3s-io/k3s/branches
           # oldest supported version
-          - v1.28.15+k3s1 # renovate: k3s
+          - v1.31.14+k3s1 # renovate: k3s
+          - v1.32.13+k3s1 # renovate: k3s
+          - v1.33.11+k3s1 # renovate: k3s
+          - v1.34.7+k3s1 # renovate: k3s
           # https://github.com/k3s-io/k3s/blob/master/channel.yaml#L3-L4
           # stable version
-          - v1.34.7+k3s1 # renovate: k3s
-          # newest version
           - v1.35.4+k3s1 # renovate: k3s
+          # latest version
+          - v1.36.0+k3s1 # renovate: k3s
     steps:
       - name: Checkout
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
