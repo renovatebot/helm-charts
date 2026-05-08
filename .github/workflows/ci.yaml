@@ -95,8 +95,7 @@ jobs:
           # https://github.com/k3s-io/k3s/branches
           # oldest supported version
           - v1.31.14+k3s1 # renovate: k3s
-          - v1.32.13+k3s1 # renovate: k3s
-          - v1.33.11+k3s1 # renovate: k3s
+          # oldstable version
           - v1.34.7+k3s1 # renovate: k3s
           # https://github.com/k3s-io/k3s/blob/master/channel.yaml#L3-L4
           # stable version
