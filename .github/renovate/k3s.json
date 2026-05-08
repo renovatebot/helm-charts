@@ -1,0 +1,57 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "description": "Separate minor and patch updates for k3s",
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["k3s-io/k3s"],
+      "separateMultipleMinor": true,
+      "separateMinorPatch": true,
+      "branchTopic": "{{{depNameSanitized}}}{{#if isMinor}}-minor{{/if}}-{{{newMajor}}}{{#if isPatch}}.{{{newMinor}}}{{/if}}.x{{#if isLockfileUpdate}}-lockfile{{/if}}",
+      "commitMessageSuffix": "{{#if isMinor}}(minor){{/if}}{{#if isPatch}}(patch){{/if}}"
+    },
+    {
+      "description": "No automerge for k3s major and minor updates",
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["k3s-io/k3s"],
+      "matchUpdateTypes": ["major", "minor"],
+      "automerge": false
+    },
+    {
+      "description": "Group k3s patch updates",
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["k3s-io/k3s"],
+      "matchUpdateTypes": ["patch"],
+      "groupName": "k3s"
+    },
+    {
+      "description": "Disable k3s major and minor updates for old versions",
+      "matchDatasources": ["github-releases"],
+      "matchFileNames": [".github/workflows/**"],
+      "matchPackageNames": ["k3s-io/k3s"],
+      "matchUpdateTypes": ["major", "minor"],
+      "matchCurrentValue": "!/^v1.36/",
+      "enabled": false
+    }
+  ],
+  "customDatasources": {
+    "k3s": {
+      "defaultRegistryUrlTemplate": "https://update.k3s.io/v1-release/channels",
+      "transformTemplates": [
+        "($isVersion:=function($name){$contains($name,/^v\\d+.\\d+$/)};{\"releases\":[data[$isVersion(name)].{\"version\":latest}],\"sourceUrl\":\"https://github.com/k3s-io/k3s\",\"homepage\":\"https://k3s.io/\"})"
+      ]
+    }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [".github/renovate/k3s.json"],
+      "matchStrings": [
+        "matchCurrentValue\": \"!\\/\\^v(?<currentValue>\\d+\\.\\d+)\\/"
+      ],
+      "depNameTemplate": "k3s",
+      "versioningTemplate": "npm",
+      "datasourceTemplate": "custom.k3s"
+    }
+  ]
+}
