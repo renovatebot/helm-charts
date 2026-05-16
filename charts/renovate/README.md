@@ -79,6 +79,7 @@ The following table lists the configurable parameters of the chart and the defau
 | nodeSelector | object | `{}` | Select the node using labels to specify where the cronjob pod should run on |
 | pod.annotations | object | `{}` | Annotations to set on the pod |
 | pod.labels | object | `{}` | Labels to set on the pod |
+| pod.priorityClassName | string | `""` | Priority class to set on the pod |
 | renovate.config | string | `""` | Inline global renovate config.json |
 | renovate.configEnableHelmTpl | bool | `false` | Use the Helm tpl function on your configuration. See README for how to use this value |
 | renovate.configIsJavaScript | bool | `false` | Use this to create a config.js instead of a config.json |
