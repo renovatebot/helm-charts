@@ -6,7 +6,7 @@ export PATH="./.bin:$PATH"
 set -euxo pipefail
 
 # renovate: datasource=github-releases depName=kubeconform packageName=yannh/kubeconform
-KUBECONFORM_VERSION=v0.7.0
+KUBECONFORM_VERSION=v0.8.0
 
 # renovate: datasource=github-releases depName=semver2 packageName=Ariel-Rodriguez/sh-semversion-2
 #SEMVER_VERSION=v1.0.5
