@@ -56,6 +56,8 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.suspend | bool | `false` | If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions. |
 | cronjob.timeZone | string | `""` | You can specify a time zone for a CronJob by setting timeZone to the name of a valid time zone. (starting with k8s 1.27) <https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones> |
 | cronjob.ttlSecondsAfterFinished | string | `""` | Time to keep the job after it finished before automatically deleting it |
+| dnsConfig | object | `{}` | Configure pod DNS settings |
+| dnsPolicy | string | `""` | Configure pod DNS policy |
 | env | object | `{}` | Environment variables to set on the renovate container |
 | envFrom | list | `[]` | Environment variables to add from existing secrets/configmaps. Uses the keys as variable name |
 | envList | list | `[]` | Additional env. Helpful too if you want to use anything other than a `value` source. |

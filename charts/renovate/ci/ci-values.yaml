@@ -29,3 +29,8 @@ hostAliases:
   - ip: "1.2.3.4"
     hostnames:
       - "example.com"
+dnsPolicy: ClusterFirst
+dnsConfig:
+  options:
+    - name: ndots
+      value: "1"

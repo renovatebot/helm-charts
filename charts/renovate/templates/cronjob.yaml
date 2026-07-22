@@ -85,6 +85,13 @@ spec:
           hostAliases:
             {{- toYaml . | nindent 12 }}
         {{- end }}
+        {{- with .Values.dnsPolicy }}
+          dnsPolicy: {{ . }}
+        {{- end }}
+        {{- with .Values.dnsConfig }}
+          dnsConfig:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
           {{- if or .Values.cronjob.initContainers .Values.ssh_config.enabled }}
           initContainers:
             {{- if .Values.ssh_config.enabled }}

@@ -258,6 +258,12 @@ hostAliases: []
 #     hostnames:
 #       - "your-hostname"
 
+# -- Configure pod DNS settings
+dnsConfig: {}
+
+# -- Configure pod DNS policy
+dnsPolicy: ''
+
 # -- Pod-level security-context
 securityContext: {}
 
