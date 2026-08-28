@@ -96,12 +96,12 @@ jobs:
           # oldest supported version
           - v1.31.14+k3s1 # renovate: k3s
           # oldstable version
-          - v1.34.10+k3s1 # renovate: k3s
+          - v1.34.11+k3s1 # renovate: k3s
           # https://github.com/k3s-io/k3s/blob/master/channel.yaml#L3-L4
           # stable version
-          - v1.35.7+k3s1 # renovate: k3s
+          - v1.35.8+k3s1 # renovate: k3s
           # latest version
-          - v1.36.3+k3s1 # renovate: k3s
+          - v1.36.4+k3s1 # renovate: k3s
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
