@@ -30,7 +30,7 @@
       "matchFileNames": [".github/workflows/**"],
       "matchPackageNames": ["k3s-io/k3s"],
       "matchUpdateTypes": ["major", "minor"],
-      "matchCurrentValue": "!/^v1.36/",
+      "matchCurrentValue": "!/^v1.37/",
       "enabled": false
     }
   ],
