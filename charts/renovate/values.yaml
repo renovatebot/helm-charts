@@ -137,8 +137,16 @@ renovate:
       storageSize: "512Mi"
       # -- Existing volume, enables binding the pvc to an existing volume
       volumeName: ""
+      # -- Access modes of the cache PVC, e.g. `ReadWriteOncePod` to enable efficient SELinux volume relabeling
+      accessModes:
+        - ReadWriteOnce
       # -- Labels to set on the cache PVC
       labels: {}
+      # -- Annotations to set on the cache PVC, e.g. `helm.sh/resource-policy: keep` to keep the cache on uninstall
+      annotations: {}
+      # -- Name of an existing PVC to use for the cache instead of creating one.
+      # The other PVC settings (storageClass, storageSize, volumeName, accessModes, labels, annotations) are ignored when set
+      existingClaim: ""
 
 ssh_config:
   # -- Whether to enable the use and creation of a secret containing .ssh files
