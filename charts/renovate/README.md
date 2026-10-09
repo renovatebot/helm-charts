@@ -87,8 +87,11 @@ The following table lists the configurable parameters of the chart and the defau
 | renovate.configIsJson5 | bool | `false` | Use this to create a config.json5 instead of a config.json |
 | renovate.configIsSecret | bool | `false` | Use this to create the renovate-config as a secret instead of a configmap |
 | renovate.existingConfigFile | string | `""` | Custom exiting global renovate config |
-| renovate.persistence | object | `{"cache":{"enabled":false,"labels":{},"storageClass":"","storageSize":"512Mi","volumeName":""}}` | Options related to persistence |
+| renovate.persistence | object | `{"cache":{"accessModes":["ReadWriteOnce"],"annotations":{},"enabled":false,"existingClaim":"","labels":{},"storageClass":"","storageSize":"512Mi","volumeName":""}}` | Options related to persistence |
+| renovate.persistence.cache.accessModes | list | `["ReadWriteOnce"]` | Access modes of the cache PVC, e.g. `ReadWriteOncePod` to enable efficient SELinux volume relabeling |
+| renovate.persistence.cache.annotations | object | `{}` | Annotations to set on the cache PVC, e.g. `helm.sh/resource-policy: keep` to keep the cache on uninstall |
 | renovate.persistence.cache.enabled | bool | `false` | Allow the cache to persist between runs |
+| renovate.persistence.cache.existingClaim | string | `""` | Name of an existing PVC to use for the cache instead of creating one. The other PVC settings (storageClass, storageSize, volumeName, accessModes, labels, annotations) are ignored when set |
 | renovate.persistence.cache.labels | object | `{}` | Labels to set on the cache PVC |
 | renovate.persistence.cache.storageClass | string | `""` | Storage class of the cache PVC |
 | renovate.persistence.cache.storageSize | string | `"512Mi"` | Storage size of the cache PVC |
@@ -113,6 +116,18 @@ The following table lists the configurable parameters of the chart and the defau
 To speed up execution time of jobs it could be useful to enable persistent caching. This means that Renovate
 can make use of the cache that have been build up in previous runs. Set `renovate.persistence.cache.enabled` to true
 to enable this. If necessary, the storageClass can be configured and the storageSize can be set to the preferred value.
+
+The access modes of the cache PVC can be changed with `renovate.persistence.cache.accessModes` (default `[ReadWriteOnce]`).
+On SELinux clusters (e.g. OpenShift), using `ReadWriteOncePod` avoids recursive relabeling of the cache volume on every
+container start, see [efficient SELinux volume relabeling](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#efficient-selinux-volume-relabeling).
+
+Annotations can be added to the cache PVC with `renovate.persistence.cache.annotations`, e.g. `helm.sh/resource-policy: keep`
+to keep the cache when the release is uninstalled.
+
+To use a PVC that is managed outside of the release, set `renovate.persistence.cache.existingClaim` to its name. The chart
+then doesn't create a PVC, but still mounts the claim at `/tmp/renovate` and sets the pod `fsGroup`. This is useful with
+`WaitForFirstConsumer` storage classes, where a PVC created by the chart stays `Pending` until the first job runs, which
+makes `helm install/upgrade --wait` time out.
 
 **HINT**: It is highly recommended to use [SQLite](https://docs.renovatebot.com/self-hosted-experimental/#renovate_x_sqlite_package_cache) for caching, instead of disk caching.
 Take a look at <https://github.com/renovatebot/renovate/discussions/30525> for more information.
