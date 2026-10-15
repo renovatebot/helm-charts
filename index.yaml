@@ -3,6 +3,46 @@ entries:
   renovate:
   - annotations:
       artifacthub.io/images: |
+        - name: ghcr.io/renovatebot/renovate:44.163.0
+          image: ghcr.io/renovatebot/renovate:44.163.0
+          platforms:
+            - linux/amd64
+            - linux/arm64
+      artifacthub.io/license: AGPL-3.0-only
+      artifacthub.io/links: |
+        - name: docs
+          url: https://docs.renovatebot.com
+    apiVersion: v2
+    appVersion: 44.163.0
+    created: "2026-10-15T11:28:10.899293841Z"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 2.x.x
+    description: Universal dependency update tool that fits into your workflows.
+    digest: 7aba0c57e9f6ecd6420e4ba7f2ff738dc7210d283446c961181037317e555353
+    home: https://github.com/renovatebot/renovate
+    icon: https://docs.renovatebot.com/assets/images/logo.png
+    keywords:
+    - automated
+    - dependencies
+    - dependency
+    - management
+    - update
+    maintainers:
+    - email: michael.kriese@visualon.de
+      name: viceice
+    - email: jamie@jamietanna.co.uk
+      name: JamieTanna
+    name: renovate
+    sources:
+    - https://github.com/renovatebot/renovate
+    - https://github.com/renovatebot/helm-charts
+    urls:
+    - https://github.com/renovatebot/helm-charts/releases/download/renovate-46.365.0/renovate-46.365.0.tgz
+    version: 46.365.0
+  - annotations:
+      artifacthub.io/images: |
         - name: ghcr.io/renovatebot/renovate:44.162.0
           image: ghcr.io/renovatebot/renovate:44.162.0
           platforms:
@@ -200607,4 +200647,4 @@ entries:
     urls:
     - https://github.com/renovatebot/helm-charts/releases/download/renovate-19.200.0/renovate-19.200.0.tgz
     version: 19.200.0
-generated: "2026-10-15T10:27:41.350853143Z"
+generated: "2026-10-15T11:28:10.907468086Z"
