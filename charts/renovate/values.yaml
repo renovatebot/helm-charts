@@ -129,7 +129,8 @@ renovate:
   # -- Options related to persistence
   persistence:
     cache:
-      # -- Allow the cache to persist between runs
+      # -- Allow the cache to persist between runs.
+      # When enabled, the pod `securityContext` defaults to `fsGroup: 1000` and `fsGroupChangePolicy: OnRootMismatch` unless set explicitly.
       enabled: false
       # -- Storage class of the cache PVC
       storageClass: ""

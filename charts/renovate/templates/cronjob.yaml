@@ -248,6 +248,9 @@ spec:
           {{- if and .Values.renovate.persistence.cache.enabled (not .Values.securityContext.fsGroup) }}
             {{- $securityDict = merge $securityDict (dict "fsGroup" 1000) }}
           {{- end }}
+          {{- if and .Values.renovate.persistence.cache.enabled (not .Values.securityContext.fsGroupChangePolicy) }}
+            {{- $securityDict = merge $securityDict (dict "fsGroupChangePolicy" "OnRootMismatch") }}
+          {{- end }}
           securityContext:
             {{- if not (empty $securityDict) }}
               {{- include "common.compatibility.renderSecurityContext" (dict "secContext" $securityDict "context" $) | nindent 12 }}
