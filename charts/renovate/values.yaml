@@ -48,11 +48,13 @@ cronjob:
   maxFailedIndexes: ''
   # -- Deadline to start the job, skips execution if job misses it's configured deadline
   startingDeadlineSeconds: ''
-  # -- Additional initContainers that can be executed before renovate
+  # -- Additional initContainers that can be executed before renovate (evaluated as a template)
   initContainers: []
   # initContainers:
   # - name: INIT_CONTAINER_NAME
   #   image: INIT_CONTAINER_IMAGE
+  # - name: INIT_CONTAINER_USING_RENOVATE_IMAGE
+  #   image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
   # -- Number of pods to run in parallel
   parallelism: ''
   # -- Custom command to run in the container
