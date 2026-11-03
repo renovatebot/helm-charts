@@ -42,7 +42,7 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.completions | string | `""` | "Number of successful completions is reached to mark the job as complete" |
 | cronjob.concurrencyPolicy | string | `""` | "Allow" to allow concurrent runs, "Forbid" to skip new runs if a previous run is still running or "Replace" to replace the previous run |
 | cronjob.failedJobsHistoryLimit | string | `""` | Amount of failed jobs to keep in history |
-| cronjob.initContainers | list | `[]` | Additional initContainers that can be executed before renovate |
+| cronjob.initContainers | list | `[]` | Additional initContainers that can be executed before renovate (evaluated as a template) |
 | cronjob.jobBackoffLimit | string | `""` | Number of times to retry running the pod before considering the job as being failed |
 | cronjob.jobRestartPolicy | string | `"Never"` | Set to Never to restart the job when the pod fails or to OnFailure to restart when a container fails |
 | cronjob.labels | object | `{}` | Labels to set on the cronjob |
