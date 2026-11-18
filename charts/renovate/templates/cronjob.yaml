@@ -217,7 +217,7 @@ spec:
             {{- if .Values.renovate.persistence.cache.enabled }}
             - name: {{ include "renovate.fullname" . }}-cache
               persistentVolumeClaim:
-                claimName: {{ include "renovate.fullname" . }}-cache
+                claimName: {{ .Values.renovate.persistence.cache.existingClaim | default (printf "%s-cache" (include "renovate.fullname" .)) }}
             {{- end }}
             {{- if .Values.ssh_config.enabled }}
             - name: ssh-config-volume

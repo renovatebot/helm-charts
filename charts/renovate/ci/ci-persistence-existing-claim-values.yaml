@@ -1,0 +1,14 @@
+renovate:
+  config: |
+    {
+      "platform": "gitlab",
+      "endpoint": "https://gitlab.example.com/api/v4",
+      "token": "your-gitlab-renovate-user-token",
+      "autodiscover": "false",
+      "dryRun": true,
+      "repositories": ["username/repo"]
+    }
+  persistence:
+    cache:
+      enabled: true
+      existingClaim: renovate-cache
