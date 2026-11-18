@@ -34,3 +34,8 @@ dnsConfig:
   options:
     - name: ndots
       value: "1"
+cronjob:
+  initContainers:
+    - name: prepare
+      image: '{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}'
+      command: ['true']
