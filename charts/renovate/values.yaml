@@ -215,6 +215,11 @@ serviceAccount:
   # -- The name of the service account to use
   # If not set and create is true, a name is generated using the fullname template
   name: ''
+  # -- (bool) Set automountServiceAccountToken on the created service account. Left unset, the Kubernetes default (true) applies
+  automountServiceAccountToken:
+
+# -- (bool) Set automountServiceAccountToken on the cronjob pod, overriding the service account's setting. Renovate does not call the Kubernetes API, so `false` is safe unless a custom command needs the token
+automountServiceAccountToken:
 
 # -- Specify resource limits and requests for the renovate container
 resources: {}
