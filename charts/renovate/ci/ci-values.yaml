@@ -34,3 +34,7 @@ dnsConfig:
   options:
     - name: ndots
       value: "1"
+serviceAccount:
+  create: true
+  automountServiceAccountToken: false
+automountServiceAccountToken: false

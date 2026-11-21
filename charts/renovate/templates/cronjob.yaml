@@ -80,6 +80,9 @@ spec:
         {{- end }}
         spec:
           serviceAccountName: {{ include "renovate.serviceAccountName" . }}
+        {{- if kindIs "bool" .Values.automountServiceAccountToken }}
+          automountServiceAccountToken: {{ .Values.automountServiceAccountToken }}
+        {{- end }}
           restartPolicy: {{ .Values.cronjob.jobRestartPolicy }}
         {{- with .Values.hostAliases }}
           hostAliases:

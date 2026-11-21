@@ -33,6 +33,7 @@ The following table lists the configurable parameters of the chart and the defau
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Configure the pod(Anti)Affinity and/or node(Anti)Affinity |
+| automountServiceAccountToken | bool | `nil` | Set automountServiceAccountToken on the cronjob pod, overriding the service account's setting. Renovate does not call the Kubernetes API, so `false` is safe unless a custom command needs the token |
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
 | cronjob.argsOverride | list | `[]` | Custom arguments to run in the container |
@@ -99,6 +100,7 @@ The following table lists the configurable parameters of the chart and the defau
 | secrets | object | `{}` | Environment variables that should be referenced from a k8s secret, cannot be used when existingSecret is set |
 | securityContext | object | `{}` | Pod-level security-context |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
+| serviceAccount.automountServiceAccountToken | bool | `nil` | Set automountServiceAccountToken on the created service account. Left unset, the Kubernetes default (true) applies |
 | serviceAccount.create | bool | `false` | Specifies whether a service account should be created |
 | serviceAccount.name | string | `""` | The name of the service account to use If not set and create is true, a name is generated using the fullname template |
 | ssh_config.config | string | `""` | Contents of the config file |
