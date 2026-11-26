@@ -29,11 +29,11 @@ spec:
   {{- with .Values.cronjob.concurrencyPolicy }}
   concurrencyPolicy: {{ . }}
   {{- end }}
-  {{- with .Values.cronjob.failedJobsHistoryLimit }}
-  failedJobsHistoryLimit: {{ . }}
+  {{- if not (kindIs "invalid" .Values.cronjob.failedJobsHistoryLimit) }}
+  failedJobsHistoryLimit: {{ .Values.cronjob.failedJobsHistoryLimit }}
   {{- end }}
-  {{- with .Values.cronjob.successfulJobsHistoryLimit }}
-  successfulJobsHistoryLimit: {{ . }}
+  {{- if not (kindIs "invalid" .Values.cronjob.successfulJobsHistoryLimit) }}
+  successfulJobsHistoryLimit: {{ .Values.cronjob.successfulJobsHistoryLimit }}
   {{- end }}
   {{- with .Values.cronjob.startingDeadlineSeconds }}
   startingDeadlineSeconds: {{ . }}
@@ -43,29 +43,29 @@ spec:
       labels:
         {{- include "renovate.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.cronjob.completions }}
-      completions: {{ . }}
+      {{- if not (kindIs "invalid" .Values.cronjob.completions) }}
+      completions: {{ .Values.cronjob.completions }}
       {{- end }}
       {{- with .Values.cronjob.completionMode }}
       completionMode: {{ . }}
       {{- end }}
-      {{- with .Values.cronjob.parallelism}}
-      parallelism: {{ . }}
+      {{- if not (kindIs "invalid" .Values.cronjob.parallelism) }}
+      parallelism: {{ .Values.cronjob.parallelism }}
       {{- end }}
-      {{- if .Values.cronjob.ttlSecondsAfterFinished }}
+      {{- if not (kindIs "invalid" .Values.cronjob.ttlSecondsAfterFinished) }}
       ttlSecondsAfterFinished: {{ .Values.cronjob.ttlSecondsAfterFinished }}
       {{- end }}
       {{- if .Values.cronjob.activeDeadlineSeconds }}
       activeDeadlineSeconds: {{ .Values.cronjob.activeDeadlineSeconds }}
       {{- end }}
-      {{- if .Values.cronjob.jobBackoffLimit }}
+      {{- if not (kindIs "invalid" .Values.cronjob.jobBackoffLimit) }}
       backoffLimit: {{ .Values.cronjob.jobBackoffLimit }}
       {{- end }}
-      {{- with .Values.cronjob.backoffLimitPerIndex }}
-      backoffLimitPerIndex: {{ . }}
+      {{- if not (kindIs "invalid" .Values.cronjob.backoffLimitPerIndex) }}
+      backoffLimitPerIndex: {{ .Values.cronjob.backoffLimitPerIndex }}
       {{- end }}
-      {{- with .Values.cronjob.maxFailedIndexes }}
-      maxFailedIndexes: {{ . }}
+      {{- if not (kindIs "invalid" .Values.cronjob.maxFailedIndexes) }}
+      maxFailedIndexes: {{ .Values.cronjob.maxFailedIndexes }}
       {{- end }}
       template:
         metadata:

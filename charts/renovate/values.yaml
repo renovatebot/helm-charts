@@ -26,26 +26,26 @@ cronjob:
   labels: {}
   # -- "Allow" to allow concurrent runs, "Forbid" to skip new runs if a previous run is still running or "Replace" to replace the previous run
   concurrencyPolicy: ''
-  # -- "Number of successful completions is reached to mark the job as complete"
-  completions: ''
+  # -- (int) "Number of successful completions is reached to mark the job as complete"
+  completions:
   # -- "Where the jobs should be NonIndexed or Indexed"
   completionMode: ''
-  # -- Amount of failed jobs to keep in history
-  failedJobsHistoryLimit: ''
-  # -- Amount of completed jobs to keep in history
-  successfulJobsHistoryLimit: ''
+  # -- (int) Amount of failed jobs to keep in history
+  failedJobsHistoryLimit:
+  # -- (int) Amount of completed jobs to keep in history
+  successfulJobsHistoryLimit:
   # -- Set to Never to restart the job when the pod fails or to OnFailure to restart when a container fails
   jobRestartPolicy: Never
-  # -- Time to keep the job after it finished before automatically deleting it
-  ttlSecondsAfterFinished: ''
+  # -- (int) Time to keep the job after it finished before automatically deleting it
+  ttlSecondsAfterFinished:
   # -- Deadline for the job to finish
   activeDeadlineSeconds: ''
-  # -- Number of times to retry running the pod before considering the job as being failed
-  jobBackoffLimit: ''
-  # -- Maximal number of failures per index
-  backoffLimitPerIndex: ''
-  # -- Maximal number of failed indexes before terminating the Job execution
-  maxFailedIndexes: ''
+  # -- (int) Number of times to retry running the pod before considering the job as being failed
+  jobBackoffLimit:
+  # -- (int) Maximal number of failures per index
+  backoffLimitPerIndex:
+  # -- (int) Maximal number of failed indexes before terminating the Job execution
+  maxFailedIndexes:
   # -- Deadline to start the job, skips execution if job misses it's configured deadline
   startingDeadlineSeconds: ''
   # -- Additional initContainers that can be executed before renovate
@@ -53,8 +53,8 @@ cronjob:
   # initContainers:
   # - name: INIT_CONTAINER_NAME
   #   image: INIT_CONTAINER_IMAGE
-  # -- Number of pods to run in parallel
-  parallelism: ''
+  # -- (int) Number of pods to run in parallel
+  parallelism:
   # -- Custom command to run in the container
   commandOverride: []
   # -- Custom arguments to run in the container
