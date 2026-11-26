@@ -37,26 +37,26 @@ The following table lists the configurable parameters of the chart and the defau
 | cronjob.activeDeadlineSeconds | string | `""` | Deadline for the job to finish |
 | cronjob.annotations | object | `{}` | Annotations to set on the cronjob |
 | cronjob.argsOverride | list | `[]` | Custom arguments to run in the container |
-| cronjob.backoffLimitPerIndex | string | `""` | Maximal number of failures per index |
+| cronjob.backoffLimitPerIndex | int | `nil` | Maximal number of failures per index |
 | cronjob.commandOverride | list | `[]` | Custom command to run in the container |
 | cronjob.completionMode | string | `""` | "Where the jobs should be NonIndexed or Indexed" |
-| cronjob.completions | string | `""` | "Number of successful completions is reached to mark the job as complete" |
+| cronjob.completions | int | `nil` | "Number of successful completions is reached to mark the job as complete" |
 | cronjob.concurrencyPolicy | string | `""` | "Allow" to allow concurrent runs, "Forbid" to skip new runs if a previous run is still running or "Replace" to replace the previous run |
-| cronjob.failedJobsHistoryLimit | string | `""` | Amount of failed jobs to keep in history |
+| cronjob.failedJobsHistoryLimit | int | `nil` | Amount of failed jobs to keep in history |
 | cronjob.initContainers | list | `[]` | Additional initContainers that can be executed before renovate |
-| cronjob.jobBackoffLimit | string | `""` | Number of times to retry running the pod before considering the job as being failed |
+| cronjob.jobBackoffLimit | int | `nil` | Number of times to retry running the pod before considering the job as being failed |
 | cronjob.jobRestartPolicy | string | `"Never"` | Set to Never to restart the job when the pod fails or to OnFailure to restart when a container fails |
 | cronjob.labels | object | `{}` | Labels to set on the cronjob |
-| cronjob.maxFailedIndexes | string | `""` | Maximal number of failed indexes before terminating the Job execution |
-| cronjob.parallelism | string | `""` | Number of pods to run in parallel |
+| cronjob.maxFailedIndexes | int | `nil` | Maximal number of failed indexes before terminating the Job execution |
+| cronjob.parallelism | int | `nil` | Number of pods to run in parallel |
 | cronjob.postCommand | string | `""` | Append shell commands after renovate runs |
 | cronjob.preCommand | string | `""` | Prepend shell commands before renovate runs |
 | cronjob.schedule | string | `"0 1 * * *"` | Schedules the job to run using cron notation |
 | cronjob.startingDeadlineSeconds | string | `""` | Deadline to start the job, skips execution if job misses it's configured deadline |
-| cronjob.successfulJobsHistoryLimit | string | `""` | Amount of completed jobs to keep in history |
+| cronjob.successfulJobsHistoryLimit | int | `nil` | Amount of completed jobs to keep in history |
 | cronjob.suspend | bool | `false` | If it is set to true, all subsequent executions are suspended. This setting does not apply to already started executions. |
 | cronjob.timeZone | string | `""` | You can specify a time zone for a CronJob by setting timeZone to the name of a valid time zone. (starting with k8s 1.27) <https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones> |
-| cronjob.ttlSecondsAfterFinished | string | `""` | Time to keep the job after it finished before automatically deleting it |
+| cronjob.ttlSecondsAfterFinished | int | `nil` | Time to keep the job after it finished before automatically deleting it |
 | dnsConfig | object | `{}` | Configure pod DNS settings |
 | dnsPolicy | string | `""` | Configure pod DNS policy |
 | env | object | `{}` | Environment variables to set on the renovate container |
