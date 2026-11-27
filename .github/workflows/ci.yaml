@@ -110,7 +110,7 @@ jobs:
           fetch-depth: 0
           filter: blob:none # We don't need all blobs
 
-      - uses: ./.github/actions/setup-k3s
+      - uses: $/.github/actions/setup-k3s
         with:
           version: ${{ matrix.k3s }}
 
