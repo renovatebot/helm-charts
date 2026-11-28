@@ -122,7 +122,7 @@ spec:
               {{- end }}
             {{- end }}
             {{- if .Values.cronjob.initContainers }}
-            {{- toYaml .Values.cronjob.initContainers | nindent 12 }}
+            {{- tpl (toYaml .Values.cronjob.initContainers) $ | nindent 12 }}
             {{- end }}
           {{- end }}
           containers:

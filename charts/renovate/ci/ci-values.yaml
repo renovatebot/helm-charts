@@ -38,3 +38,8 @@ serviceAccount:
   create: true
   automountServiceAccountToken: false
 automountServiceAccountToken: false
+cronjob:
+  initContainers:
+    - name: prepare
+      image: '{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}'
+      command: ['true']
